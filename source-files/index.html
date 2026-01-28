@@ -5,12 +5,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Look Serious — Brands are systems. Not logos.</title>
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet">
-
     <style>
+        /* Custom Fonts */
+        @font-face {
+            font-family: 'Beatrice';
+            src: url('assets/fonts/BeatriceTRIAL-Regular.ttf') format('truetype');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Beatrice';
+            src: url('assets/fonts/BeatriceTRIAL-Medium.ttf') format('truetype');
+            font-weight: 500;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Beatrice';
+            src: url('assets/fonts/BeatriceTRIAL-Semibold.ttf') format('truetype');
+            font-weight: 600;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Beatrice';
+            src: url('assets/fonts/BeatriceTRIAL-Bold.ttf') format('truetype');
+            font-weight: 700;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Beatrice';
+            src: url('assets/fonts/BeatriceTRIAL-Extrabold.ttf') format('truetype');
+            font-weight: 800;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'BDO Grotesk';
+            src: url('assets/fonts/BDOGrotesk-Regular.ttf') format('truetype');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'BDO Grotesk';
+            src: url('assets/fonts/BDOGrotesk-Medium.ttf') format('truetype');
+            font-weight: 500;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'BDO Grotesk';
+            src: url('assets/fonts/BDOGrotesk-DemiBold.ttf') format('truetype');
+            font-weight: 600;
+            font-style: normal;
+            font-display: swap;
+        }
+
         :root {
             --black: #080808;
             --charcoal: #111111;
@@ -22,8 +75,8 @@
             --white: #ffffff;
             --accent: #c9452c;
 
-            --font-display: 'Syne', sans-serif;
-            --font-body: 'Outfit', -apple-system, sans-serif;
+            --font-display: 'Beatrice', Georgia, serif;
+            --font-body: 'BDO Grotesk', -apple-system, sans-serif;
         }
 
         * {
