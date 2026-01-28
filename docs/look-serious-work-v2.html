@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Work — Look Serious</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --black: #050505;
+            --charcoal: #0e0e0e;
+            --dark-gray: #161616;
+            --mid-gray: #252525;
+            --text-muted: #707070;
+            --text-secondary: #a0a0a0;
+            --off-white: #f0f0f0;
+            --white: #ffffff;
+            --accent: #e04a2f;
+            
+            --font-display: 'Syne', sans-serif;
+            --font-body: 'Outfit', -apple-system, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        ::selection {
+            background: var(--accent);
+            color: var(--white);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--black);
+            color: var(--off-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ══════════════════════════════════════════
+           NAVIGATION
+        ══════════════════════════════════════════ */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            mix-blend-mode: difference;
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+        }
+
+        .nav-link {
+            font-family: var(--font-body);
+            font-size: 0.8rem;
+            font-weight: 400;
+            letter-spacing: 0.03em;
+            color: var(--white);
+            text-decoration: none;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-link:hover {
+            opacity: 1;
+        }
+
+        .nav-link.active {
+            opacity: 1;
+        }
+
+        .nav-contact {
+            font-family: var(--font-body);
+            font-size: 0.8rem;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            color: var(--white);
+            text-decoration: none;
+            padding: 0.75rem 1.5rem;
+            border: 1px solid rgba(255,255,255,0.3);
+            transition: all 0.3s ease;
+        }
+
+        .nav-contact:hover {
+            background: var(--white);
+            color: var(--black);
+        }
+
+        /* ══════════════════════════════════════════
+           HERO SECTION
+        ══════════════════════════════════════════ */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 4rem;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero-label {
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeIn 0.8s 0.2s forwards;
+        }
+
+        .hero-headline {
+            font-family: var(--font-display);
+            font-size: clamp(3rem, 10vw, 7rem);
+            font-weight: 800;
+            line-height: 0.95;
+            letter-spacing: -0.03em;
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(40px);
+            animation: fadeUp 1s 0.3s forwards;
+        }
+
+        .hero-subline {
+            font-size: 1.1rem;
+            font-weight: 300;
+            color: var(--text-secondary);
+            max-width: 500px;
+            margin: 0 auto;
+            opacity: 0;
+            animation: fadeIn 0.8s 0.6s forwards;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.75rem;
+            opacity: 0;
+            animation: fadeIn 1s 1s forwards;
+        }
+
+        .scroll-indicator span {
+            font-size: 0.65rem;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        .scroll-line {
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, var(--accent), transparent);
+            animation: scrollPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes scrollPulse {
+            0%, 100% { opacity: 0.3; transform: scaleY(1); }
+            50% { opacity: 1; transform: scaleY(1.2); }
+        }
+
+        /* ══════════════════════════════════════════
+           PROJECT SECTIONS
+        ══════════════════════════════════════════ */
+        .project {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-image {
+            position: relative;
+            background: var(--charcoal);
+            overflow: hidden;
+        }
+
+        .project-image-bg {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            transform: scale(1.1);
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .project:hover .project-image-bg {
+            transform: scale(1);
+        }
+
+        .project-image-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 100%);
+        }
+
+        .project-image-placeholder {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        .project-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 6rem;
+            background: var(--black);
+        }
+
+        .project:nth-child(odd) .project-content {
+            order: -1;
+        }
+
+        .project-number {
+            font-family: var(--font-display);
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            color: var(--accent);
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .project.visible .project-number {
+            animation: fadeUp 0.6s 0.1s forwards;
+        }
+
+        .project-name {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            line-height: 1;
+            letter-spacing: -0.02em;
+            color: var(--white);
+            margin-bottom: 0.75rem;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .project.visible .project-name {
+            animation: fadeUp 0.8s 0.2s forwards;
+        }
+
+        .project-tagline {
+            font-family: var(--font-body);
+            font-size: 1.1rem;
+            font-weight: 300;
+            color: var(--accent);
+            margin-bottom: 2rem;
+            opacity: 0;
+        }
+
+        .project.visible .project-tagline {
+            animation: fadeIn 0.6s 0.4s forwards;
+        }
+
+        .project-description {
+            font-size: 1rem;
+            font-weight: 300;
+            line-height: 1.8;
+            color: var(--off-white);
+            opacity: 0.8;
+            max-width: 450px;
+            margin-bottom: 3rem;
+            opacity: 0;
+        }
+
+        .project.visible .project-description {
+            animation: fadeIn 0.6s 0.5s forwards;
+        }
+
+        .project-meta {
+            display: flex;
+            gap: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--mid-gray);
+            margin-bottom: 3rem;
+            opacity: 0;
+        }
+
+        .project.visible .project-meta {
+            animation: fadeIn 0.6s 0.6s forwards;
+        }
+
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .meta-label {
+            font-size: 0.65rem;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        .meta-value {
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: var(--off-white);
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-family: var(--font-display);
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--white);
+            text-decoration: none;
+            padding: 1rem 0;
+            transition: color 0.3s ease;
+            opacity: 0;
+        }
+
+        .project.visible .project-link {
+            animation: fadeIn 0.6s 0.7s forwards;
+        }
+
+        .project-link:hover {
+            color: var(--accent);
+        }
+
+        .project-link svg {
+            width: 20px;
+            height: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .project-link:hover svg {
+            transform: translateX(6px);
+        }
+
+        /* ══════════════════════════════════════════
+           CTA SECTION
+        ══════════════════════════════════════════ */
+        .cta-section {
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 6rem 4rem;
+            background: var(--charcoal);
+        }
+
+        .cta-content {
+            max-width: 600px;
+        }
+
+        .cta-headline {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            line-height: 1.1;
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .cta-headline.visible {
+            animation: fadeUp 0.8s forwards;
+        }
+
+        .cta-subtext {
+            font-size: 1rem;
+            font-weight: 300;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            opacity: 0;
+        }
+
+        .cta-subtext.visible {
+            animation: fadeIn 0.8s 0.2s forwards;
+        }
+
+        .cta-button {
+            display: inline-block;
+            font-family: var(--font-display);
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: var(--black);
+            background: var(--white);
+            padding: 1.25rem 3rem;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            opacity: 0;
+        }
+
+        .cta-button.visible {
+            animation: fadeIn 0.8s 0.3s forwards;
+        }
+
+        .cta-button:hover {
+            background: var(--accent);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        /* ══════════════════════════════════════════
+           FOOTER
+        ══════════════════════════════════════════ */
+        footer {
+            padding: 3rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--mid-gray);
+        }
+
+        .footer-logo {
+            font-family: var(--font-display);
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        .footer-copy {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        /* ══════════════════════════════════════════
+           ANIMATIONS
+        ══════════════════════════════════════════ */
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* ══════════════════════════════════════════
+           RESPONSIVE
+        ══════════════════════════════════════════ */
+        @media (max-width: 1024px) {
+            nav {
+                padding: 1.5rem 2rem;
+            }
+
+            .project {
+                grid-template-columns: 1fr;
+                min-height: auto;
+            }
+
+            .project-image {
+                aspect-ratio: 16/9;
+            }
+
+            .project:nth-child(odd) .project-content {
+                order: 0;
+            }
+
+            .project-content {
+                padding: 4rem 3rem;
+            }
+
+            .project-meta {
+                flex-wrap: wrap;
+                gap: 2rem;
+            }
+
+            footer {
+                padding: 2rem 3rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            nav {
+                padding: 1.25rem 1.5rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .nav-link {
+                display: none;
+            }
+
+            .hero {
+                padding: 4rem 1.5rem;
+            }
+
+            .project-image {
+                aspect-ratio: 4/3;
+            }
+
+            .project-content {
+                padding: 3rem 1.5rem;
+            }
+
+            .project-meta {
+                gap: 1.5rem;
+            }
+
+            .cta-section {
+                padding: 5rem 1.5rem;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 2rem 1.5rem;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="/" class="logo">Look Serious</a>
+        <div class="nav-links">
+            <a href="/work" class="nav-link active">The Work</a>
+            <a href="/#bos" class="nav-link">BOS™</a>
+            <a href="/services" class="nav-link">How We Work</a>
+            <a href="/contact" class="nav-contact">Let's Talk</a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <p class="hero-label">Selected Work</p>
+            <h1 class="hero-headline">The Work</h1>
+            <p class="hero-subline">Brands transformed. Gaps closed. Systems built.</p>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- Project 1: Tech Futures Group -->
+    <section class="project">
+        <div class="project-image">
+            <div class="project-image-bg" style="background-color: #1a1a2e;"></div>
+            <div class="project-image-overlay"></div>
+            <div class="project-image-placeholder">Screenshot Coming</div>
+        </div>
+        <div class="project-content">
+            <span class="project-number">01</span>
+            <h2 class="project-name">Tech Futures Group</h2>
+            <p class="project-tagline">From scattered initiatives to unified platform</p>
+            <p class="project-description">
+                A venture platform connecting investors with emerging technology. The brand had grown organically across multiple initiatives—but looked like three different companies. We unified everything under one system.
+            </p>
+            <div class="project-meta">
+                <div class="meta-item">
+                    <span class="meta-label">Scope</span>
+                    <span class="meta-value">Brand System + Website</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Industry</span>
+                    <span class="meta-value">Venture / Investment</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Timeline</span>
+                    <span class="meta-value">8 weeks</span>
+                </div>
+            </div>
+            <a href="https://techfuturesgroup.org" target="_blank" class="project-link">
+                View Live Site
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- Project 2: NeoPave -->
+    <section class="project">
+        <div class="project-image">
+            <div class="project-image-bg" style="background-color: #162a1f;"></div>
+            <div class="project-image-overlay"></div>
+            <div class="project-image-placeholder">Screenshot Coming</div>
+        </div>
+        <div class="project-content">
+            <span class="project-number">02</span>
+            <h2 class="project-name">NeoPave</h2>
+            <p class="project-tagline">Climate tech that needed to look the part</p>
+            <p class="project-description">
+                Revolutionary polymer pavement technology that lasts longer and reduces environmental impact. The science was solid—but the brand felt like a PowerPoint. We repositioned them as the infrastructure play for climate-conscious municipalities.
+            </p>
+            <div class="project-meta">
+                <div class="meta-item">
+                    <span class="meta-label">Scope</span>
+                    <span class="meta-value">Brand Strategy + Website</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Industry</span>
+                    <span class="meta-value">Climate Tech</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Timeline</span>
+                    <span class="meta-value">6 weeks</span>
+                </div>
+            </div>
+            <a href="https://neopave.com" target="_blank" class="project-link">
+                View Live Site
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- Project 3: Forever Young Fitness -->
+    <section class="project">
+        <div class="project-image">
+            <div class="project-image-bg" style="background-color: #2a1a1a;"></div>
+            <div class="project-image-overlay"></div>
+            <div class="project-image-placeholder">Screenshot Coming</div>
+        </div>
+        <div class="project-content">
+            <span class="project-number">03</span>
+            <h2 class="project-name">Forever Young Fitness</h2>
+            <p class="project-tagline">30 years of expertise, finally visible</p>
+            <p class="project-description">
+                Elite personal training with three decades of results—but a brand that looked like every other gym. We repositioned from "trainer" to "transformation partner" and built a presence that matches the premium service.
+            </p>
+            <div class="project-meta">
+                <div class="meta-item">
+                    <span class="meta-label">Scope</span>
+                    <span class="meta-value">Rebrand + Website</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Industry</span>
+                    <span class="meta-value">Health / Fitness</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Timeline</span>
+                    <span class="meta-value">10 weeks</span>
+                </div>
+            </div>
+            <a href="https://workoutwithzeb.com" target="_blank" class="project-link">
+                View Live Site
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2 class="cta-headline">Your brand could be next.</h2>
+            <p class="cta-subtext">Three clients per quarter. Let's see if there's a fit.</p>
+            <a href="/contact" class="cta-button">Let's Talk</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <span class="footer-logo">Look Serious</span>
+        <span class="footer-copy">© 2026 Look Serious</span>
+    </footer>
+
+    <!-- Scroll Animation Script -->
+    <script>
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.25
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.project, .cta-headline, .cta-subtext, .cta-button').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About — Look Serious</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --black: #050505;
+            --charcoal: #0e0e0e;
+            --dark-gray: #161616;
+            --mid-gray: #252525;
+            --text-muted: #707070;
+            --text-secondary: #a0a0a0;
+            --off-white: #f0f0f0;
+            --white: #ffffff;
+            --accent: #e04a2f;
+            
+            --font-display: 'Syne', sans-serif;
+            --font-body: 'Outfit', -apple-system, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        ::selection {
+            background: var(--accent);
+            color: var(--white);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--black);
+            color: var(--off-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Subtle grain texture overlay */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        /* ══════════════════════════════════════════
+           NAVIGATION
+        ══════════════════════════════════════════ */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            mix-blend-mode: difference;
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+        }
+
+        .nav-link {
+            font-family: var(--font-body);
+            font-size: 0.8rem;
+            font-weight: 400;
+            letter-spacing: 0.03em;
+            color: var(--white);
+            text-decoration: none;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-link:hover {
+            opacity: 1;
+        }
+
+        .nav-link.active {
+            opacity: 1;
+        }
+
+        .nav-contact {
+            font-family: var(--font-body);
+            font-size: 0.8rem;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            color: var(--white);
+            text-decoration: none;
+            padding: 0.75rem 1.5rem;
+            border: 1px solid rgba(255,255,255,0.3);
+            transition: all 0.3s ease;
+        }
+
+        .nav-contact:hover {
+            background: var(--white);
+            color: var(--black);
+        }
+
+        /* ══════════════════════════════════════════
+           MAIN LAYOUT
+        ══════════════════════════════════════════ */
+        .page-container {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            min-height: 100vh;
+        }
+
+        /* ══════════════════════════════════════════
+           LEFT COLUMN - PHOTO
+        ══════════════════════════════════════════ */
+        .photo-col {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            background: var(--charcoal);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 4rem;
+        }
+
+        .photo-wrapper {
+            width: 100%;
+            max-width: 350px;
+            aspect-ratio: 3/4;
+            background: var(--dark-gray);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 1s 0.3s forwards;
+        }
+
+        .photo-placeholder {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        .photo-caption {
+            margin-top: 2rem;
+            text-align: center;
+            opacity: 0;
+            animation: fadeIn 0.8s 0.6s forwards;
+        }
+
+        .photo-name {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 0.25rem;
+        }
+
+        .photo-title {
+            font-size: 0.85rem;
+            font-weight: 300;
+            color: var(--text-secondary);
+        }
+
+        .photo-location {
+            font-size: 0.75rem;
+            font-weight: 400;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+        }
+
+        /* ══════════════════════════════════════════
+           RIGHT COLUMN - CONTENT
+        ══════════════════════════════════════════ */
+        .content-col {
+            padding: 12rem 6rem 6rem 5rem;
+        }
+
+        .content-inner {
+            max-width: 600px;
+        }
+
+        .section-label {
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeIn 0.6s 0.2s forwards;
+        }
+
+        .page-headline {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            margin-bottom: 2.5rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 0.8s 0.3s forwards;
+        }
+
+        .intro-text {
+            font-size: 1.15rem;
+            font-weight: 300;
+            line-height: 1.9;
+            color: var(--off-white);
+            margin-bottom: 3rem;
+            opacity: 0;
+            animation: fadeIn 0.8s 0.5s forwards;
+        }
+
+        .intro-text strong {
+            color: var(--white);
+            font-weight: 500;
+        }
+
+        .content-divider {
+            width: 60px;
+            height: 1px;
+            background: var(--mid-gray);
+            margin: 3rem 0;
+            opacity: 0;
+            animation: fadeIn 0.6s 0.6s forwards;
+        }
+
+        /* ══════════════════════════════════════════
+           STORY SECTION
+        ══════════════════════════════════════════ */
+        .story-section {
+            margin-bottom: 4rem;
+            opacity: 0;
+        }
+
+        .story-section.visible {
+            animation: fadeIn 0.8s forwards;
+        }
+
+        .story-text {
+            font-size: 1rem;
+            font-weight: 300;
+            line-height: 1.9;
+            color: var(--off-white);
+            opacity: 0.85;
+            margin-bottom: 1.5rem;
+        }
+
+        .story-text:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ══════════════════════════════════════════
+           BELIEFS SECTION
+        ══════════════════════════════════════════ */
+        .beliefs-section {
+            margin-bottom: 4rem;
+            opacity: 0;
+        }
+
+        .beliefs-section.visible {
+            animation: fadeIn 0.8s forwards;
+        }
+
+        .beliefs-title {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 2rem;
+        }
+
+        .belief-item {
+            padding: 1.25rem 0;
+            border-bottom: 1px solid var(--mid-gray);
+        }
+
+        .belief-item:first-child {
+            border-top: 1px solid var(--mid-gray);
+        }
+
+        .belief-text {
+            font-size: 0.95rem;
+            font-weight: 300;
+            line-height: 1.7;
+            color: var(--off-white);
+        }
+
+        .belief-text strong {
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        /* ══════════════════════════════════════════
+           FIT SECTION
+        ══════════════════════════════════════════ */
+        .fit-section {
+            margin-bottom: 4rem;
+            opacity: 0;
+        }
+
+        .fit-section.visible {
+            animation: fadeIn 0.8s forwards;
+        }
+
+        .fit-title {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 1.5rem;
+        }
+
+        .fit-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .fit-col h4 {
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .fit-col.yes h4 {
+            color: var(--accent);
+        }
+
+        .fit-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+        .fit-list li {
+            font-size: 0.9rem;
+            font-weight: 300;
+            color: var(--off-white);
+            opacity: 0.8;
+        }
+
+        /* ══════════════════════════════════════════
+           CTA SECTION
+        ══════════════════════════════════════════ */
+        .about-cta {
+            padding: 3rem;
+            background: var(--charcoal);
+            border: 1px solid var(--mid-gray);
+            opacity: 0;
+        }
+
+        .about-cta.visible {
+            animation: fadeIn 0.8s forwards;
+        }
+
+        .about-cta p {
+            font-size: 1.1rem;
+            font-weight: 300;
+            color: var(--off-white);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .about-cta-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-family: var(--font-display);
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .about-cta-link:hover {
+            color: var(--accent);
+        }
+
+        .about-cta-link svg {
+            width: 18px;
+            height: 18px;
+            transition: transform 0.3s ease;
+        }
+
+        .about-cta-link:hover svg {
+            transform: translateX(5px);
+        }
+
+        /* ══════════════════════════════════════════
+           FOOTER
+        ══════════════════════════════════════════ */
+        footer {
+            padding: 3rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--mid-gray);
+            background: var(--black);
+        }
+
+        .footer-logo {
+            font-family: var(--font-display);
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        .footer-copy {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        /* ══════════════════════════════════════════
+           ANIMATIONS
+        ══════════════════════════════════════════ */
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* ══════════════════════════════════════════
+           RESPONSIVE
+        ══════════════════════════════════════════ */
+        @media (max-width: 1024px) {
+            .page-container {
+                grid-template-columns: 1fr;
+            }
+
+            .photo-col {
+                position: relative;
+                height: auto;
+                padding: 10rem 3rem 4rem 3rem;
+            }
+
+            .photo-wrapper {
+                max-width: 280px;
+            }
+
+            .content-col {
+                padding: 4rem 3rem 6rem 3rem;
+            }
+
+            nav {
+                padding: 1.5rem 2rem;
+            }
+
+            footer {
+                padding: 2rem 3rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            nav {
+                padding: 1.25rem 1.5rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .nav-link {
+                display: none;
+            }
+
+            .photo-col {
+                padding: 8rem 1.5rem 3rem 1.5rem;
+            }
+
+            .photo-wrapper {
+                max-width: 220px;
+            }
+
+            .content-col {
+                padding: 3rem 1.5rem 4rem 1.5rem;
+            }
+
+            .fit-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .about-cta {
+                padding: 2rem 1.5rem;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 2rem 1.5rem;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="/" class="logo">Look Serious</a>
+        <div class="nav-links">
+            <a href="/work" class="nav-link">The Work</a>
+            <a href="/#bos" class="nav-link">BOS™</a>
+            <a href="/services" class="nav-link">How We Work</a>
+            <a href="/contact" class="nav-contact">Let's Talk</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="page-container">
+        
+        <!-- Left Column - Photo -->
+        <div class="photo-col">
+            <div class="photo-wrapper">
+                <div class="photo-placeholder">Photo</div>
+            </div>
+            <div class="photo-caption">
+                <p class="photo-name">Aaron Phelps</p>
+                <p class="photo-title">Founder, Look Serious</p>
+                <p class="photo-location">Redding, California</p>
+            </div>
+        </div>
+
+        <!-- Right Column - Content -->
+        <div class="content-col">
+            <div class="content-inner">
+                
+                <p class="section-label">About</p>
+                <h1 class="page-headline">I build brands that work as hard as you do.</h1>
+                
+                <p class="intro-text">
+                    I'm Aaron—a brand strategist, designer, and builder. I started Look Serious because I kept seeing the same problem: <strong>great companies with forgettable brands.</strong> Businesses that had outgrown their first logo. Teams doing exceptional work behind websites that could belong to anyone.
+                </p>
+
+                <div class="content-divider"></div>
+
+                <!-- Story -->
+                <div class="story-section">
+                    <p class="story-text">
+                        I've spent years at the intersection of strategy and execution—not just thinking about brands, but building them. Positioning. Identity. Websites. Systems. The whole thing.
+                    </p>
+                    <p class="story-text">
+                        What I've learned: a logo isn't a brand. A website isn't a brand. A brand is a system—the way everything works together to make you unmistakable. That's what I build.
+                    </p>
+                    <p class="story-text">
+                        I work with a handful of clients each quarter, by design. Not because I'm trying to seem exclusive—because this work requires focus. Deep attention. The kind of thinking that doesn't happen when you're juggling fifteen projects.
+                    </p>
+                </div>
+
+                <div class="content-divider"></div>
+
+                <!-- Beliefs -->
+                <div class="beliefs-section">
+                    <h2 class="beliefs-title">What I believe</h2>
+                    <div class="belief-item">
+                        <p class="belief-text"><strong>Your brand is either an asset or a liability.</strong> There is no neutral. Every day it's either opening doors or closing them.</p>
+                    </div>
+                    <div class="belief-item">
+                        <p class="belief-text"><strong>Strategy without execution is philosophy.</strong> I'm not here to hand you a PDF and wish you luck. I build the thing.</p>
+                    </div>
+                    <div class="belief-item">
+                        <p class="belief-text"><strong>The best brands don't explain what they do.</strong> They demonstrate why they win.</p>
+                    </div>
+                    <div class="belief-item">
+                        <p class="belief-text"><strong>AI changes everything—if you use it right.</strong> It's not a replacement for strategy. It's an accelerant. I help you find the right things to accelerate.</p>
+                    </div>
+                </div>
+
+                <div class="content-divider"></div>
+
+                <!-- Fit -->
+                <div class="fit-section">
+                    <h2 class="fit-title">Good fit / Not a fit</h2>
+                    <div class="fit-grid">
+                        <div class="fit-col yes">
+                            <h4>We'll work well together if:</h4>
+                            <ul class="fit-list">
+                                <li>You've outgrown your current brand</li>
+                                <li>You want a partner, not a vendor</li>
+                                <li>You trust experts to do expert work</li>
+                                <li>You're ready to invest in positioning</li>
+                                <li>You think long-term</li>
+                            </ul>
+                        </div>
+                        <div class="fit-col">
+                            <h4>Probably not a fit if:</h4>
+                            <ul class="fit-list">
+                                <li>You just need a quick logo</li>
+                                <li>You're shopping for the lowest price</li>
+                                <li>Decisions require a committee</li>
+                                <li>You need it done yesterday</li>
+                                <li>You want to approve every pixel</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-divider"></div>
+
+                <!-- CTA -->
+                <div class="about-cta">
+                    <p>If this sounds like the way you like to work, I'd enjoy meeting you. No pitch, no pressure—just a conversation to see if there's a gap worth closing together.</p>
+                    <a href="/contact" class="about-cta-link">
+                        Let's Talk
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <span class="footer-logo">Look Serious</span>
+        <span class="footer-copy">© 2026 Look Serious</span>
+    </footer>
+
+    <!-- Scroll Animation Script -->
+    <script>
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.2
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.story-section, .beliefs-section, .fit-section, .about-cta').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+
+</body>
+</html>
