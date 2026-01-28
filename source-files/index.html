@@ -1,914 +1,1363 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="look-serious - Brand Consultancy | Building Brand Houses & Creative Strategy">
+    <title>Look Serious — Brands are systems. Not logos.</title>
 
-    <title>look-serious | Brand Consultancy</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet">
 
-    <!-- Fav Icon -->
-    <link rel="icon" type="image/x-icon" href="assets/ad-imgs/logo/favicon.png">
-
-    <!-- Vendor CSS Files -->
-    <link rel="stylesheet" href="assets/vendor/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/vendor/fontawesome.min.css">
-    <link rel="stylesheet" href="assets/vendor/swiper-bundle.min.css">
-    <link rel="stylesheet" href="assets/vendor/meanmenu.min.css">
-    <link rel="stylesheet" href="assets/vendor/magnific-popup.css">
-    <link rel="stylesheet" href="assets/vendor/animate.min.css">
-
-    <!-- Template Main CSS File -->
-    <link rel="stylesheet" href="assets/css/ad-style.css">
-
-    <!-- Custom Styles for look-serious -->
     <style>
         :root {
-            --look-accent: #c9a962;
-            --look-dark: #0a0a0a;
-            --look-light: #f5f5f3;
-            --look-gray: #666666;
+            --black: #080808;
+            --charcoal: #111111;
+            --dark-gray: #1a1a1a;
+            --mid-gray: #2a2a2a;
+            --text-muted: #666666;
+            --text-secondary: #888888;
+            --off-white: #e8e8e8;
+            --white: #ffffff;
+            --accent: #c9452c;
+
+            --font-display: 'Syne', sans-serif;
+            --font-body: 'Outfit', -apple-system, sans-serif;
         }
 
-        .look-hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            background: var(--look-dark);
-            overflow: hidden;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        .look-hero::before {
+        ::selection {
+            background: var(--accent);
+            color: var(--white);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--black);
+            color: var(--off-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Subtle grain texture overlay */
+        body::after {
             content: '';
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(10,10,10,0.95) 0%, rgba(20,20,20,0.9) 100%);
-            z-index: 1;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 1000;
         }
 
-        .look-hero-content {
-            position: relative;
-            z-index: 2;
-            padding: 120px 0;
-        }
-
-        .look-brand-name {
-            font-size: clamp(4rem, 12vw, 12rem);
-            font-weight: 200;
-            letter-spacing: -0.03em;
-            line-height: 0.9;
-            color: var(--look-light);
-            margin-bottom: 40px;
-            font-family: 'Beatrice Trial', serif;
-        }
-
-        .look-brand-name span {
-            display: block;
-            color: var(--look-accent);
-        }
-
-        .look-tagline {
-            font-size: clamp(1rem, 2vw, 1.5rem);
-            font-weight: 300;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--look-gray);
-            margin-bottom: 60px;
-        }
-
-        .look-intro-text {
-            font-size: clamp(1.25rem, 2.5vw, 2rem);
-            font-weight: 300;
-            line-height: 1.6;
-            color: var(--look-light);
-            max-width: 700px;
-            opacity: 0.9;
-        }
-
-        .look-section {
-            padding: 150px 0;
-        }
-
-        .look-section-dark {
-            background: var(--look-dark);
-            color: var(--look-light);
-        }
-
-        .look-section-light {
-            background: var(--look-light);
-            color: var(--look-dark);
-        }
-
-        .look-section-title {
-            font-size: clamp(2.5rem, 6vw, 5rem);
-            font-weight: 200;
-            letter-spacing: -0.02em;
-            line-height: 1.1;
-            margin-bottom: 60px;
-            font-family: 'Beatrice Trial', serif;
-        }
-
-        .look-section-subtitle {
-            font-size: 0.875rem;
-            font-weight: 500;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            color: var(--look-accent);
-            margin-bottom: 30px;
-            display: block;
-        }
-
-        .look-services-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 80px 60px;
-        }
-
-        @media (max-width: 768px) {
-            .look-services-grid {
-                grid-template-columns: 1fr;
-                gap: 60px;
-            }
-        }
-
-        .look-service-item {
-            position: relative;
-        }
-
-        .look-service-number {
-            font-size: 0.75rem;
-            font-weight: 500;
-            letter-spacing: 0.2em;
-            color: var(--look-accent);
-            margin-bottom: 20px;
-            display: block;
-        }
-
-        .look-service-title {
-            font-size: clamp(1.5rem, 3vw, 2.5rem);
-            font-weight: 300;
-            margin-bottom: 20px;
-            letter-spacing: -0.01em;
-            font-family: 'Beatrice Trial', serif;
-        }
-
-        .look-service-desc {
-            font-size: 1rem;
-            line-height: 1.8;
-            opacity: 0.7;
-        }
-
-        .look-philosophy {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 100px;
-            align-items: center;
-        }
-
-        @media (max-width: 992px) {
-            .look-philosophy {
-                grid-template-columns: 1fr;
-                gap: 60px;
-            }
-        }
-
-        .look-philosophy-text {
-            font-size: clamp(1.25rem, 2vw, 1.75rem);
-            line-height: 1.8;
-            font-weight: 300;
-        }
-
-        .look-philosophy-text p {
-            margin-bottom: 30px;
-        }
-
-        .look-image-block {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .look-image-block img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .look-image-label {
-            position: absolute;
-            bottom: 30px;
-            left: 30px;
-            font-size: 0.75rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--look-light);
-            background: rgba(0,0,0,0.5);
-            padding: 10px 20px;
-        }
-
-        .look-work-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-
-        @media (max-width: 992px) {
-            .look-work-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 576px) {
-            .look-work-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .look-work-item {
-            position: relative;
-            overflow: hidden;
-            aspect-ratio: 4/5;
-        }
-
-        .look-work-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s ease;
-        }
-
-        .look-work-item:hover img {
-            transform: scale(1.05);
-        }
-
-        .look-work-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 30px;
-            background: linear-gradient(transparent, rgba(0,0,0,0.8));
-            color: var(--look-light);
-        }
-
-        .look-work-category {
-            font-size: 0.7rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--look-accent);
-            margin-bottom: 8px;
-            display: block;
-        }
-
-        .look-work-title {
-            font-size: 1.25rem;
-            font-weight: 400;
-            font-family: 'Beatrice Trial', serif;
-        }
-
-        .look-manifesto {
-            text-align: center;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .look-manifesto-text {
-            font-size: clamp(1.5rem, 4vw, 3rem);
-            font-weight: 200;
-            line-height: 1.5;
-            font-family: 'Beatrice Trial', serif;
-        }
-
-        .look-manifesto-text span {
-            color: var(--look-accent);
-            font-style: italic;
-        }
-
-        .look-cta {
-            text-align: center;
-            padding: 200px 0;
-            background: var(--look-dark);
-        }
-
-        .look-cta-title {
-            font-size: clamp(3rem, 8vw, 8rem);
-            font-weight: 200;
-            color: var(--look-light);
-            letter-spacing: -0.02em;
-            font-family: 'Beatrice Trial', serif;
-            margin-bottom: 40px;
-        }
-
-        .look-cta-title a {
-            color: inherit;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .look-cta-title a:hover {
-            color: var(--look-accent);
-        }
-
-        .look-btn {
-            display: inline-block;
-            padding: 18px 50px;
-            border: 1px solid var(--look-accent);
-            color: var(--look-light);
-            text-decoration: none;
-            font-size: 0.875rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            transition: all 0.3s ease;
-        }
-
-        .look-btn:hover {
-            background: var(--look-accent);
-            color: var(--look-dark);
-        }
-
-        .look-footer {
-            background: var(--look-dark);
-            padding: 80px 0 40px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .look-footer-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 60px;
-            margin-bottom: 80px;
-        }
-
-        @media (max-width: 992px) {
-            .look-footer-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .look-footer-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .look-footer-brand {
-            font-size: 2rem;
-            font-weight: 200;
-            color: var(--look-light);
-            margin-bottom: 20px;
-            font-family: 'Beatrice Trial', serif;
-        }
-
-        .look-footer-tagline {
-            font-size: 0.875rem;
-            color: var(--look-gray);
-            line-height: 1.8;
-        }
-
-        .look-footer-title {
-            font-size: 0.75rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--look-accent);
-            margin-bottom: 25px;
-        }
-
-        .look-footer-links {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .look-footer-links li {
-            margin-bottom: 12px;
-        }
-
-        .look-footer-links a {
-            color: var(--look-gray);
-            text-decoration: none;
-            font-size: 0.9375rem;
-            transition: color 0.3s ease;
-        }
-
-        .look-footer-links a:hover {
-            color: var(--look-light);
-        }
-
-        .look-footer-bottom {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 40px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-        }
-
-        @media (max-width: 576px) {
-            .look-footer-bottom {
-                flex-direction: column;
-                gap: 20px;
-                text-align: center;
-            }
-        }
-
-        .look-footer-copyright {
-            font-size: 0.8125rem;
-            color: var(--look-gray);
-        }
-
-        .look-social-links {
-            display: flex;
-            gap: 30px;
-        }
-
-        .look-social-links a {
-            color: var(--look-gray);
-            text-decoration: none;
-            font-size: 0.8125rem;
-            letter-spacing: 0.1em;
-            transition: color 0.3s ease;
-        }
-
-        .look-social-links a:hover {
-            color: var(--look-accent);
-        }
-
-        /* Header Override */
-        .look-header {
+        /* ══════════════════════════════════════════
+           NAVIGATION
+        ══════════════════════════════════════════ */
+        nav {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            z-index: 1000;
-            padding: 30px 60px;
+            padding: 2rem 4rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            transition: background 0.3s ease;
+            z-index: 100;
+            mix-blend-mode: difference;
         }
 
-        .look-header.scrolled {
-            background: rgba(10,10,10,0.95);
-            padding: 20px 60px;
-        }
-
-        @media (max-width: 768px) {
-            .look-header {
-                padding: 20px 30px;
-            }
-        }
-
-        .look-logo {
-            font-size: 1.5rem;
-            font-weight: 300;
-            color: var(--look-light);
+        .logo {
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--white);
             text-decoration: none;
-            letter-spacing: -0.02em;
-            font-family: 'Beatrice Trial', serif;
         }
 
-        .look-logo span {
-            color: var(--look-accent);
+        .nav-contact {
+            font-family: var(--font-body);
+            font-size: 0.8rem;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            color: var(--white);
+            text-decoration: none;
+            padding: 0.75rem 1.5rem;
+            border: 1px solid rgba(255,255,255,0.3);
+            transition: all 0.3s ease;
         }
 
-        .look-nav {
+        .nav-contact:hover {
+            background: var(--white);
+            color: var(--black);
+        }
+
+        /* ══════════════════════════════════════════
+           SECTIONS - GENERAL
+        ══════════════════════════════════════════ */
+        section {
+            min-height: 100vh;
             display: flex;
-            gap: 40px;
+            flex-direction: column;
+            justify-content: center;
+            padding: 8rem 4rem;
+            position: relative;
+        }
+
+        /* ══════════════════════════════════════════
+           HERO SECTION
+        ══════════════════════════════════════════ */
+        .hero {
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .hero-headline {
+            font-family: var(--font-display);
+            font-size: clamp(3rem, 10vw, 8rem);
+            font-weight: 800;
+            line-height: 0.95;
+            letter-spacing: -0.03em;
+            margin-bottom: 3rem;
+            opacity: 0;
+            transform: translateY(40px);
+            animation: fadeUp 1s 0.2s forwards;
+        }
+
+        .hero-headline .line {
+            display: block;
+        }
+
+        .hero-headline .accent {
+            color: var(--accent);
+        }
+
+        .hero-subline {
+            font-family: var(--font-body);
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            font-weight: 300;
+            color: var(--text-secondary);
+            max-width: 500px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 1s 0.5s forwards;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 4rem;
+            left: 4rem;
+            display: flex;
             align-items: center;
+            gap: 1rem;
+            opacity: 0;
+            animation: fadeIn 1s 1s forwards;
         }
 
-        @media (max-width: 768px) {
-            .look-nav {
-                display: none;
-            }
+        .scroll-line {
+            width: 60px;
+            height: 1px;
+            background: var(--text-muted);
+            position: relative;
+            overflow: hidden;
         }
 
-        .look-nav a {
-            color: var(--look-light);
-            text-decoration: none;
-            font-size: 0.875rem;
-            letter-spacing: 0.1em;
-            opacity: 0.7;
-            transition: opacity 0.3s ease;
+        .scroll-line::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--accent);
+            animation: scrollPulse 2s infinite;
         }
 
-        .look-nav a:hover {
-            opacity: 1;
+        .scroll-text {
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--text-muted);
         }
 
-        /* Stats Section */
-        .look-stats {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 40px;
-            padding: 100px 0;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+        /* ══════════════════════════════════════════
+           DIVIDER
+        ══════════════════════════════════════════ */
+        .section-divider {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--mid-gray), transparent);
         }
 
-        @media (max-width: 768px) {
-            .look-stats {
-                grid-template-columns: repeat(2, 1fr);
-            }
+        /* ══════════════════════════════════════════
+           STATEMENT SECTION
+        ══════════════════════════════════════════ */
+        .statement {
+            background: var(--charcoal);
         }
 
-        .look-stat-item {
+        .statement-content {
+            max-width: 1000px;
+            margin: 0 auto;
             text-align: center;
         }
 
-        .look-stat-number {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 200;
-            color: var(--look-accent);
-            margin-bottom: 10px;
-            font-family: 'Beatrice Trial', serif;
+        .statement-text {
+            font-family: var(--font-display);
+            font-size: clamp(1.5rem, 4vw, 3rem);
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: -0.01em;
+            opacity: 0;
+            transform: translateY(40px);
         }
 
-        .look-stat-label {
-            font-size: 0.8125rem;
+        .statement-text.visible {
+            animation: fadeUp 0.8s forwards;
+        }
+
+        .statement-text .highlight {
+            color: var(--accent);
+        }
+
+        .statement-caption {
+            margin-top: 3rem;
+            font-size: 0.85rem;
+            font-weight: 300;
+            color: var(--text-muted);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            opacity: 0;
+        }
+
+        .statement-caption.visible {
+            animation: fadeIn 0.8s 0.3s forwards;
+        }
+
+        /* ══════════════════════════════════════════
+           SYSTEM SECTION
+        ══════════════════════════════════════════ */
+        .system {
+            background: var(--black);
+        }
+
+        .system-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .system-intro {
+            margin-bottom: 6rem;
+        }
+
+        .system-label {
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 2rem;
+            opacity: 0;
+        }
+
+        .system-label.visible {
+            animation: fadeIn 0.6s forwards;
+        }
+
+        .system-headline {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 5vw, 4rem);
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            max-width: 800px;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .system-headline.visible {
+            animation: fadeUp 0.8s 0.1s forwards;
+        }
+
+        .pillars {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background: var(--mid-gray);
+            border: 1px solid var(--mid-gray);
+        }
+
+        .pillar {
+            background: var(--black);
+            padding: 4rem 3rem;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .pillar.visible {
+            animation: fadeUp 0.6s forwards;
+        }
+
+        .pillar:nth-child(2).visible {
+            animation-delay: 0.1s;
+        }
+
+        .pillar:nth-child(3).visible {
+            animation-delay: 0.2s;
+        }
+
+        .pillar-number {
+            font-family: var(--font-display);
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .pillar-title {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+
+        .pillar-desc {
+            font-size: 0.95rem;
+            font-weight: 300;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .pillar-accent {
+            width: 40px;
+            height: 2px;
+            background: var(--accent);
+            margin-top: 2rem;
+        }
+
+        /* ══════════════════════════════════════════
+           ENEMY SECTION - What We Don't Do
+        ══════════════════════════════════════════ */
+        .enemy {
+            background: var(--black);
+            padding: 8rem 4rem;
+        }
+
+        .enemy-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .enemy-text {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .enemy-text.visible {
+            animation: fadeUp 0.8s forwards;
+        }
+
+        .enemy-headline {
+            font-family: var(--font-display);
+            font-size: clamp(1.75rem, 4vw, 3rem);
+            font-weight: 700;
+            line-height: 1.3;
+            color: var(--white);
+            margin-bottom: 2rem;
+        }
+
+        .enemy-headline .accent {
+            color: var(--accent);
+        }
+
+        .enemy-description {
+            font-size: 1.1rem;
+            font-weight: 300;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            max-width: 700px;
+        }
+
+        /* ══════════════════════════════════════════
+           BELIEFS SECTION - Manifesto
+        ══════════════════════════════════════════ */
+        .beliefs {
+            background: var(--charcoal);
+            padding: 8rem 4rem;
+        }
+
+        .beliefs-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .beliefs-content .section-label {
+            margin-bottom: 3rem;
+        }
+
+        .beliefs-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem 4rem;
+        }
+
+        .belief {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .belief.visible {
+            animation: fadeUp 0.6s forwards;
+        }
+
+        .belief:nth-child(2).visible {
+            animation-delay: 0.1s;
+        }
+
+        .belief:nth-child(3).visible {
+            animation-delay: 0.2s;
+        }
+
+        .belief:nth-child(4).visible {
+            animation-delay: 0.3s;
+        }
+
+        .belief-number {
+            display: block;
+            font-family: var(--font-display);
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .belief p {
+            font-family: var(--font-display);
+            font-size: clamp(1.1rem, 2vw, 1.35rem);
+            font-weight: 600;
+            line-height: 1.5;
+            color: var(--white);
+        }
+
+        /* ══════════════════════════════════════════
+           WORK SECTION
+        ══════════════════════════════════════════ */
+        .work {
+            background: var(--black);
+            padding: 8rem 4rem;
+        }
+
+        .work-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .work-header {
+            margin-bottom: 5rem;
+        }
+
+        .section-label {
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            opacity: 0;
+        }
+
+        .section-label.visible {
+            animation: fadeIn 0.6s forwards;
+        }
+
+        .work-headline {
+            font-family: var(--font-display);
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 700;
+            color: var(--white);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .work-headline.visible {
+            animation: fadeUp 0.8s 0.1s forwards;
+        }
+
+        .case-studies {
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
+            background: var(--mid-gray);
+            border: 1px solid var(--mid-gray);
+        }
+
+        .case-study {
+            background: var(--black);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .case-study.visible {
+            animation: fadeUp 0.6s forwards;
+        }
+
+        .case-study:nth-child(2).visible {
+            animation-delay: 0.1s;
+        }
+
+        .case-study:nth-child(3).visible {
+            animation-delay: 0.2s;
+        }
+
+        .case-study-inner {
+            padding: 4rem;
+        }
+
+        .case-meta {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .case-number {
+            font-family: var(--font-display);
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+        }
+
+        .case-industry {
+            font-size: 0.75rem;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+        }
+
+        .case-client {
+            font-family: var(--font-display);
+            font-size: clamp(1.5rem, 3vw, 2.25rem);
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 2.5rem;
+        }
+
+        .case-content {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .case-block {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .case-label {
+            font-size: 0.7rem;
+            font-weight: 600;
             letter-spacing: 0.15em;
             text-transform: uppercase;
-            opacity: 0.6;
+            color: var(--accent);
         }
 
-        /* Clients Section */
-        .look-clients-wrapper {
+        .case-block p {
+            font-size: 0.95rem;
+            font-weight: 300;
+            line-height: 1.7;
+            color: var(--text-secondary);
+        }
+
+        .case-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            color: var(--off-white);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .case-link:hover {
+            color: var(--accent);
+        }
+
+        .case-link svg {
+            transition: transform 0.3s ease;
+        }
+
+        .case-link:hover svg {
+            transform: translate(3px, -3px);
+        }
+
+        /* ══════════════════════════════════════════
+           METHOD SECTION (Brand House)
+        ══════════════════════════════════════════ */
+        .method {
+            background: var(--charcoal);
+            padding: 8rem 4rem;
+        }
+
+        .method-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .method-text {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .method-text.visible {
+            animation: fadeUp 0.8s forwards;
+        }
+
+        .method-headline {
+            font-family: var(--font-display);
+            font-size: clamp(1.75rem, 4vw, 3rem);
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--white);
+            margin-bottom: 1.5rem;
+        }
+
+        .method-description {
+            font-size: 1.1rem;
+            font-weight: 300;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            max-width: 700px;
+        }
+
+        .method-components {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .method-component {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 0.95rem;
+            font-weight: 400;
+            color: var(--off-white);
+        }
+
+        .component-marker {
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            flex-shrink: 0;
+        }
+
+        /* ══════════════════════════════════════════
+           AUDIENCE SECTION
+        ══════════════════════════════════════════ */
+        .audience {
+            background: var(--dark-gray);
+        }
+
+        .audience-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .audience-label {
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+            opacity: 0;
+        }
+
+        .audience-label.visible {
+            animation: fadeIn 0.6s forwards;
+        }
+
+        .audience-headline {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 6vw, 4.5rem);
+            font-weight: 800;
+            line-height: 1.05;
+            letter-spacing: -0.02em;
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        .audience-headline.visible {
+            animation: fadeUp 0.8s 0.1s forwards;
+        }
+
+        .audience-headline .accent {
+            color: var(--accent);
+        }
+
+        .audience-subtext {
+            font-size: 1.05rem;
+            font-weight: 300;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            margin-top: 2rem;
+            max-width: 600px;
+            opacity: 0;
+        }
+
+        .audience-subtext.visible {
+            animation: fadeIn 0.8s 0.3s forwards;
+        }
+
+        .audience-exclusivity {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--mid-gray);
+            opacity: 0;
+        }
+
+        .audience-exclusivity.visible {
+            animation: fadeIn 0.8s 0.5s forwards;
+        }
+
+        .exclusivity-marker {
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            flex-shrink: 0;
+        }
+
+        .audience-exclusivity span:last-child {
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            color: var(--white);
+        }
+
+        /* ══════════════════════════════════════════
+           CTA SECTION
+        ══════════════════════════════════════════ */
+        .cta-section {
+            background: var(--black);
+            text-align: center;
+            min-height: 80vh;
+        }
+
+        .cta-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cta-headline {
+            font-family: var(--font-display);
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: 3rem;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .cta-headline.visible {
+            animation: fadeUp 0.8s forwards;
+        }
+
+        .cta-button {
+            display: inline-block;
+            font-family: var(--font-display);
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: var(--black);
+            background: var(--white);
+            padding: 1.5rem 4rem;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            opacity: 0;
+        }
+
+        .cta-button.visible {
+            animation: fadeIn 0.8s 0.2s forwards;
+        }
+
+        .cta-button:hover {
+            background: var(--accent);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        .cta-email {
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            opacity: 0;
+        }
+
+        .cta-email.visible {
+            animation: fadeIn 0.8s 0.4s forwards;
+        }
+
+        .cta-email a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .cta-email a:hover {
+            color: var(--accent);
+        }
+
+        .cta-note {
+            margin-top: 2.5rem;
+            font-size: 0.85rem;
+            font-weight: 300;
+            color: var(--text-muted);
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0;
+        }
+
+        .cta-note.visible {
+            animation: fadeIn 0.8s 0.6s forwards;
+        }
+
+        /* ══════════════════════════════════════════
+           FOOTER
+        ══════════════════════════════════════════ */
+        footer {
+            padding: 3rem 4rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 60px;
-            opacity: 0.4;
+            border-top: 1px solid var(--mid-gray);
         }
 
-        .look-clients-wrapper img {
-            height: 30px;
-            width: auto;
-            filter: grayscale(100%) brightness(200%);
+        .footer-logo {
+            font-family: var(--font-display);
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-muted);
         }
 
-        /* Smooth Scroll Offset */
-        section[id] {
-            scroll-margin-top: 100px;
+        .footer-copy {
+            font-size: 0.75rem;
+            color: var(--text-muted);
         }
 
-        /* Mobile Menu Button */
-        .look-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--look-light);
-            font-size: 1.5rem;
-            cursor: pointer;
+        /* ══════════════════════════════════════════
+           ANIMATIONS
+        ══════════════════════════════════════════ */
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        @media (max-width: 768px) {
-            .look-menu-btn {
-                display: block;
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes scrollPulse {
+            0%, 100% {
+                transform: translateX(-100%);
+            }
+            50% {
+                transform: translateX(100%);
+            }
+        }
+
+        /* ══════════════════════════════════════════
+           RESPONSIVE
+        ══════════════════════════════════════════ */
+        @media (max-width: 1024px) {
+            section {
+                padding: 6rem 3rem;
+            }
+
+            nav {
+                padding: 1.5rem 2rem;
+            }
+
+            .pillars {
+                grid-template-columns: 1fr;
+            }
+
+            .pillar {
+                padding: 3rem 2rem;
+            }
+
+            .scroll-indicator {
+                left: 3rem;
+                bottom: 3rem;
+            }
+
+            footer {
+                padding: 2rem 3rem;
+            }
+
+            .work {
+                padding: 6rem 3rem;
+            }
+
+            .case-study-inner {
+                padding: 3rem;
+            }
+
+            .case-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .method {
+                padding: 6rem 3rem;
+            }
+
+            .enemy {
+                padding: 6rem 3rem;
+            }
+
+            .beliefs {
+                padding: 6rem 3rem;
+            }
+
+            .beliefs-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            section {
+                padding: 5rem 1.5rem;
+            }
+
+            nav {
+                padding: 1.25rem 1.5rem;
+            }
+
+            .nav-contact {
+                font-size: 0.7rem;
+                padding: 0.6rem 1rem;
+            }
+
+            .scroll-indicator {
+                display: none;
+            }
+
+            .statement-text {
+                text-align: left;
+            }
+
+            .audience-content {
+                text-align: left;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 2rem 1.5rem;
+                text-align: center;
+            }
+
+            .work {
+                padding: 4rem 1.5rem;
+            }
+
+            .work-header {
+                margin-bottom: 3rem;
+            }
+
+            .case-study-inner {
+                padding: 2rem 1.5rem;
+            }
+
+            .case-meta {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+
+            .method {
+                padding: 4rem 1.5rem;
+            }
+
+            .enemy {
+                padding: 4rem 1.5rem;
+            }
+
+            .beliefs {
+                padding: 4rem 1.5rem;
+            }
+
+            .audience-content {
+                text-align: left;
+            }
+
+            .audience-exclusivity {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.75rem;
             }
         }
     </style>
 </head>
+<body>
 
-<body class="body-wrapper dark">
+    <!-- Navigation -->
+    <nav>
+        <a href="#" class="logo">Look Serious</a>
+        <a href="mailto:aaron@look-serious.com" class="nav-contact">Get in Touch</a>
+    </nav>
 
-    <!-- Preloader -->
-    <div id="preloader">
-        <div id="container" class="container-preloader">
-            <div class="animation-preloader">
-                <div class="spinner"></div>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-headline">
+                <span class="line">Brands are</span>
+                <span class="line">systems.</span>
+                <span class="line"><span class="accent">Not logos.</span></span>
+            </h1>
+            <p class="hero-subline">
+                Be the zebra. In a world of horses, stripes get remembered.
+            </p>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-line"></div>
+            <span class="scroll-text">Scroll</span>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Statement Section -->
+    <section class="statement">
+        <div class="statement-content">
+            <p class="statement-text">
+                A logo is a mark.<br>
+                A system is <span class="highlight">how you win.</span>
+            </p>
+            <p class="statement-caption">The difference between decoration and dominance</p>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- System Section -->
+    <section class="system">
+        <div class="system-content">
+            <div class="system-intro">
+                <p class="system-label">What we build</p>
+                <h2 class="system-headline">
+                    The strategy that positions you.<br>
+                    The technology that scales you.<br>
+                    The intelligence that keeps you ahead.
+                </h2>
             </div>
-            <div class="loader-section section-left"></div>
-            <div class="loader-section section-right"></div>
+            <div class="pillars">
+                <div class="pillar">
+                    <span class="pillar-number">01</span>
+                    <h3 class="pillar-title">Brand</h3>
+                    <p class="pillar-desc">What makes you distinct. Strategic positioning that creates demand—not just awareness. We find your "only" and make it impossible to ignore.</p>
+                    <div class="pillar-accent"></div>
+                </div>
+                <div class="pillar">
+                    <span class="pillar-number">02</span>
+                    <h3 class="pillar-title">Systems</h3>
+                    <p class="pillar-desc">What makes it stick. Websites, workflows, and infrastructure that turn strategy into daily operations. Built to compound, not just launch.</p>
+                    <div class="pillar-accent"></div>
+                </div>
+                <div class="pillar">
+                    <span class="pillar-number">03</span>
+                    <h3 class="pillar-title">Intelligence</h3>
+                    <p class="pillar-desc">What makes it scale. AI-powered processes that multiply your capacity. Automation that accelerates the right things—not just the easy things.</p>
+                    <div class="pillar-accent"></div>
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Scroll to top -->
-    <div class="progress-wrap">
-        <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
-            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"></path>
-        </svg>
-    </div>
+    <div class="section-divider"></div>
 
-    <!-- Custom Header -->
-    <header class="look-header">
-        <a href="index.html" class="look-logo">look<span>-</span>serious</a>
-        <nav class="look-nav">
-            <a href="#philosophy">Philosophy</a>
-            <a href="#services">Services</a>
-            <a href="#work">Work</a>
-            <a href="#contact">Contact</a>
-        </nav>
-        <button class="look-menu-btn" aria-label="Menu">
-            <i class="fas fa-bars"></i>
-        </button>
-    </header>
-
-    <div class="has-smooth" id="has_smooth"></div>
-    <div id="smooth-wrapper">
-        <div id="smooth-content">
-
-            <main>
-
-                <!-- Hero Section -->
-                <section class="look-hero">
-                    <div class="container rr-container-1850">
-                        <div class="look-hero-content">
-                            <p class="look-tagline fade-anim">Brand Consultancy</p>
-                            <h1 class="look-brand-name">
-                                <span class="fade-anim" data-delay="0.2">look</span>
-                                <span class="fade-anim" data-delay="0.4">-serious</span>
-                            </h1>
-                            <p class="look-intro-text fade-anim" data-delay="0.6">
-                                We build brand houses and craft creative strategies that transform businesses into cultural forces.
-                            </p>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Philosophy Section -->
-                <section id="philosophy" class="look-section look-section-light">
-                    <div class="container rr-container-1850">
-                        <div class="look-philosophy">
-                            <div class="look-philosophy-text fade-anim">
-                                <span class="look-section-subtitle">Our Philosophy</span>
-                                <p>
-                                    We believe brands are living systems. They breathe, evolve, and respond to the world around them.
-                                </p>
-                                <p>
-                                    A brand house isn't just a visual identity. It's an ecosystem of meaning, purpose, and expression that guides every decision your organization makes.
-                                </p>
-                                <p style="opacity: 0.6; font-size: 0.9em;">
-                                    We take branding seriously. Because when done right, it changes everything.
-                                </p>
-                            </div>
-                            <div class="look-image-block fade-anim" data-delay="0.3">
-                                <img src="assets/ad-imgs/gallery/gallery-s-7.webp" alt="Brand Strategy">
-                                <span class="look-image-label">Strategic Vision</span>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Manifesto Section -->
-                <section class="look-section look-section-dark">
-                    <div class="container rr-container-1850">
-                        <div class="look-manifesto fade-anim">
-                            <span class="look-section-subtitle">What We Believe</span>
-                            <p class="look-manifesto-text">
-                                Great brands don't follow trends. They <span>set the standard</span>. They create culture, define categories, and build lasting connections with the people who matter most.
-                            </p>
-                        </div>
-                        <div class="look-stats">
-                            <div class="look-stat-item fade-anim">
-                                <div class="look-stat-number">12+</div>
-                                <div class="look-stat-label">Years Experience</div>
-                            </div>
-                            <div class="look-stat-item fade-anim" data-delay="0.1">
-                                <div class="look-stat-number">80+</div>
-                                <div class="look-stat-label">Brand Houses Built</div>
-                            </div>
-                            <div class="look-stat-item fade-anim" data-delay="0.2">
-                                <div class="look-stat-number">$2B+</div>
-                                <div class="look-stat-label">Client Valuation</div>
-                            </div>
-                            <div class="look-stat-item fade-anim" data-delay="0.3">
-                                <div class="look-stat-number">100%</div>
-                                <div class="look-stat-label">Commitment</div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Services Section -->
-                <section id="services" class="look-section look-section-light">
-                    <div class="container rr-container-1850">
-                        <span class="look-section-subtitle fade-anim">What We Do</span>
-                        <h2 class="look-section-title fade-anim">Services</h2>
-                        <div class="look-services-grid">
-                            <div class="look-service-item fade-anim">
-                                <span class="look-service-number">01</span>
-                                <h3 class="look-service-title">Brand House Development</h3>
-                                <p class="look-service-desc">
-                                    We architect comprehensive brand systems that unite strategy, identity, and experience into a cohesive whole. From brand architecture to visual language, we build the foundation for lasting success.
-                                </p>
-                            </div>
-                            <div class="look-service-item fade-anim" data-delay="0.1">
-                                <span class="look-service-number">02</span>
-                                <h3 class="look-service-title">Creative Strategy</h3>
-                                <p class="look-service-desc">
-                                    Strategic thinking meets creative excellence. We develop positioning, messaging, and creative platforms that differentiate your brand and resonate with your audience on a deeper level.
-                                </p>
-                            </div>
-                            <div class="look-service-item fade-anim" data-delay="0.2">
-                                <span class="look-service-number">03</span>
-                                <h3 class="look-service-title">Brand Identity Systems</h3>
-                                <p class="look-service-desc">
-                                    Visual identity that transcends aesthetics. We create flexible, scalable identity systems that express your brand's essence across every touchpoint and channel.
-                                </p>
-                            </div>
-                            <div class="look-service-item fade-anim" data-delay="0.3">
-                                <span class="look-service-number">04</span>
-                                <h3 class="look-service-title">Brand Experience Design</h3>
-                                <p class="look-service-desc">
-                                    Every interaction matters. We design holistic brand experiences that create meaningful connections and build lasting loyalty with your customers.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Work Section -->
-                <section id="work" class="look-section look-section-dark">
-                    <div class="container rr-container-1850">
-                        <span class="look-section-subtitle fade-anim">Selected Work</span>
-                        <h2 class="look-section-title fade-anim" style="color: var(--look-light);">Brand Houses We've Built</h2>
-                        <div class="look-work-grid">
-                            <div class="look-work-item fade-anim">
-                                <img src="assets/ad-imgs/work/work-r-9.webp" alt="Multi-Family Brand">
-                                <div class="look-work-overlay">
-                                    <span class="look-work-category">Brand House</span>
-                                    <h3 class="look-work-title">Multi-Family</h3>
-                                </div>
-                            </div>
-                            <div class="look-work-item fade-anim" data-delay="0.1">
-                                <img src="assets/ad-imgs/work/work-r-10.webp" alt="Saudi Lime Green">
-                                <div class="look-work-overlay">
-                                    <span class="look-work-category">Creative Strategy</span>
-                                    <h3 class="look-work-title">Saudi Lime Green</h3>
-                                </div>
-                            </div>
-                            <div class="look-work-item fade-anim" data-delay="0.2">
-                                <img src="assets/ad-imgs/work/work-r-11.webp" alt="Lambax Gini">
-                                <div class="look-work-overlay">
-                                    <span class="look-work-category">Brand Identity</span>
-                                    <h3 class="look-work-title">Lambax Gini</h3>
-                                </div>
-                            </div>
-                            <div class="look-work-item fade-anim" data-delay="0.3">
-                                <img src="assets/ad-imgs/work/work-r-12.webp" alt="Lux Ventures">
-                                <div class="look-work-overlay">
-                                    <span class="look-work-category">Brand House</span>
-                                    <h3 class="look-work-title">Lux Ventures</h3>
-                                </div>
-                            </div>
-                            <div class="look-work-item fade-anim" data-delay="0.4">
-                                <img src="assets/ad-imgs/work/work-r-13.webp" alt="Winter Fact">
-                                <div class="look-work-overlay">
-                                    <span class="look-work-category">Creative Strategy</span>
-                                    <h3 class="look-work-title">Winter Fact</h3>
-                                </div>
-                            </div>
-                            <div class="look-work-item fade-anim" data-delay="0.5">
-                                <img src="assets/ad-imgs/work/work-r-14.webp" alt="Nexus Global">
-                                <div class="look-work-overlay">
-                                    <span class="look-work-category">Brand Experience</span>
-                                    <h3 class="look-work-title">Nexus Global</h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Clients Section -->
-                <section class="look-section look-section-light" style="padding: 80px 0;">
-                    <div class="container rr-container-1850">
-                        <div class="look-clients-wrapper fade-anim">
-                            <img src="assets/ad-imgs/brand/brand-r-1.webp" alt="Client">
-                            <img src="assets/ad-imgs/brand/brand-r-2.webp" alt="Client">
-                            <img src="assets/ad-imgs/brand/brand-r-3.webp" alt="Client">
-                            <img src="assets/ad-imgs/brand/brand-r-4.webp" alt="Client">
-                            <img src="assets/ad-imgs/brand/brand-r-5.webp" alt="Client">
-                        </div>
-                    </div>
-                </section>
-
-                <!-- CTA Section -->
-                <section id="contact" class="look-cta">
-                    <div class="container rr-container-1850">
-                        <p class="look-tagline fade-anim" style="color: var(--look-gray);">Ready to build your brand house?</p>
-                        <h2 class="look-cta-title fade-anim">
-                            <a href="mailto:hello@look-serious.com">Let's talk</a>
-                        </h2>
-                        <a href="mailto:hello@look-serious.com" class="look-btn fade-anim" data-delay="0.2">Start a Project</a>
-                    </div>
-                </section>
-
-                <!-- Footer -->
-                <footer class="look-footer">
-                    <div class="container rr-container-1850">
-                        <div class="look-footer-grid">
-                            <div>
-                                <h3 class="look-footer-brand">look-serious</h3>
-                                <p class="look-footer-tagline">
-                                    Brand consultancy specializing in brand house development and creative strategy. We take branding seriously.
-                                </p>
-                            </div>
-                            <div>
-                                <h4 class="look-footer-title">Services</h4>
-                                <ul class="look-footer-links">
-                                    <li><a href="#services">Brand House</a></li>
-                                    <li><a href="#services">Creative Strategy</a></li>
-                                    <li><a href="#services">Brand Identity</a></li>
-                                    <li><a href="#services">Experience Design</a></li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h4 class="look-footer-title">Company</h4>
-                                <ul class="look-footer-links">
-                                    <li><a href="#philosophy">About</a></li>
-                                    <li><a href="#work">Work</a></li>
-                                    <li><a href="#contact">Contact</a></li>
-                                    <li><a href="#">Careers</a></li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h4 class="look-footer-title">Contact</h4>
-                                <ul class="look-footer-links">
-                                    <li><a href="mailto:hello@look-serious.com">hello@look-serious.com</a></li>
-                                    <li><a href="tel:+15551234567">+1 555 123 4567</a></li>
-                                    <li>New York, NY</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="look-footer-bottom">
-                            <p class="look-footer-copyright">&copy; 2025 look-serious. All rights reserved.</p>
-                            <div class="look-social-links">
-                                <a href="#">LinkedIn</a>
-                                <a href="#">Instagram</a>
-                                <a href="#">Behance</a>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
-
-            </main>
-
+    <!-- Enemy Section - What We Don't Do -->
+    <section class="enemy">
+        <div class="enemy-content">
+            <div class="enemy-text">
+                <p class="section-label">What We Don't Do</p>
+                <h2 class="enemy-headline">We don't do logo refreshes.<br>We don't do template sites.<br>We don't do <span class="accent">"good enough."</span></h2>
+                <p class="enemy-description">Most agencies sell you a logo and call it a brand. That's decoration. We build the system that makes you win—or we don't take the project.</p>
+            </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Theme Toggle (hidden for this design) -->
-    <div id="theme-toggle" class="switcher-button" title="Toggle Dark/Light Mode" style="display: none;">
-        <div class="switcher-button-inner">
-            <i class="fas fa-sun icon-light"></i>
-            <i class="fas fa-moon icon-dark"></i>
+    <div class="section-divider"></div>
+
+    <!-- Beliefs Section - Manifesto -->
+    <section class="beliefs">
+        <div class="beliefs-content">
+            <p class="section-label">What We Believe</p>
+            <div class="beliefs-grid">
+                <div class="belief">
+                    <span class="belief-number">01</span>
+                    <p>Your brand is either an asset or a liability. There is no neutral.</p>
+                </div>
+                <div class="belief">
+                    <span class="belief-number">02</span>
+                    <p>If your website could belong to your competitor, it's already costing you deals.</p>
+                </div>
+                <div class="belief">
+                    <span class="belief-number">03</span>
+                    <p>AI doesn't replace strategy. It accelerates the wrong one faster.</p>
+                </div>
+                <div class="belief">
+                    <span class="belief-number">04</span>
+                    <p>The best brands don't explain what they do. They demonstrate why they win.</p>
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Vendor JS Files -->
-    <script src="assets/vendor/jquery-3.7.1.min.js"></script>
-    <script src="assets/vendor/bootstrap.bundle.min.js"></script>
-    <script src="assets/vendor/jquery.magnific-popup.min.js"></script>
-    <script src="assets/vendor/swiper.min.js"></script>
-    <script src="assets/vendor/gsap.min.js"></script>
-    <script src="assets/vendor/ScrollTrigger.min.js"></script>
-    <script src="assets/vendor/ScrollSmoother.min.js"></script>
-    <script src="assets/vendor/ScrollToPlugin.min.js"></script>
-    <script src="assets/vendor/SplitText.min.js"></script>
-    <script src="assets/vendor/TextPlugin.js"></script>
-    <script src="assets/vendor/customEase.js"></script>
-    <script src="assets/vendor/Flip.min.js"></script>
-    <script src="assets/vendor/jquery.meanmenu.min.js"></script>
-    <script src="assets/vendor/backToTop.js"></script>
-    <script src="assets/vendor/matter.js"></script>
-    <script src="assets/vendor/throwable.js"></script>
-    <script src="assets/ad-js/magiccursor.js"></script>
-    <script src="assets/vendor/waypoints.min.js"></script>
+    <div class="section-divider"></div>
 
-    <!-- Template Main JS File -->
-    <script src="assets/ad-js/main.js"></script>
+    <!-- Work Section -->
+    <section class="work">
+        <div class="work-content">
+            <div class="work-header">
+                <p class="section-label">The Work</p>
+                <h2 class="work-headline">Diagnosis → System → Result</h2>
+            </div>
 
-    <!-- Custom Header Scroll Effect -->
+            <div class="case-studies">
+                <!-- Case Study 1: Tech Futures Group -->
+                <article class="case-study">
+                    <div class="case-study-inner">
+                        <div class="case-meta">
+                            <span class="case-number">01</span>
+                            <span class="case-industry">Venture Platform</span>
+                        </div>
+                        <h3 class="case-client">Tech Futures Group</h3>
+                        <div class="case-content">
+                            <div class="case-block">
+                                <span class="case-label">The Gap</span>
+                                <p>A venture platform backed by state and federal funding, advising NorCal's most promising tech startups—but presenting like a regional nonprofit. The brand didn't match the caliber of companies they were accelerating.</p>
+                            </div>
+                            <div class="case-block">
+                                <span class="case-label">The System</span>
+                                <p>Strategic repositioning as a "venture platform" (not just SBDC program). Custom website with startup-grade design language. Messaging architecture that speaks to ambitious founders, not grant compliance.</p>
+                            </div>
+                            <div class="case-block">
+                                <span class="case-label">The Result</span>
+                                <p>Brand now attracts the founders it deserves. "Move Faster. Build Bigger." became a rallying cry that matches the ambition of their portfolio companies.</p>
+                            </div>
+                        </div>
+                        <a href="https://techfuturesgroup.org" target="_blank" rel="noopener" class="case-link">
+                            <span>View Live Site</span>
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 13L13 1M13 1H1M13 1V13" stroke="currentColor" stroke-width="1.5"/>
+                            </svg>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Case Study 2: NeoPave -->
+                <article class="case-study">
+                    <div class="case-study-inner">
+                        <div class="case-meta">
+                            <span class="case-number">02</span>
+                            <span class="case-industry">Climate Tech / Infrastructure</span>
+                        </div>
+                        <h3 class="case-client">NeoPave</h3>
+                        <div class="case-content">
+                            <div class="case-block">
+                                <span class="case-label">The Gap</span>
+                                <p>Revolutionary road technology—polymer pavement that lasts 2-3x longer than asphalt, endorsed by LA, adopted by Apple and Google. But the brand felt like a science project, not a $3.7 trillion infrastructure play.</p>
+                            </div>
+                            <div class="case-block">
+                                <span class="case-label">The System</span>
+                                <p>Investor-grade visual identity and website. Messaging reframe from "sustainable alternative" to "the 80-year-old road industry just met its successor." Data architecture that tells the ROI story at scale.</p>
+                            </div>
+                            <div class="case-block">
+                                <span class="case-label">The Result</span>
+                                <p>Brand now commands the room in investor conversations. The technology speaks for itself—now so does the presentation.</p>
+                            </div>
+                        </div>
+                        <a href="https://neopave.com" target="_blank" rel="noopener" class="case-link">
+                            <span>View Live Site</span>
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 13L13 1M13 1H1M13 1V13" stroke="currentColor" stroke-width="1.5"/>
+                            </svg>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Case Study 3: Forever Young Fitness -->
+                <article class="case-study">
+                    <div class="case-study-inner">
+                        <div class="case-meta">
+                            <span class="case-number">03</span>
+                            <span class="case-industry">Premium Fitness</span>
+                        </div>
+                        <h3 class="case-client">Forever Young Fitness</h3>
+                        <div class="case-content">
+                            <div class="case-block">
+                                <span class="case-label">The Gap</span>
+                                <p>A trainer with 30+ years of elite experience—trusted by gym owners and competitive athletes—running a premium personal training service out of a Squarespace template. The expertise was world-class; the brand looked like a side hustle.</p>
+                            </div>
+                            <div class="case-block">
+                                <span class="case-label">The System</span>
+                                <p>Complete rebrand from "Zeb's Platinum Fitness" to "Forever Young Fitness"—a name that promises the outcome, not just the service. Premium visual identity that matches the caliber of training. Digital presence built for conversion.</p>
+                            </div>
+                            <div class="case-block">
+                                <span class="case-label">The Result</span>
+                                <p>Brand now commands premium pricing with confidence. Clients see the expertise before they ever meet the trainer—exactly how it should be.</p>
+                            </div>
+                        </div>
+                        <a href="https://workoutwithzeb.com" target="_blank" rel="noopener" class="case-link">
+                            <span>View Live Site</span>
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 13L13 1M13 1H1M13 1V13" stroke="currentColor" stroke-width="1.5"/>
+                            </svg>
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- BOS Section -->
+    <section class="method">
+        <div class="method-content">
+            <div class="method-text">
+                <p class="section-label">The Deliverable</p>
+                <h2 class="method-headline">Every engagement produces a BOS™.</h2>
+                <p class="method-description">The <strong>Brand Operating System</strong>—a living strategic document that captures everything your team needs to execute with consistency and confidence. Not a PDF that sits in a drawer. The operating manual for your competitive advantage.</p>
+                <div class="method-components">
+                    <div class="method-component">
+                        <span class="component-marker"></span>
+                        <span>Strategic positioning & your "only" statement</span>
+                    </div>
+                    <div class="method-component">
+                        <span class="component-marker"></span>
+                        <span>Visual identity system & specifications</span>
+                    </div>
+                    <div class="method-component">
+                        <span class="component-marker"></span>
+                        <span>Messaging architecture & voice guidelines</span>
+                    </div>
+                    <div class="method-component">
+                        <span class="component-marker"></span>
+                        <span>Implementation roadmap & tech integration specs</span>
+                    </div>
+                    <div class="method-component">
+                        <span class="component-marker"></span>
+                        <span>AI acceleration opportunities mapped</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Audience Section -->
+    <section class="audience">
+        <div class="audience-content">
+            <p class="audience-label">Who This Is For</p>
+            <h2 class="audience-headline">
+                For companies that have <span class="accent">outgrown their brand.</span>
+            </h2>
+            <p class="audience-subtext">Not for startups figuring it out. Not for companies who want "a quick refresh." For established businesses ready to build the system that matches what they've already built.</p>
+            <div class="audience-exclusivity">
+                <span class="exclusivity-marker"></span>
+                <span>Three clients per quarter. By application.</span>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <p class="cta-headline">Your business has evolved.<br>Let's see if we're the right fit.</p>
+            <a href="mailto:aaron@look-serious.com?subject=BOS%20Inquiry" class="cta-button">Request a Diagnostic</a>
+            <p class="cta-email">or email directly: <a href="mailto:aaron@look-serious.com">aaron@look-serious.com</a></p>
+            <p class="cta-note">No pitch decks. No pressure. A 30-minute conversation to see if there's a gap worth closing.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <span class="footer-logo">Look Serious</span>
+        <span class="footer-copy">© 2026. Brand. Systems. Intelligence.</span>
+    </footer>
+
+    <!-- Scroll Animation Script -->
     <script>
-        // Header scroll effect
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('.look-header');
-            if (window.scrollY > 100) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.2
+        };
 
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
                 }
             });
+        }, observerOptions);
+
+        // Observe all animated elements
+        document.querySelectorAll('.statement-text, .statement-caption, .system-label, .system-headline, .pillar, .enemy-text, .belief, .section-label, .work-headline, .case-study, .method-text, .audience-label, .audience-headline, .audience-subtext, .audience-exclusivity, .cta-headline, .cta-button, .cta-email, .cta-note').forEach(el => {
+            observer.observe(el);
         });
     </script>
 
 </body>
-
 </html>
