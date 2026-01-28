@@ -835,11 +835,13 @@
             background: var(--black);
             text-align: center;
             min-height: 80vh;
+            overflow: visible;
         }
 
         .cta-content {
             max-width: 700px;
             margin: 0 auto;
+            position: relative;
         }
 
         .cta-headline {
@@ -869,16 +871,61 @@
             padding: 1.5rem 4rem;
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             opacity: 0;
+            position: relative;
+            z-index: 2;
         }
 
         .cta-button.visible {
             animation: fadeIn 0.8s 0.2s forwards;
         }
 
+        /* Light glow effect container */
+        .cta-button::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200%;
+            height: 300px;
+            background: radial-gradient(ellipse at top, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.03) 30%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Static texture that appears on hover */
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 250%;
+            height: 250px;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            mask-image: radial-gradient(ellipse at top, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.2) 40%, transparent 70%);
+            -webkit-mask-image: radial-gradient(ellipse at top, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.2) 40%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .cta-button:hover::after {
+            opacity: 1;
+        }
+
+        .cta-button:hover::before {
+            opacity: 0.06;
+        }
+
         .cta-button:hover {
             background: var(--accent);
             color: var(--white);
             transform: translateY(-3px);
+            box-shadow: 0 10px 40px rgba(224, 74, 47, 0.3);
         }
 
         .cta-email {
@@ -1428,7 +1475,7 @@
         <div class="cta-content">
             <p class="cta-only">The only brand consultancy that builds the operating system—not just the logo.</p>
             <p class="cta-headline">Your business has evolved.<br>Let's see if we're the right fit.</p>
-            <a href="mailto:aaron@look-serious.com?subject=BOS%20Inquiry" class="cta-button">Request a Diagnostic</a>
+            <a href="mailto:aaron@look-serious.com?subject=BOS%20Inquiry" class="cta-button">Let's Talk</a>
             <p class="cta-email">or email directly: <a href="mailto:aaron@look-serious.com">aaron@look-serious.com</a></p>
             <p class="cta-note">No pitch decks. No pressure. A 30-minute conversation to see if there's a gap worth closing.</p>
             <p class="cta-proof">Trusted by venture platforms, climate tech pioneers, and businesses that refuse to blend in.</p>
