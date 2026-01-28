@@ -4,79 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Look Serious — Brands are systems. Not logos.</title>
-
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet">
+    
     <style>
-        /* Custom Fonts */
-        @font-face {
-            font-family: 'Beatrice';
-            src: url('assets/fonts/BeatriceTRIAL-Regular.ttf') format('truetype');
-            font-weight: 400;
-            font-style: normal;
-            font-display: swap;
-        }
-        @font-face {
-            font-family: 'Beatrice';
-            src: url('assets/fonts/BeatriceTRIAL-Medium.ttf') format('truetype');
-            font-weight: 500;
-            font-style: normal;
-            font-display: swap;
-        }
-        @font-face {
-            font-family: 'Beatrice';
-            src: url('assets/fonts/BeatriceTRIAL-Semibold.ttf') format('truetype');
-            font-weight: 600;
-            font-style: normal;
-            font-display: swap;
-        }
-        @font-face {
-            font-family: 'Beatrice';
-            src: url('assets/fonts/BeatriceTRIAL-Bold.ttf') format('truetype');
-            font-weight: 700;
-            font-style: normal;
-            font-display: swap;
-        }
-        @font-face {
-            font-family: 'Beatrice';
-            src: url('assets/fonts/BeatriceTRIAL-Extrabold.ttf') format('truetype');
-            font-weight: 800;
-            font-style: normal;
-            font-display: swap;
-        }
-        @font-face {
-            font-family: 'BDO Grotesk';
-            src: url('assets/fonts/BDOGrotesk-Regular.ttf') format('truetype');
-            font-weight: 400;
-            font-style: normal;
-            font-display: swap;
-        }
-        @font-face {
-            font-family: 'BDO Grotesk';
-            src: url('assets/fonts/BDOGrotesk-Medium.ttf') format('truetype');
-            font-weight: 500;
-            font-style: normal;
-            font-display: swap;
-        }
-        @font-face {
-            font-family: 'BDO Grotesk';
-            src: url('assets/fonts/BDOGrotesk-DemiBold.ttf') format('truetype');
-            font-weight: 600;
-            font-style: normal;
-            font-display: swap;
-        }
-
         :root {
-            --black: #080808;
-            --charcoal: #111111;
-            --dark-gray: #1a1a1a;
-            --mid-gray: #2a2a2a;
-            --text-muted: #666666;
-            --text-secondary: #888888;
-            --off-white: #e8e8e8;
+            --black: #050505;
+            --charcoal: #0e0e0e;
+            --dark-gray: #161616;
+            --mid-gray: #252525;
+            --text-muted: #707070;
+            --text-secondary: #a0a0a0;
+            --off-white: #f0f0f0;
             --white: #ffffff;
-            --accent: #c9452c;
-
-            --font-display: 'Beatrice', Georgia, serif;
-            --font-body: 'BDO Grotesk', -apple-system, sans-serif;
+            --accent: #e04a2f;
+            
+            --font-display: 'Syne', sans-serif;
+            --font-body: 'Outfit', -apple-system, sans-serif;
         }
 
         * {
@@ -157,6 +104,27 @@
         .nav-contact:hover {
             background: var(--white);
             color: var(--black);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+        }
+
+        .nav-link {
+            font-family: var(--font-body);
+            font-size: 0.8rem;
+            font-weight: 400;
+            letter-spacing: 0.03em;
+            color: var(--white);
+            text-decoration: none;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-link:hover {
+            opacity: 1;
         }
 
         /* ══════════════════════════════════════════
@@ -400,8 +368,9 @@
         .pillar-desc {
             font-size: 0.95rem;
             font-weight: 300;
-            color: var(--text-secondary);
+            color: var(--off-white);
             line-height: 1.7;
+            opacity: 0.8;
         }
 
         .pillar-accent {
@@ -450,8 +419,9 @@
             font-size: 1.1rem;
             font-weight: 300;
             line-height: 1.8;
-            color: var(--text-secondary);
+            color: var(--off-white);
             max-width: 700px;
+            opacity: 0.8;
         }
 
         /* ══════════════════════════════════════════
@@ -646,7 +616,8 @@
             font-size: 0.95rem;
             font-weight: 300;
             line-height: 1.7;
-            color: var(--text-secondary);
+            color: var(--off-white);
+            opacity: 0.75;
         }
 
         .case-link {
@@ -708,9 +679,10 @@
             font-size: 1.1rem;
             font-weight: 300;
             line-height: 1.8;
-            color: var(--text-secondary);
+            color: var(--off-white);
             margin-bottom: 3rem;
             max-width: 700px;
+            opacity: 0.8;
         }
 
         .method-components {
@@ -784,7 +756,7 @@
             font-size: 1.05rem;
             font-weight: 300;
             line-height: 1.8;
-            color: var(--text-secondary);
+            color: var(--off-white);
             margin-top: 2rem;
             max-width: 600px;
             opacity: 0;
@@ -792,6 +764,7 @@
 
         .audience-subtext.visible {
             animation: fadeIn 0.8s 0.3s forwards;
+            opacity: 0.8;
         }
 
         .audience-exclusivity {
@@ -910,6 +883,35 @@
 
         .cta-note.visible {
             animation: fadeIn 0.8s 0.6s forwards;
+        }
+
+        .cta-only {
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            font-weight: 400;
+            letter-spacing: 0.02em;
+            color: var(--accent);
+            margin-bottom: 2rem;
+            opacity: 0;
+        }
+
+        .cta-only.visible {
+            animation: fadeIn 0.8s forwards;
+        }
+
+        .cta-proof {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--mid-gray);
+            font-size: 0.8rem;
+            font-weight: 300;
+            letter-spacing: 0.02em;
+            color: var(--text-muted);
+            opacity: 0;
+        }
+
+        .cta-proof.visible {
+            animation: fadeIn 0.8s 0.8s forwards;
         }
 
         /* ══════════════════════════════════════════
@@ -1036,6 +1038,14 @@
                 padding: 0.6rem 1rem;
             }
 
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .nav-link {
+                display: none;
+            }
+
             .scroll-indicator {
                 display: none;
             }
@@ -1102,7 +1112,11 @@
     <!-- Navigation -->
     <nav>
         <a href="#" class="logo">Look Serious</a>
-        <a href="mailto:aaron@look-serious.com" class="nav-contact">Get in Touch</a>
+        <div class="nav-links">
+            <a href="#work" class="nav-link">The Work</a>
+            <a href="#bos" class="nav-link">BOS™</a>
+            <a href="mailto:aaron@look-serious.com" class="nav-contact">Get in Touch</a>
+        </div>
     </nav>
 
     <!-- Hero Section -->
@@ -1215,13 +1229,13 @@
     <div class="section-divider"></div>
 
     <!-- Work Section -->
-    <section class="work">
+    <section class="work" id="work">
         <div class="work-content">
             <div class="work-header">
                 <p class="section-label">The Work</p>
                 <h2 class="work-headline">Diagnosis → System → Result</h2>
             </div>
-
+            
             <div class="case-studies">
                 <!-- Case Study 1: Tech Futures Group -->
                 <article class="case-study">
@@ -1322,7 +1336,7 @@
     <div class="section-divider"></div>
 
     <!-- BOS Section -->
-    <section class="method">
+    <section class="method" id="bos">
         <div class="method-content">
             <div class="method-text">
                 <p class="section-label">The Deliverable</p>
@@ -1376,17 +1390,19 @@
     <!-- CTA Section -->
     <section class="cta-section">
         <div class="cta-content">
+            <p class="cta-only">The only brand consultancy that builds the operating system—not just the logo.</p>
             <p class="cta-headline">Your business has evolved.<br>Let's see if we're the right fit.</p>
             <a href="mailto:aaron@look-serious.com?subject=BOS%20Inquiry" class="cta-button">Request a Diagnostic</a>
             <p class="cta-email">or email directly: <a href="mailto:aaron@look-serious.com">aaron@look-serious.com</a></p>
             <p class="cta-note">No pitch decks. No pressure. A 30-minute conversation to see if there's a gap worth closing.</p>
+            <p class="cta-proof">Trusted by venture platforms, climate tech pioneers, and businesses that refuse to blend in.</p>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
         <span class="footer-logo">Look Serious</span>
-        <span class="footer-copy">© 2026. Brand. Systems. Intelligence.</span>
+        <span class="footer-copy">© 2026 Look Serious</span>
     </footer>
 
     <!-- Scroll Animation Script -->
@@ -1407,7 +1423,7 @@
         }, observerOptions);
 
         // Observe all animated elements
-        document.querySelectorAll('.statement-text, .statement-caption, .system-label, .system-headline, .pillar, .enemy-text, .belief, .section-label, .work-headline, .case-study, .method-text, .audience-label, .audience-headline, .audience-subtext, .audience-exclusivity, .cta-headline, .cta-button, .cta-email, .cta-note').forEach(el => {
+        document.querySelectorAll('.statement-text, .statement-caption, .system-label, .system-headline, .pillar, .enemy-text, .belief, .section-label, .work-headline, .case-study, .method-text, .audience-label, .audience-headline, .audience-subtext, .audience-exclusivity, .cta-only, .cta-headline, .cta-button, .cta-email, .cta-note, .cta-proof').forEach(el => {
             observer.observe(el);
         });
     </script>
