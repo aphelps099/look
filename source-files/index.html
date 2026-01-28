@@ -2,906 +2,912 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Redox HTML Template">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="look-serious - Brand Consultancy | Building Brand Houses & Creative Strategy">
 
-  <title>Redox - Creative Agency and Portfolio HTML Template</title>
+    <title>look-serious | Brand Consultancy</title>
 
-  <!-- Fav Icon -->
-  <link rel="icon" type="image/x-icon" href="assets/imgs/logo/favicon.png">
+    <!-- Fav Icon -->
+    <link rel="icon" type="image/x-icon" href="assets/ad-imgs/logo/favicon.png">
 
-  <!-- Vendor CSS Files -->
-  <link rel="stylesheet" href="assets/vendor/bootstrap.min.css">
-  <link rel="stylesheet" href="assets/vendor/fontawesome.min.css">
-  <link rel="stylesheet" href="assets/vendor/swiper-bundle.min.css">
-  <link rel="stylesheet" href="assets/vendor/meanmenu.min.css">
-  <link rel="stylesheet" href="assets/vendor/magnific-popup.css">
-  <link rel="stylesheet" href="assets/vendor/animate.min.css">
+    <!-- Vendor CSS Files -->
+    <link rel="stylesheet" href="assets/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/vendor/fontawesome.min.css">
+    <link rel="stylesheet" href="assets/vendor/swiper-bundle.min.css">
+    <link rel="stylesheet" href="assets/vendor/meanmenu.min.css">
+    <link rel="stylesheet" href="assets/vendor/magnific-popup.css">
+    <link rel="stylesheet" href="assets/vendor/animate.min.css">
 
-  <!-- Template Main CSS File -->
-  <link rel="stylesheet" href="assets/css/style.css">
+    <!-- Template Main CSS File -->
+    <link rel="stylesheet" href="assets/css/ad-style.css">
 
+    <!-- Custom Styles for look-serious -->
+    <style>
+        :root {
+            --look-accent: #c9a962;
+            --look-dark: #0a0a0a;
+            --look-light: #f5f5f3;
+            --look-gray: #666666;
+        }
+
+        .look-hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            background: var(--look-dark);
+            overflow: hidden;
+        }
+
+        .look-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(10,10,10,0.95) 0%, rgba(20,20,20,0.9) 100%);
+            z-index: 1;
+        }
+
+        .look-hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 120px 0;
+        }
+
+        .look-brand-name {
+            font-size: clamp(4rem, 12vw, 12rem);
+            font-weight: 200;
+            letter-spacing: -0.03em;
+            line-height: 0.9;
+            color: var(--look-light);
+            margin-bottom: 40px;
+            font-family: 'Beatrice Trial', serif;
+        }
+
+        .look-brand-name span {
+            display: block;
+            color: var(--look-accent);
+        }
+
+        .look-tagline {
+            font-size: clamp(1rem, 2vw, 1.5rem);
+            font-weight: 300;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--look-gray);
+            margin-bottom: 60px;
+        }
+
+        .look-intro-text {
+            font-size: clamp(1.25rem, 2.5vw, 2rem);
+            font-weight: 300;
+            line-height: 1.6;
+            color: var(--look-light);
+            max-width: 700px;
+            opacity: 0.9;
+        }
+
+        .look-section {
+            padding: 150px 0;
+        }
+
+        .look-section-dark {
+            background: var(--look-dark);
+            color: var(--look-light);
+        }
+
+        .look-section-light {
+            background: var(--look-light);
+            color: var(--look-dark);
+        }
+
+        .look-section-title {
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 200;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            margin-bottom: 60px;
+            font-family: 'Beatrice Trial', serif;
+        }
+
+        .look-section-subtitle {
+            font-size: 0.875rem;
+            font-weight: 500;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--look-accent);
+            margin-bottom: 30px;
+            display: block;
+        }
+
+        .look-services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 80px 60px;
+        }
+
+        @media (max-width: 768px) {
+            .look-services-grid {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+        }
+
+        .look-service-item {
+            position: relative;
+        }
+
+        .look-service-number {
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            color: var(--look-accent);
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .look-service-title {
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            font-weight: 300;
+            margin-bottom: 20px;
+            letter-spacing: -0.01em;
+            font-family: 'Beatrice Trial', serif;
+        }
+
+        .look-service-desc {
+            font-size: 1rem;
+            line-height: 1.8;
+            opacity: 0.7;
+        }
+
+        .look-philosophy {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 100px;
+            align-items: center;
+        }
+
+        @media (max-width: 992px) {
+            .look-philosophy {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+        }
+
+        .look-philosophy-text {
+            font-size: clamp(1.25rem, 2vw, 1.75rem);
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .look-philosophy-text p {
+            margin-bottom: 30px;
+        }
+
+        .look-image-block {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .look-image-block img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .look-image-label {
+            position: absolute;
+            bottom: 30px;
+            left: 30px;
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--look-light);
+            background: rgba(0,0,0,0.5);
+            padding: 10px 20px;
+        }
+
+        .look-work-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        @media (max-width: 992px) {
+            .look-work-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .look-work-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .look-work-item {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 4/5;
+        }
+
+        .look-work-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .look-work-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .look-work-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 30px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: var(--look-light);
+        }
+
+        .look-work-category {
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--look-accent);
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .look-work-title {
+            font-size: 1.25rem;
+            font-weight: 400;
+            font-family: 'Beatrice Trial', serif;
+        }
+
+        .look-manifesto {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .look-manifesto-text {
+            font-size: clamp(1.5rem, 4vw, 3rem);
+            font-weight: 200;
+            line-height: 1.5;
+            font-family: 'Beatrice Trial', serif;
+        }
+
+        .look-manifesto-text span {
+            color: var(--look-accent);
+            font-style: italic;
+        }
+
+        .look-cta {
+            text-align: center;
+            padding: 200px 0;
+            background: var(--look-dark);
+        }
+
+        .look-cta-title {
+            font-size: clamp(3rem, 8vw, 8rem);
+            font-weight: 200;
+            color: var(--look-light);
+            letter-spacing: -0.02em;
+            font-family: 'Beatrice Trial', serif;
+            margin-bottom: 40px;
+        }
+
+        .look-cta-title a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .look-cta-title a:hover {
+            color: var(--look-accent);
+        }
+
+        .look-btn {
+            display: inline-block;
+            padding: 18px 50px;
+            border: 1px solid var(--look-accent);
+            color: var(--look-light);
+            text-decoration: none;
+            font-size: 0.875rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .look-btn:hover {
+            background: var(--look-accent);
+            color: var(--look-dark);
+        }
+
+        .look-footer {
+            background: var(--look-dark);
+            padding: 80px 0 40px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .look-footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 80px;
+        }
+
+        @media (max-width: 992px) {
+            .look-footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .look-footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .look-footer-brand {
+            font-size: 2rem;
+            font-weight: 200;
+            color: var(--look-light);
+            margin-bottom: 20px;
+            font-family: 'Beatrice Trial', serif;
+        }
+
+        .look-footer-tagline {
+            font-size: 0.875rem;
+            color: var(--look-gray);
+            line-height: 1.8;
+        }
+
+        .look-footer-title {
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--look-accent);
+            margin-bottom: 25px;
+        }
+
+        .look-footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .look-footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .look-footer-links a {
+            color: var(--look-gray);
+            text-decoration: none;
+            font-size: 0.9375rem;
+            transition: color 0.3s ease;
+        }
+
+        .look-footer-links a:hover {
+            color: var(--look-light);
+        }
+
+        .look-footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        @media (max-width: 576px) {
+            .look-footer-bottom {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+        }
+
+        .look-footer-copyright {
+            font-size: 0.8125rem;
+            color: var(--look-gray);
+        }
+
+        .look-social-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .look-social-links a {
+            color: var(--look-gray);
+            text-decoration: none;
+            font-size: 0.8125rem;
+            letter-spacing: 0.1em;
+            transition: color 0.3s ease;
+        }
+
+        .look-social-links a:hover {
+            color: var(--look-accent);
+        }
+
+        /* Header Override */
+        .look-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 30px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s ease;
+        }
+
+        .look-header.scrolled {
+            background: rgba(10,10,10,0.95);
+            padding: 20px 60px;
+        }
+
+        @media (max-width: 768px) {
+            .look-header {
+                padding: 20px 30px;
+            }
+        }
+
+        .look-logo {
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: var(--look-light);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+            font-family: 'Beatrice Trial', serif;
+        }
+
+        .look-logo span {
+            color: var(--look-accent);
+        }
+
+        .look-nav {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .look-nav {
+                display: none;
+            }
+        }
+
+        .look-nav a {
+            color: var(--look-light);
+            text-decoration: none;
+            font-size: 0.875rem;
+            letter-spacing: 0.1em;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+
+        .look-nav a:hover {
+            opacity: 1;
+        }
+
+        /* Stats Section */
+        .look-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            padding: 100px 0;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        @media (max-width: 768px) {
+            .look-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .look-stat-item {
+            text-align: center;
+        }
+
+        .look-stat-number {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 200;
+            color: var(--look-accent);
+            margin-bottom: 10px;
+            font-family: 'Beatrice Trial', serif;
+        }
+
+        .look-stat-label {
+            font-size: 0.8125rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            opacity: 0.6;
+        }
+
+        /* Clients Section */
+        .look-clients-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 60px;
+            opacity: 0.4;
+        }
+
+        .look-clients-wrapper img {
+            height: 30px;
+            width: auto;
+            filter: grayscale(100%) brightness(200%);
+        }
+
+        /* Smooth Scroll Offset */
+        section[id] {
+            scroll-margin-top: 100px;
+        }
+
+        /* Mobile Menu Button */
+        .look-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--look-light);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .look-menu-btn {
+                display: block;
+            }
+        }
+    </style>
 </head>
 
+<body class="body-wrapper dark">
 
-<body class="body-wrapper dark body-digital-agency font-heading-instrumentsans-medium">
-
-  <!-- Preloader -->
-  <div id="preloader">
-    <div id="container" class="container-preloader">
-      <div class="animation-preloader">
-        <div class="spinner"></div>
-
-      </div>
-      <div class="loader-section section-left"></div>
-      <div class="loader-section section-right"></div>
-    </div>
-  </div>
-
-  <!-- Sroll to top -->
-  <div class="progress-wrap">
-    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
-      <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"></path>
-    </svg>
-  </div>
-
-  <!-- cursorAnimation start -->
-  <div class="cursor-wrapper relative">
-    <div class="cursor"></div>
-    <div class="cursor-follower"></div>
-  </div>
-  <!-- cursorAnimation end -->
-
-  <!-- side toggle start -->
-  <aside class="fix">
-    <div class="side-info">
-      <div class="side-info-content">
-        <div class="offset-widget offset-header">
-          <div class="offset-logo">
-            <a href="index.html">
-              <img src="assets/imgs/logo/logo-light.png" alt="site logo">
-            </a>
-          </div>
-          <button id="side-info-close" class="side-info-close">
-            <i class="fas fa-times"></i>
-          </button>
-        </div>
-        <div class="mobile-menu d-xl-none fix"></div>
-        <div class="offset-button">
-          <a href="contact.html" class="rr-btn hover-bg-theme">
-            <span class="btn-wrap">
-              <span class="text-one">Let's Talk</span>
-              <span class="text-two">Let's Talk</span>
-            </span>
-          </a>
-        </div>
-        <div class="offset-widget-box">
-          <h2 class="title">Contact US</h2>
-          <div class="contact-meta">
-            <div class="contact-item">
-              <span class="icon"><i class="fa-solid fa-location-dot"></i></span>
-              <span class="text">3891 Ranchview Dr. Richardson</span>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div id="container" class="container-preloader">
+            <div class="animation-preloader">
+                <div class="spinner"></div>
             </div>
-            <div class="contact-item">
-              <span class="icon"><i class="fa-solid fa-envelope"></i></span>
-              <span class="text"><a href="mailto:hello@redoxagency.com">hello@redoxagency.com</a></span>
-            </div>
-            <div class="contact-item">
-              <span class="icon"><i class="fa-solid fa-phone"></i></span>
-              <span class="text"><a href="tel:(505)555-0125">(505) 555-0125</a></span>
-            </div>
-          </div>
+            <div class="loader-section section-left"></div>
+            <div class="loader-section section-right"></div>
         </div>
-      </div>
     </div>
-  </aside>
-  <div class="offcanvas-overlay"></div>
-  <!-- side toggle end -->
 
-  <!-- Header area start -->
-  <header class="header-area">
-    <div class="header-main">
-      <div class="container large">
-        <div class="header-area__inner">
-          <div class="header__logo">
-            <a href="index.html">
-              <img src="assets/imgs/logo/logo-light.png" class="logo-dark" alt="Site Logo">
-              <img src="assets/imgs/logo/logo.png" class="logo-light" alt="Site Logo">
-            </a>
-          </div>
-          <div class="header__nav">
-            <nav class="main-menu">
-              <ul>
-                <li class="menu-item-has-children">
-                  <a href="#">Home</a>
-                  <ul class="dp-menu col-2">
-                    <li><a href="digital-agency.html">Digital Agency</a></li>
-                    <li><a href="creative-agency.html">Creative Agency</a></li>
-                    <li><a href="marketing-agency.html">Marketing Agency</a></li>
-                    <li><a href="design-agency.html">Design Agency</a></li>
-                    <li><a href="web-development.html">Web Development</a></li>
-                    <li><a href="branding-agency.html">Branding Agency</a></li>
-                    <li><a href="startup-agency.html">Startup Agency</a></li>
-                    <li><a href="web-design.html">Web Design</a></li>
-                    <li><a href="modern-agency.html">Modern Agency</a></li>
-                    <li><a href="modern-agency-2.html">Modern Agency 2</a></li>
-                    <li><a href="modern-agency-3.html">Modern Agency 3</a></li>
-                    <li><a href="agency-portfolio.html">Agency Portfolio</a></li>
-                    <li><a href="agency-portfolio-2.html">Agency Portfolio 2</a></li>
-                    <li><a href="agency-portfolio-3.html">Agency Portfolio 3</a></li>
-                    <li><a href="it-solution.html">IT Solution</a></li>
-                    <li><a href="portfolio-horizontal.html">Portfolio Horizontal</a></li>
-                    <li><a href="portfolio-line-effect.html">Portfolio Line Effect</a></li>
-                    <li><a href="portfolio-box-effect.html">Portfolio Box Effect</a></li>
-                    <li><a href="portfolio-vertical.html">Portfolio Vertical</a></li>
-                    <li><a href="portfolio-slicer.html">Portfolio Slicer</a></li>
-                    <li><a href="parallax-carousal.html">Parallax Carousal</a></li>
-                    <li><a href="portfolio-showcase.html">Portfolio Showcase</a></li>
-                  </ul>
-                </li>
-                <li><a href="about.html">About Us</a></li>
-                <li class="menu-item-has-children">
-                  <a href="#">Service</a>
-                  <ul class="dp-menu">
-                    <li><a href="services.html">Core Services</a></li>
-                    <li><a href="services-2.html">Services ST. Pulse</a></li>
-                    <li><a href="services-3.html">Services ST. Morph</a></li>
-                    <li><a href="services-4.html">Services ST. Nova</a></li>
-                    <li><a href="services-5.html">Services ST. Zenith</a></li>
-                    <li><a href="services-6.html">Services ST. Prism</a></li>
-                    <li><a href="service-details.html">Service Details</a></li>
-                  </ul>
-                </li>
-                <li class="menu-item-has-children">
-                  <a href="#">Blog</a>
-                  <ul class="dp-menu">
-                    <li><a href="blog.html">Blog</a></li>
-                    <li><a href="blog-details.html">Blog Details</a></li>
-                  </ul>
-                </li>
-                <li class="menu-item-has-children">
-                  <a href="#">Pages</a>
-                  <ul class="dp-menu">
-                    <li><a href="portfolio.html">Core Portfolio</a></li>
-                    <li><a href="portfolio-2.html">Portfolio ST. Classic</a></li>
-                    <li><a href="portfolio-3.html">Portfolio ST. Minimal</a></li>
-                    <li><a href="portfolio-4.html">Portfolio ST. Modern</a></li>
-                    <li><a href="portfolio-5.html">Portfolio ST. Interactive</a></li>
-                    <li><a href="portfolio-6.html">Portfolio ST. Metro</a></li>
-                    <li><a href="portfolio-details.html">Portfolio Details</a></li>
-                    <li><a href="team.html">Team</a></li>
-                    <li><a href="team-details.html">Team Details</a></li>
-                    <li><a href="faq.html">FAQ Page</a></li>
-                    <li><a href="404.html">404 Page</a></li>
-                  </ul>
-                </li>
-                <li><a href="contact.html">Contact</a></li>
-              </ul>
-            </nav>
-          </div>
-          <div class="header__button">
-            <a href="contact.html" class="rr-btn hover-bg-theme">
-              <span class="btn-wrap">
-                <span class="text-one">Let’s Talk</span>
-                <span class="text-two">Let’s Talk</span>
-              </span>
-            </a>
-          </div>
-          <div class="header__navicon d-xl-none">
-            <button class="side-toggle">
-              <i class="fa-solid fa-bars"></i></button>
-          </div>
-        </div>
-      </div>
+    <!-- Scroll to top -->
+    <div class="progress-wrap">
+        <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"></path>
+        </svg>
     </div>
-  </header>
 
-  <!-- Header area end -->
+    <!-- Custom Header -->
+    <header class="look-header">
+        <a href="index.html" class="look-logo">look<span>-</span>serious</a>
+        <nav class="look-nav">
+            <a href="#philosophy">Philosophy</a>
+            <a href="#services">Services</a>
+            <a href="#work">Work</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <button class="look-menu-btn" aria-label="Menu">
+            <i class="fas fa-bars"></i>
+        </button>
+    </header>
 
-  <div class="has-smooth" id="has_smooth"></div>
-  <div id="smooth-wrapper">
-    <div id="smooth-content">
+    <div class="has-smooth" id="has_smooth"></div>
+    <div id="smooth-wrapper">
+        <div id="smooth-content">
 
-      <main>
+            <main>
 
-        <!-- hero area start  -->
-        <section class="hero-area">
-          <div class="container large">
-            <div class="hero-area-inner section-spacing-top">
-              <div class="hero-content section-spacing-bottom">
-                <div class="award-wrapper fade-anim" data-delay="0.90" data-direction="left" data-ease="back.out(4)">
-                  <div class="circle-text-wrapper">
-                    <div class="circle-text">
-                      <img src="assets/imgs/shape/shape-3.webp" alt="image" class="dark text">
-                      <img src="assets/imgs/shape/shape-2.webp" alt="image" class="dark icon">
-                      <img src="assets/imgs/shape/shape-light-3.webp" alt="image" class="light text">
-                      <img src="assets/imgs/shape/shape-2-light.webp" alt="image" class="light icon">
-                    </div>
-                  </div>
-                </div>
-                <div class="section-header">
-                  <div class="section-title-wrapper">
-                    <div class="title-wrapper">
-                      <h2 class="section-title font-instrumentsans-medium char-anim" data-delay="0.45">Let’s sharpen
-                        your brand
-                        with<span><img class="title-shape-1 fade-anim" src="assets/imgs/shape/shape-1.webp" alt="image"
-                            data-direction="right" data-delay="1.80"></span>quality
-                        work</h2>
-                    </div>
-                  </div>
-                </div>
-                <div class="section-content">
-                  <div class="features-wrapper-box fade-anim" data-delay="0.75">
-                    <div class="features-wrapper">
-                      <div class="feature-box">
-                        <div class="content">
-                          <span class="number">98%</span>
-                          <p class="text">Average clients satisfied
-                            and repeating</p>
+                <!-- Hero Section -->
+                <section class="look-hero">
+                    <div class="container rr-container-1850">
+                        <div class="look-hero-content">
+                            <p class="look-tagline fade-anim">Brand Consultancy</p>
+                            <h1 class="look-brand-name">
+                                <span class="fade-anim" data-delay="0.2">look</span>
+                                <span class="fade-anim" data-delay="0.4">-serious</span>
+                            </h1>
+                            <p class="look-intro-text fade-anim" data-delay="0.6">
+                                We build brand houses and craft creative strategies that transform businesses into cultural forces.
+                            </p>
                         </div>
-                      </div>
-                      <div class="feature-box">
-                        <div class="content">
-                          <span class="number">120+</span>
-                          <p class="text">Successfully projects done
-                            in 24 countries</p>
+                    </div>
+                </section>
+
+                <!-- Philosophy Section -->
+                <section id="philosophy" class="look-section look-section-light">
+                    <div class="container rr-container-1850">
+                        <div class="look-philosophy">
+                            <div class="look-philosophy-text fade-anim">
+                                <span class="look-section-subtitle">Our Philosophy</span>
+                                <p>
+                                    We believe brands are living systems. They breathe, evolve, and respond to the world around them.
+                                </p>
+                                <p>
+                                    A brand house isn't just a visual identity. It's an ecosystem of meaning, purpose, and expression that guides every decision your organization makes.
+                                </p>
+                                <p style="opacity: 0.6; font-size: 0.9em;">
+                                    We take branding seriously. Because when done right, it changes everything.
+                                </p>
+                            </div>
+                            <div class="look-image-block fade-anim" data-delay="0.3">
+                                <img src="assets/ad-imgs/gallery/gallery-s-7.webp" alt="Brand Strategy">
+                                <span class="look-image-label">Strategic Vision</span>
+                            </div>
                         </div>
-                      </div>
                     </div>
-                  </div>
+                </section>
 
-                  <div class="text-wrapper fade-anim" data-delay="0.75">
-                    <p class="text">We’re a digital products design & development agency that works passionately
-                      with the digital experiences.</p>
-                  </div>
-                </div>
-              </div>
-              <div class="big-text-wrapper">
-                <h2 class="big-text">Redox
-                </h2>
-              </div>
+                <!-- Manifesto Section -->
+                <section class="look-section look-section-dark">
+                    <div class="container rr-container-1850">
+                        <div class="look-manifesto fade-anim">
+                            <span class="look-section-subtitle">What We Believe</span>
+                            <p class="look-manifesto-text">
+                                Great brands don't follow trends. They <span>set the standard</span>. They create culture, define categories, and build lasting connections with the people who matter most.
+                            </p>
+                        </div>
+                        <div class="look-stats">
+                            <div class="look-stat-item fade-anim">
+                                <div class="look-stat-number">12+</div>
+                                <div class="look-stat-label">Years Experience</div>
+                            </div>
+                            <div class="look-stat-item fade-anim" data-delay="0.1">
+                                <div class="look-stat-number">80+</div>
+                                <div class="look-stat-label">Brand Houses Built</div>
+                            </div>
+                            <div class="look-stat-item fade-anim" data-delay="0.2">
+                                <div class="look-stat-number">$2B+</div>
+                                <div class="look-stat-label">Client Valuation</div>
+                            </div>
+                            <div class="look-stat-item fade-anim" data-delay="0.3">
+                                <div class="look-stat-number">100%</div>
+                                <div class="look-stat-label">Commitment</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
 
-            </div>
-          </div>
-        </section>
-        <!-- hero area end  -->
+                <!-- Services Section -->
+                <section id="services" class="look-section look-section-light">
+                    <div class="container rr-container-1850">
+                        <span class="look-section-subtitle fade-anim">What We Do</span>
+                        <h2 class="look-section-title fade-anim">Services</h2>
+                        <div class="look-services-grid">
+                            <div class="look-service-item fade-anim">
+                                <span class="look-service-number">01</span>
+                                <h3 class="look-service-title">Brand House Development</h3>
+                                <p class="look-service-desc">
+                                    We architect comprehensive brand systems that unite strategy, identity, and experience into a cohesive whole. From brand architecture to visual language, we build the foundation for lasting success.
+                                </p>
+                            </div>
+                            <div class="look-service-item fade-anim" data-delay="0.1">
+                                <span class="look-service-number">02</span>
+                                <h3 class="look-service-title">Creative Strategy</h3>
+                                <p class="look-service-desc">
+                                    Strategic thinking meets creative excellence. We develop positioning, messaging, and creative platforms that differentiate your brand and resonate with your audience on a deeper level.
+                                </p>
+                            </div>
+                            <div class="look-service-item fade-anim" data-delay="0.2">
+                                <span class="look-service-number">03</span>
+                                <h3 class="look-service-title">Brand Identity Systems</h3>
+                                <p class="look-service-desc">
+                                    Visual identity that transcends aesthetics. We create flexible, scalable identity systems that express your brand's essence across every touchpoint and channel.
+                                </p>
+                            </div>
+                            <div class="look-service-item fade-anim" data-delay="0.3">
+                                <span class="look-service-number">04</span>
+                                <h3 class="look-service-title">Brand Experience Design</h3>
+                                <p class="look-service-desc">
+                                    Every interaction matters. We design holistic brand experiences that create meaningful connections and build lasting loyalty with your customers.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
 
-        <!-- about area start  -->
-        <section class="about-area ">
-          <div class="container large">
-            <div class="about-area-inner section-spacing">
-              <div class="section-content">
-                <div class="shape-1"></div>
-                <div class="shape-2"></div>
-                <div class="shape-3"></div>
-                <div class="shape-4"></div>
-                <div class="section-title-wrapper">
-                  <div class="title-wrapper">
-                    <h2 class="section-title font-instrumentsans-medium">Redox</h2>
-                  </div>
-                </div>
-                <div class="text-wrapper">
-                  <p class="text">We’re a dynamic startup agency specializing in innovative solutions for businesses
-                    looking to elevate their brand presence. We offer a range of services including digital marketing,
-                    branding, web development, and creative strategy to help company</p>
-                </div>
-                <div class="btn-wrapper ">
-                  <a href="contact.html" class="rr-btn  btn-text-fli hover-bg-theme">
-                    <span class="btn-wrap">
-                      <span class="text-one">Learn More</span>
-                      <span class="text-two">Learn More</span>
-                    </span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        <!-- about area end  -->
+                <!-- Work Section -->
+                <section id="work" class="look-section look-section-dark">
+                    <div class="container rr-container-1850">
+                        <span class="look-section-subtitle fade-anim">Selected Work</span>
+                        <h2 class="look-section-title fade-anim" style="color: var(--look-light);">Brand Houses We've Built</h2>
+                        <div class="look-work-grid">
+                            <div class="look-work-item fade-anim">
+                                <img src="assets/ad-imgs/work/work-r-9.webp" alt="Multi-Family Brand">
+                                <div class="look-work-overlay">
+                                    <span class="look-work-category">Brand House</span>
+                                    <h3 class="look-work-title">Multi-Family</h3>
+                                </div>
+                            </div>
+                            <div class="look-work-item fade-anim" data-delay="0.1">
+                                <img src="assets/ad-imgs/work/work-r-10.webp" alt="Saudi Lime Green">
+                                <div class="look-work-overlay">
+                                    <span class="look-work-category">Creative Strategy</span>
+                                    <h3 class="look-work-title">Saudi Lime Green</h3>
+                                </div>
+                            </div>
+                            <div class="look-work-item fade-anim" data-delay="0.2">
+                                <img src="assets/ad-imgs/work/work-r-11.webp" alt="Lambax Gini">
+                                <div class="look-work-overlay">
+                                    <span class="look-work-category">Brand Identity</span>
+                                    <h3 class="look-work-title">Lambax Gini</h3>
+                                </div>
+                            </div>
+                            <div class="look-work-item fade-anim" data-delay="0.3">
+                                <img src="assets/ad-imgs/work/work-r-12.webp" alt="Lux Ventures">
+                                <div class="look-work-overlay">
+                                    <span class="look-work-category">Brand House</span>
+                                    <h3 class="look-work-title">Lux Ventures</h3>
+                                </div>
+                            </div>
+                            <div class="look-work-item fade-anim" data-delay="0.4">
+                                <img src="assets/ad-imgs/work/work-r-13.webp" alt="Winter Fact">
+                                <div class="look-work-overlay">
+                                    <span class="look-work-category">Creative Strategy</span>
+                                    <h3 class="look-work-title">Winter Fact</h3>
+                                </div>
+                            </div>
+                            <div class="look-work-item fade-anim" data-delay="0.5">
+                                <img src="assets/ad-imgs/work/work-r-14.webp" alt="Nexus Global">
+                                <div class="look-work-overlay">
+                                    <span class="look-work-category">Brand Experience</span>
+                                    <h3 class="look-work-title">Nexus Global</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
 
-        <!-- video-box  start -->
-        <div class="video-box">
-          <video class="video-area" loop="" muted="" autoplay="" playsinline="">
-            <source src="https://rrdevs.net/project-video/group-meeting.mp4" type="video/mp4">
-          </video>
+                <!-- Clients Section -->
+                <section class="look-section look-section-light" style="padding: 80px 0;">
+                    <div class="container rr-container-1850">
+                        <div class="look-clients-wrapper fade-anim">
+                            <img src="assets/ad-imgs/brand/brand-r-1.webp" alt="Client">
+                            <img src="assets/ad-imgs/brand/brand-r-2.webp" alt="Client">
+                            <img src="assets/ad-imgs/brand/brand-r-3.webp" alt="Client">
+                            <img src="assets/ad-imgs/brand/brand-r-4.webp" alt="Client">
+                            <img src="assets/ad-imgs/brand/brand-r-5.webp" alt="Client">
+                        </div>
+                    </div>
+                </section>
+
+                <!-- CTA Section -->
+                <section id="contact" class="look-cta">
+                    <div class="container rr-container-1850">
+                        <p class="look-tagline fade-anim" style="color: var(--look-gray);">Ready to build your brand house?</p>
+                        <h2 class="look-cta-title fade-anim">
+                            <a href="mailto:hello@look-serious.com">Let's talk</a>
+                        </h2>
+                        <a href="mailto:hello@look-serious.com" class="look-btn fade-anim" data-delay="0.2">Start a Project</a>
+                    </div>
+                </section>
+
+                <!-- Footer -->
+                <footer class="look-footer">
+                    <div class="container rr-container-1850">
+                        <div class="look-footer-grid">
+                            <div>
+                                <h3 class="look-footer-brand">look-serious</h3>
+                                <p class="look-footer-tagline">
+                                    Brand consultancy specializing in brand house development and creative strategy. We take branding seriously.
+                                </p>
+                            </div>
+                            <div>
+                                <h4 class="look-footer-title">Services</h4>
+                                <ul class="look-footer-links">
+                                    <li><a href="#services">Brand House</a></li>
+                                    <li><a href="#services">Creative Strategy</a></li>
+                                    <li><a href="#services">Brand Identity</a></li>
+                                    <li><a href="#services">Experience Design</a></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="look-footer-title">Company</h4>
+                                <ul class="look-footer-links">
+                                    <li><a href="#philosophy">About</a></li>
+                                    <li><a href="#work">Work</a></li>
+                                    <li><a href="#contact">Contact</a></li>
+                                    <li><a href="#">Careers</a></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="look-footer-title">Contact</h4>
+                                <ul class="look-footer-links">
+                                    <li><a href="mailto:hello@look-serious.com">hello@look-serious.com</a></li>
+                                    <li><a href="tel:+15551234567">+1 555 123 4567</a></li>
+                                    <li>New York, NY</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="look-footer-bottom">
+                            <p class="look-footer-copyright">&copy; 2025 look-serious. All rights reserved.</p>
+                            <div class="look-social-links">
+                                <a href="#">LinkedIn</a>
+                                <a href="#">Instagram</a>
+                                <a href="#">Behance</a>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+
+            </main>
+
         </div>
-        <!-- video-box  end -->
-
-        <!-- work area start  -->
-        <section class="work-area">
-
-          <!-- text slider area start  -->
-          <div class="text-slider-box fade-anim">
-            <div class="text-slider">
-              <div class="swiper text-slider-active">
-                <div class="swiper-wrapper">
-                  <div class="swiper-slide">
-                    <div class="text-slider-item">
-                      <h2 class="title"><span class="dot"></span>Featured work
-                      </h2>
-                    </div>
-                  </div>
-                  <div class="swiper-slide">
-                    <div class="text-slider-item">
-                      <h2 class="title"><span class="dot"></span>Featured work
-                      </h2>
-                    </div>
-                  </div>
-                  <div class="swiper-slide">
-                    <div class="text-slider-item">
-                      <h2 class="title"><span class="dot"></span>Featured work
-                      </h2>
-                    </div>
-                  </div>
-                  <div class="swiper-slide">
-                    <div class="text-slider-item">
-                      <h2 class="title"><span class="dot"></span>Featured work
-                      </h2>
-                    </div>
-                  </div>
-                  <div class="swiper-slide">
-                    <div class="text-slider-item">
-                      <h2 class="title"><span class="dot"></span>Featured work
-                      </h2>
-                    </div>
-                  </div>
-                  <div class="swiper-slide">
-                    <div class="text-slider-item">
-                      <h2 class="title"><span class="dot"></span>Featured work
-                      </h2>
-                    </div>
-                  </div>
-                  <div class="swiper-slide">
-                    <div class="text-slider-item">
-                      <h2 class="title"><span class="dot"></span>Featured work
-                      </h2>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- /text slider area end -->
-
-          <div class="container large">
-            <div class="work-area-inner">
-              <div class="section-header fade-anim">
-                <div class="section-title-wrapper">
-                  <div class="title-wrapper">
-                    <h2 class="section-title font-instrumentsans-medium">Featured Work</h2>
-                  </div>
-                </div>
-                <div class="text-wrapper">
-                  <p class="text">Excellency in creative designs</p>
-                </div>
-                <div class="total-count">
-                  <span class="number">(26)</span>
-                </div>
-              </div>
-              <div class="works-wrapper-box">
-                <div class="works-wrapper-1 fade-anim">
-                  <div class="work-box">
-                    <div class="thumb">
-                      <div class="image scale" data-cursor-text="View Project">
-                        <a href="portfolio-details.html"><img src="assets/imgs/project/image-1.webp" alt="image"></a>
-                      </div>
-                    </div>
-                    <div class="content">
-                      <h3 class="title"><a href="portfolio-details.html">Panda Automap</a></h3>
-                      <div class="meta">
-                        <span class="tag">Development</span>
-                        <span class="date">2025</span>
-                      </div>
-
-                    </div>
-                  </div>
-                  <div class="work-box">
-                    <div class="thumb">
-                      <div class="image scale" data-cursor-text="View Project">
-                        <a href="portfolio-details.html"><img src="assets/imgs/project/image-2.webp" alt="image"></a>
-                      </div>
-                    </div>
-                    <div class="content">
-                      <h3 class="title"><a href="portfolio-details.html">Saudi Venture Capital</a></h3>
-                      <div class="meta">
-                        <span class="tag">Graphics</span>
-                        <span class="date">2025</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="work-box">
-                    <div class="thumb">
-                      <div class="image scale" data-cursor-text="View Project">
-                        <a href="portfolio-details.html"><img src="assets/imgs/project/image-3.webp" alt="image"></a>
-                      </div>
-                    </div>
-                    <div class="content">
-                      <h3 class="title"><a href="portfolio-details.html">Rebrand Lawberry</a></h3>
-                      <div class="meta">
-                        <span class="tag">Motion, Design</span>
-                        <span class="date">2025</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="work-box">
-                    <div class="thumb">
-                      <div class="image scale" data-cursor-text="View Project">
-                        <a href="portfolio-details.html"><img src="assets/imgs/project/image-4.webp" alt="image"></a>
-                      </div>
-                    </div>
-                    <div class="content">
-                      <h3 class="title"><a href="portfolio-details.html">Selicon Cloud Cave</a></h3>
-                      <div class="meta">
-                        <span class="tag">UI Design</span>
-                        <span class="date">2025</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="work-box">
-                    <div class="thumb">
-                      <div class="image scale" data-cursor-text="View Project">
-                        <a href="portfolio-details.html"><img src="assets/imgs/project/image-5.webp" alt="image"></a>
-                      </div>
-                    </div>
-                    <div class="content">
-                      <h3 class="title"><a href="portfolio-details.html">Mountain Upwork</a></h3>
-                      <div class="meta">
-                        <span class="tag">Branding</span>
-                        <span class="date">2025</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="work-box">
-                    <div class="thumb">
-                      <div class="image scale" data-cursor-text="View Project">
-                        <a href="portfolio-details.html"><img src="assets/imgs/project/image-6.webp" alt="image"></a>
-                      </div>
-                    </div>
-                    <div class="content">
-                      <h3 class="title"><a href="portfolio-details.html">Blacky Motorola</a></h3>
-                      <div class="meta">
-                        <span class="tag">UI Design</span>
-                        <span class="date">2025</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="all-btn-wrapper fade-anim">
-                <a href="portfolio.html" class="rr-btn btn-border hover-bg-theme">
-                  <span class="btn-wrap">
-                    <span class="text-one">View All Work</span>
-                    <span class="text-two">View All Work</span>
-                  </span>
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
-        <!-- work area end  -->
-
-        <!-- service area start  -->
-        <section class="service-area">
-          <div class="container large">
-            <div class="service-area-inner section-spacing">
-              <div class="section-header">
-                <div class="section-title-wrapper fade-anim">
-                  <div class="title-wrapper">
-                    <h2 class="section-title font-instrumentsans-medium word-anim">Complex <br>
-                      proficiency</h2>
-                  </div>
-                </div>
-              </div>
-              <div class="services-wrapper-box">
-                <div class="services-wrapper-1">
-                  <div class="service-box fade-anim">
-                    <div class="count">
-                      <span class="number">(01)</span>
-                    </div>
-
-                    <div class="content">
-                      <h3 class="title"><a href="service-details.html">Branding</a></h3>
-                      <ul class="service-list">
-                        <li><a href="service-details.html">Creative Direction</a></li>
-                        <li><a href="service-details.html">Brand Identity</a></li>
-                        <li><a href="service-details.html">Branding Strategy</a></li>
-                        <li><a href="service-details.html">Graphic Design</a></li>
-                        <li><a href="service-details.html">Startup</a></li>
-                      </ul>
-                    </div>
-                    <div class="thumb">
-                      <img class="grow" src="assets/imgs/gallery/image-3.webp" alt="image">
-                    </div>
-                  </div>
-                  <div class="service-box fade-anim">
-                    <div class="count">
-                      <span class="number">(02)</span>
-                    </div>
-
-                    <div class="content">
-                      <h3 class="title"><a href="service-details.html">UI-UX Design</a></h3>
-                      <ul class="service-list">
-                        <li><a href="service-details.html">UI UX Consulting</a></li>
-                        <li><a href="service-details.html">UX Research</a></li>
-                        <li><a href="service-details.html">Usability Testing</a></li>
-                        <li><a href="service-details.html">Wireframing</a></li>
-                        <li><a href="service-details.html">Prototyping</a></li>
-                      </ul>
-                    </div>
-                    <div class="thumb">
-                      <img class="grow" src="assets/imgs/gallery/image-4.webp" alt="image">
-                    </div>
-                  </div>
-                  <div class="service-box fade-anim">
-                    <div class="count">
-                      <span class="number">(03)</span>
-                    </div>
-
-                    <div class="content">
-                      <h3 class="title"><a href="service-details.html">Development</a></h3>
-                      <ul class="service-list">
-                        <li><a href="service-details.html">WordPress</a></li>
-                        <li><a href="service-details.html">Webflow</a></li>
-                        <li><a href="service-details.html">Laravel Framework</a></li>
-                        <li><a href="service-details.html">React & Flutter</a></li>
-                        <li><a href="service-details.html">Design System</a></li>
-                      </ul>
-                    </div>
-                    <div class="thumb">
-                      <img class="grow" src="assets/imgs/gallery/image-5.webp" alt="image">
-                    </div>
-                  </div>
-                  <div class="service-box fade-anim">
-                    <div class="count">
-                      <span class="number">(04)</span>
-                    </div>
-
-                    <div class="content">
-                      <h3 class="title"><a href="service-details.html">Digital Marketing</a></h3>
-                      <ul class="service-list">
-                        <li><a href="service-details.html">Online Marketing</a></li>
-                        <li><a href="service-details.html">SEO-Marketing</a></li>
-                        <li><a href="service-details.html">Strategy</a></li>
-                        <li><a href="service-details.html">Market Research</a></li>
-                        <li><a href="service-details.html">Social Reform</a></li>
-                      </ul>
-                    </div>
-                    <div class="thumb">
-                      <img class="grow" src="assets/imgs/gallery/image-6.webp" alt="image">
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        <!-- service area end  -->
-
-        <!-- funfact area start  -->
-        <section class="funfact-area fade-anim">
-          <div class="container large">
-            <div class="funfact-area-inner pin-area">
-              <div class="section-header section-spacing-top pin-element">
-                <div class="section-title-wrapper">
-                  <div class="title-wrapper">
-                    <h2 class="section-title font-instrumentsans-medium word-anim">Perfect <br>
-                      —activity</h2>
-                  </div>
-                </div>
-              </div>
-              <div class="funfact-wrapper-box section-spacing">
-                <span class="line-1"></span>
-                <span class="line-2"></span>
-                <span class="line-3"></span>
-                <span class="line-4"></span>
-                <div class="funfact-wrapper">
-                  <div class="funfact-item go-visible">
-                    <span class="number">1.8M</span>
-                    <p class="text">We helped to get companies with
-                      $200M+ funding.</p>
-                  </div>
-                  <div class="funfact-item go-visible">
-                    <span class="number">260+</span>
-                    <p class="text">Crafted responsive, user-centered
-                      website & app.</p>
-                  </div>
-                  <div class="funfact-item go-visible">
-                    <span class="number">12+</span>
-                    <p class="text">We have had quite a run in our 12+ years of working.</p>
-                  </div>
-                  <div class="funfact-item go-visible">
-                    <span class="number">80+</span>
-                    <p class="text">Professional skilled designers and developers.</p>
-                  </div>
-                  <div class="funfact-item go-visible">
-                    <span class="number">99%</span>
-                    <p class="text">Average 99% clients satisfaction
-                      with expertise.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        <!-- funfact area end  -->
-
-        <!-- client area start  -->
-        <section class="client-area">
-          <div class="container large">
-            <div class="client-area-inner section-spacing-top">
-              <div class="section-content">
-                <div class="section-title-wrapper">
-                  <div class="title-wrapper">
-                    <h2 class="section-title font-instrumentsans-medium word-anim"><span>Client:</span> Helping brands
-                      to grow
-                      and say their success stories to
-                      the world.</h2>
-                  </div>
-                </div>
-                <div class="text-wrapper fade-anim">
-                  <p class="text">We’re a great team of creatives with a strongest capabilities to helping progressive
-                    fields achieve their goals. With the best talent on every project done successfully</p>
-                </div>
-              </div>
-              <div class="client-capsule-wrapper-box" data-t-throwable-scene="true">
-                <div class="client-capsule-wrapper">
-                  <p data-t-throwable-el="">
-                    <span class="client-box bg-theme">
-                      <img src="assets/imgs/client/client-9-light.webp" alt="image">
-                    </span>
-                  </p>
-                  <p data-t-throwable-el="">
-                    <span class="client-box">
-                      <img class="light" src="assets/imgs/client/client-10.webp" alt="image">
-                      <img class="dark" src="assets/imgs/client/client-light-10.webp" alt="image">
-                    </span>
-                  </p>
-                  <p data-t-throwable-el="">
-                    <span class="client-box">
-                      <img class="light" src="assets/imgs/client/client-11.webp" alt="image">
-                      <img class="dark" src="assets/imgs/client/client-light-11.webp" alt="image">
-                    </span>
-                  </p>
-                  <p data-t-throwable-el="">
-                    <span class="client-box bg-theme">
-                      <img src="assets/imgs/client/client-12-light.webp" alt="image">
-                    </span>
-                  </p>
-                  <p data-t-throwable-el="">
-                    <span class="client-box">
-                      <img class="light" src="assets/imgs/client/client-13.webp" alt="image">
-                      <img class="dark" src="assets/imgs/client/client-light-13.webp" alt="image">
-                    </span>
-                  </p>
-                  <p data-t-throwable-el="">
-                    <span class="client-box">
-                      <img class="light" src="assets/imgs/client/client-14.webp" alt="image">
-                      <img class="dark" src="assets/imgs/client/client-light-14.webp" alt="image">
-                    </span>
-                  </p>
-                  <p data-t-throwable-el="">
-                    <span class="client-box bg-theme">
-                      <img src="assets/imgs/client/client-15-light.webp" alt="image">
-                    </span>
-                  </p>
-                  <p data-t-throwable-el="">
-                    <span class="client-box bg-theme">
-                      <img src="assets/imgs/client/client-16-light.webp" alt="image">
-                    </span>
-                  </p>
-                  <p data-t-throwable-el="">
-                    <span class="client-box">
-                      <img class="light" src="assets/imgs/client/client-17.webp" alt="image">
-                      <img class="dark" src="assets/imgs/client/client-light-17.webp" alt="image">
-                    </span>
-                  </p>
-                  <p data-t-throwable-el="">
-                    <span class="client-box bg-theme">
-                      <img src="assets/imgs/client/client-18-light.webp" alt="image">
-                    </span>
-                  </p>
-                  <p data-t-throwable-el="">
-                    <span class="client-box">
-                      <img class="light" src="assets/imgs/client/client-19.webp" alt="image">
-                      <img class="dark" src="assets/imgs/client/client-light-19.webp" alt="image">
-                    </span>
-                  </p>
-                  <p data-t-throwable-el="">
-                    <span class="client-box bg-theme">
-                      <img src="assets/imgs/client/client-20-light.webp" alt="image">
-                    </span>
-                  </p>
-                  <p data-t-throwable-el="">
-                    <span class="client-box">
-                      <img class="light" src="assets/imgs/client/client-21.webp" alt="image">
-                      <img class="dark" src="assets/imgs/client/client-light-21.webp" alt="image">
-                    </span>
-                  </p>
-                  <p data-t-throwable-el="">
-                    <span class="client-box">
-                      <img class="light" src="assets/imgs/client/client-22.webp" alt="image">
-                      <img class="dark" src="assets/imgs/client/client-light-22.webp" alt="image">
-                    </span>
-                  </p>
-                </div>
-              </div>
-              <div class="lines-wrapper">
-                <div class="line"></div>
-                <div class="line"></div>
-                <div class="line"></div>
-                <div class="line"></div>
-                <div class="line"></div>
-                <div class="line"></div>
-                <div class="line"></div>
-                <div class="line"></div>
-              </div>
-            </div>
-          </div>
-        </section>
-        <!-- client area end  -->
-
-        <!-- cta area start  -->
-        <div class="p-relative overflow-hidden">
-          <section class="cta-area">
-            <div class="cta-area-inner section-spacing">
-              <div class="area-bg"></div>
-              <div class="container large">
-                <div class="section-content">
-                  <div class="section-title-wrapper">
-                    <div class="title-wrapper">
-                      <h2 class="section-title font-instrumentsans-medium char-anim"><a href="contact.html">Let’s
-                          Work</a></h2>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-        </div>
-        <!-- cta area end  -->
-
-        <!-- productivity area start  -->
-        <section class="productivity-area">
-          <div class="container large">
-            <div class="productivity-area-inner section-spacing">
-              <div class="section-content">
-                <div class="section-title-wrapper">
-                  <div class="title-wrapper">
-                    <h2 class="section-title font-instrumentsans-medium word-anim">It’s all about the <br>
-                      unique <span class="shape-1">thinking</span> with
-                      <span class="shape-2">creativity</span> and <span class="shape-3">quality</span> for
-                      complex solution in <br>
-                      easy way
-                    </h2>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        <!-- productivity area end  -->
-
-        <div class="image-wrapper parallax-view">
-          <img class="w-100" src="assets/imgs/gallery/image-7.webp" alt="image" data-speed="0.1">
-        </div>
-
-      </main>
-
-      <!-- footer area start  -->
-      <footer class="footer-area">
-        <div class="container large">
-          <div class="footer-top-inner">
-            <div class="footer-logo">
-              <a href="index.html"><img class="dark" src="assets/imgs/logo/logo-2-light.png" alt="site-logo"></a>
-              <a href="index.html"><img class="light" src="assets/imgs/logo/logo-2.png" alt="site-logo"></a>
-            </div>
-            <div class="info-text">
-              <div class="text-wrapper">
-                <p class="text">Redox is a startup digital agency of design, development and marketing that works
-                  friendly with global client</p>
-              </div>
-              <div class="info-link">
-                <a href="mailto:info@redox.com">info@redox.com</a>
-              </div>
-            </div>
-          </div>
-          <div class="footer-widget-wrapper-box">
-            <div class="footer-widget-wrapper">
-              <div class="footer-widget-box newsletter">
-                <form action="#" class="subscribe-form">
-                  <div class="input-field">
-                    <input type="email" placeholder="Enter your email">
-                    <button type="submit" class="subscribe-btn dark"><img src="assets/imgs/icon/icon-1.webp"
-                        alt="image"></button>
-                    <button type="submit" class="subscribe-btn light"><img src="assets/imgs/icon/icon-light-1.webp"
-                        alt="image"></button>
-                  </div>
-                </form>
-                <div class="subscription-text">
-                  <div class="text-wrapper">
-                    <p class="text">By subscribing you agree with our
-                      <a href="contact.html">Privacy Policy</a>
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div class="footer-widget-box">
-                <h2 class="title">Company</h2>
-                <ul class="footer-nav-list">
-                  <li><a href="contact.html">agency</a></li>
-                  <li><a href="contact.html">Solutions</a></li>
-                  <li><a href="contact.html">Community</a></li>
-                  <li><a href="contact.html">Work</a></li>
-                  <li><a href="contact.html">Contact</a></li>
-                </ul>
-              </div>
-              <div class="footer-widget-box">
-                <h2 class="title">Social</h2>
-                <ul class="footer-nav-list">
-                  <li><a href="contact.html">Facebook</a></li>
-                  <li><a href="contact.html">Twitter</a></li>
-                  <li><a href="contact.html">Dribbble</a></li>
-                  <li><a href="contact.html">Instagram</a></li>
-                  <li><a href="contact.html">Awwwards</a></li>
-                  <li><a href="contact.html">YouTube</a></li>
-                </ul>
-              </div>
-              <div class="footer-widget-box">
-                <h2 class="title">Office</h2>
-                <ul class="footer-nav-list">
-                  <li><a href="contact.html">New York</a></li>
-                  <li><a href="contact.html">Toronto</a></li>
-                  <li><a href="contact.html">Berlin</a></li>
-                  <li><a href="contact.html">London</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="copyright-area">
-          <div class="copyright-area-inner">
-            <div class="copyright-text">
-              <p class="text">© 2025 <a href="https://themeforest.net/user/ravextheme">RavexTheme.</a> All right
-                reserved</p>
-            </div>
-          </div>
-        </div>
-      </footer>
-      <!-- footer area end  -->
-
     </div>
-  </div>
 
-  <div id="theme-toggle" class="switcher-button" title="Toggle Dark/Light Mode">
-    <div class="switcher-button-inner">
-      <i class="fas fa-sun icon-light"></i>
-      <i class="fas fa-moon icon-dark"></i>
+    <!-- Theme Toggle (hidden for this design) -->
+    <div id="theme-toggle" class="switcher-button" title="Toggle Dark/Light Mode" style="display: none;">
+        <div class="switcher-button-inner">
+            <i class="fas fa-sun icon-light"></i>
+            <i class="fas fa-moon icon-dark"></i>
+        </div>
     </div>
-  </div>
 
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/jquery-3.7.1.min.js"></script>
-  <script src="assets/vendor/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/jquery.magnific-popup.min.js"></script>
-  <script src="assets/vendor/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/gsap.min.js"></script>
-  <script src="assets/vendor/ScrollTrigger.min.js"></script>
-  <script src="assets/vendor/ScrollSmoother.min.js"></script>
-  <script src="assets/vendor/ScrollToPlugin.min.js"></script>
-  <script src="assets/vendor/SplitText.min.js"></script>
-  <script src="assets/vendor/TextPlugin.js"></script>
-  <script src="assets/vendor/customEase.js"></script>
-  <script src="assets/vendor/Flip.min.js"></script>
-  <script src="assets/vendor/jquery.meanmenu.min.js"></script>
-  <script src="assets/vendor/backToTop.js"></script>
-  <script src="assets/vendor/matter.js"></script>
-  <script src="assets/vendor/throwable.js"></script>
-  <script src="assets/js/magiccursor.js"></script>
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/jquery-3.7.1.min.js"></script>
+    <script src="assets/vendor/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/jquery.magnific-popup.min.js"></script>
+    <script src="assets/vendor/swiper.min.js"></script>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/vendor/ScrollTrigger.min.js"></script>
+    <script src="assets/vendor/ScrollSmoother.min.js"></script>
+    <script src="assets/vendor/ScrollToPlugin.min.js"></script>
+    <script src="assets/vendor/SplitText.min.js"></script>
+    <script src="assets/vendor/TextPlugin.js"></script>
+    <script src="assets/vendor/customEase.js"></script>
+    <script src="assets/vendor/Flip.min.js"></script>
+    <script src="assets/vendor/jquery.meanmenu.min.js"></script>
+    <script src="assets/vendor/backToTop.js"></script>
+    <script src="assets/vendor/matter.js"></script>
+    <script src="assets/vendor/throwable.js"></script>
+    <script src="assets/ad-js/magiccursor.js"></script>
+    <script src="assets/vendor/waypoints.min.js"></script>
 
-  <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
+    <!-- Template Main JS File -->
+    <script src="assets/ad-js/main.js"></script>
+
+    <!-- Custom Header Scroll Effect -->
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.look-header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
 
 </body>
 
