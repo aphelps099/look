@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -391,6 +392,7 @@
         .enemy-content {
             max-width: 1000px;
             margin: 0 auto;
+            text-align: center;
         }
 
         .enemy-text {
@@ -404,15 +406,44 @@
 
         .enemy-headline {
             font-family: var(--font-display);
-            font-size: clamp(1.75rem, 4vw, 3rem);
+            font-size: clamp(2rem, 5vw, 4rem);
             font-weight: 700;
-            line-height: 1.3;
+            line-height: 1.2;
             color: var(--white);
             margin-bottom: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.1em;
         }
 
-        .enemy-headline .accent {
+        .enemy-line-1 {
+            display: block;
+        }
+
+        .rotating-word {
             color: var(--accent);
+            display: block;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .rotating-word.fade-out {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+
+        .rotating-word.fade-in {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        /* Hidden element used to measure word widths */
+        .word-measurer {
+            position: absolute;
+            visibility: hidden;
+            height: auto;
+            width: auto;
+            white-space: nowrap;
         }
 
         .enemy-description {
@@ -420,7 +451,8 @@
             font-weight: 300;
             line-height: 1.8;
             color: var(--off-white);
-            max-width: 700px;
+            max-width: 600px;
+            margin: 0 auto;
             opacity: 0.8;
         }
 
@@ -1193,7 +1225,10 @@
         <div class="enemy-content">
             <div class="enemy-text">
                 <p class="section-label">What We Don't Do</p>
-                <h2 class="enemy-headline">We don't do logo refreshes.<br>We don't do template sites.<br>We don't do <span class="accent">"good enough."</span></h2>
+                <h2 class="enemy-headline">
+                    <span class="enemy-line-1">We don't do</span>
+                    <span class="rotating-word" data-words='["logo refreshes.", "template sites.", "\"good enough.\"", "status quo.", "cookie-cutter.", "one-size-fits-all."]'>logo refreshes.</span>
+                </h2>
                 <p class="enemy-description">Most agencies sell you a logo and call it a brand. That's decoration. We build the system that makes you win—or we don't take the project.</p>
             </div>
         </div>
@@ -1426,6 +1461,78 @@
         document.querySelectorAll('.statement-text, .statement-caption, .system-label, .system-headline, .pillar, .enemy-text, .belief, .section-label, .work-headline, .case-study, .method-text, .audience-label, .audience-headline, .audience-subtext, .audience-exclusivity, .cta-only, .cta-headline, .cta-button, .cta-email, .cta-note, .cta-proof').forEach(el => {
             observer.observe(el);
         });
+
+        // Rotating word on scroll - simple text swap
+        const rotatingWord = document.querySelector('.rotating-word');
+        const words = JSON.parse(rotatingWord.dataset.words);
+        const enemySection = document.querySelector('.enemy');
+        let currentIndex = 0;
+        let lastScrollY = window.scrollY;
+        let scrollAccumulator = 0;
+        const scrollThreshold = 250;
+        let isAnimating = false;
+        let isInView = false;
+
+        function swapWord(direction) {
+            if (isAnimating) return;
+            isAnimating = true;
+
+            // Fade out
+            rotatingWord.classList.add('fade-out');
+
+            setTimeout(() => {
+                // Update index
+                if (direction === 'down') {
+                    currentIndex = (currentIndex + 1) % words.length;
+                } else {
+                    currentIndex = (currentIndex - 1 + words.length) % words.length;
+                }
+
+                // Swap text
+                rotatingWord.textContent = words[currentIndex];
+                
+                // Prepare for fade in
+                rotatingWord.classList.remove('fade-out');
+                rotatingWord.classList.add('fade-in');
+
+                // Fade in
+                requestAnimationFrame(() => {
+                    rotatingWord.classList.remove('fade-in');
+                    isAnimating = false;
+                });
+            }, 300);
+        }
+
+        function handleRotationScroll() {
+            if (!isInView) return;
+            
+            const currentScrollY = window.scrollY;
+            const scrollDelta = currentScrollY - lastScrollY;
+            
+            scrollAccumulator += scrollDelta;
+            
+            if (Math.abs(scrollAccumulator) >= scrollThreshold) {
+                const direction = scrollAccumulator > 0 ? 'down' : 'up';
+                swapWord(direction);
+                scrollAccumulator = 0;
+            }
+            
+            lastScrollY = currentScrollY;
+        }
+
+        // Track when enemy section is in view
+        const enemyObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                isInView = entry.isIntersecting;
+                if (isInView) {
+                    lastScrollY = window.scrollY;
+                    scrollAccumulator = 0;
+                }
+            });
+        }, { threshold: 0.3 });
+
+        enemyObserver.observe(enemySection);
+        window.addEventListener('scroll', handleRotationScroll, { passive: true });
     </script>
 
 </body>
