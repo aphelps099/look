@@ -526,107 +526,91 @@
            FOOTER
         ══════════════════════════════════════════ */
         footer {
-            padding: 3rem 4rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-top: 1px solid var(--border-color);
+            padding: 20px 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
             background: var(--card-bg);
         }
 
-        .footer-left {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-        }
-
-        .footer-logo {
-            font-family: var(--font-display);
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 0.1em;
+        .footer-left a {
+            font-size: 11px;
             text-transform: uppercase;
-            color: var(--text-muted);
+            letter-spacing: 0.1em;
+            font-weight: 500;
+            color: #6b6b6b;
+            opacity: 0.65;
+            text-decoration: none;
+            transition: all 0.3s ease;
         }
 
-        .footer-copy {
-            font-size: 0.75rem;
-            color: var(--text-muted);
+        .footer-left a:hover {
+            opacity: 1;
+            color: #ffffff;
         }
 
         .footer-right {
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 10px;
         }
 
-        .designer-link {
+        .designer-credit {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #6b6b6b;
+            opacity: 0;
+            transform: translateX(16px);
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            white-space: nowrap;
+        }
+
+        .designer-credit a {
+            color: inherit;
             text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            transition: all 0.3s ease;
+            font-weight: 600;
         }
 
-        .designer-logo {
-            width: 40px;
-            height: 40px;
+        .footer-right:hover .designer-credit {
+            opacity: 0.8;
+            transform: translateX(0);
+        }
+
+        .designer-badge {
+            width: 22px;
+            height: 22px;
             border-radius: 50%;
             background: #FA814D;
+            opacity: 0.65;
             display: flex;
             align-items: center;
             justify-content: center;
-            position: relative;
             transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
             transform-style: preserve-3d;
         }
 
-        .designer-logo-letter {
+        .designer-badge-inner {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+        }
+
+        .badge-letter {
             font-family: var(--font-display);
-            font-size: 1.25rem;
+            font-size: 11px;
             font-weight: 700;
-            color: var(--black);
-            transition: all 0.6s ease;
+            color: #000000;
         }
 
-        .designer-link:hover .designer-logo {
-            transform: rotateY(360deg) scale(1.1);
-            background: linear-gradient(135deg, #FA814D 0%, #FFB88C 25%, #FFFFFF 50%, #FFB88C 75%, #FA814D 100%);
-            background-size: 200% 200%;
-            animation: chromeShine 2s ease-in-out infinite;
-            box-shadow: 0 8px 24px rgba(250, 129, 77, 0.4),
-                        inset 0 1px 0 rgba(255, 255, 255, 0.5),
-                        inset 0 -1px 0 rgba(0, 0, 0, 0.2);
-        }
-
-        .designer-link:hover .designer-logo-letter {
-            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8),
-                        0 0 10px rgba(255, 255, 255, 0.6);
-        }
-
-        @keyframes chromeShine {
-            0%, 100% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-        }
-
-        .designer-text {
-            font-size: 0.65rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            opacity: 0;
-            transform: translateX(-10px);
-            transition: all 0.4s ease;
-            white-space: nowrap;
-        }
-
-        .designer-link:hover .designer-text {
+        .footer-right:hover .designer-badge {
             opacity: 1;
-            transform: translateX(0);
+            transform: rotateY(360deg);
+            box-shadow: 0 0 12px rgba(250, 129, 77, 0.5);
+            background: linear-gradient(135deg, #FA814D 0%, #FFB88C 50%, #FA814D 100%);
         }
 
         /* ══════════════════════════════════════════
@@ -716,29 +700,27 @@
 
             footer {
                 flex-direction: column;
-                gap: 1.5rem;
-                padding: 2rem 1.5rem;
+                gap: 16px;
+                padding: 20px;
                 text-align: center;
             }
 
             .footer-left {
-                flex-direction: column;
-                gap: 0.5rem;
+                order: 2;
             }
 
             .footer-right {
-                width: 100%;
+                order: 1;
                 justify-content: center;
             }
 
-            .designer-link {
-                flex-direction: row-reverse;
-            }
-
-            .designer-text {
+            .designer-credit {
                 opacity: 1;
                 transform: translateX(0);
-                font-size: 0.6rem;
+            }
+
+            .designer-badge {
+                opacity: 0.8;
             }
         }
     </style>
@@ -866,16 +848,15 @@
     <!-- Footer -->
     <footer>
         <div class="footer-left">
-            <span class="footer-logo">Look Serious</span>
-            <span class="footer-copy">© 2026 Look Serious</span>
+            <a href="/">©Look Serious</a>
         </div>
         <div class="footer-right">
-            <a href="https://aaroncphelps.com" target="_blank" rel="noopener noreferrer" class="designer-link">
-                <span class="designer-text">site designed by AARON PHELPS</span>
-                <div class="designer-logo">
-                    <span class="designer-logo-letter">A</span>
+            <span class="designer-credit">site designed by <a href="https://aaroncphelps.com" target="_blank" rel="noopener">AARON PHELPS</a></span>
+            <div class="designer-badge">
+                <div class="designer-badge-inner">
+                    <span class="badge-letter">A</span>
                 </div>
-            </a>
+            </div>
         </div>
     </footer>
 
