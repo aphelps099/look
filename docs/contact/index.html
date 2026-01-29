@@ -577,7 +577,7 @@
                 <h2 class="form-title">Tell me about your business</h2>
                 <p class="form-subtitle">The more context, the better our conversation.</p>
 
-                <form action="#" method="POST">
+                <form id="contact-form" onsubmit="return false;">
                     
                     <!-- Company & Contact Section -->
                     <div class="form-section">
@@ -655,10 +655,27 @@
     </footer>
 
     <script>
-        document.querySelector('form').addEventListener('submit', function(e) {
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
             e.preventDefault();
-            // Redirect to confirmation page
-            window.location.href = '/look/look-serious-confirmation-v2%20(1).html';
+            e.stopPropagation();
+            // Check if form is valid before redirecting
+            if (this.checkValidity()) {
+                window.location.href = '/look/look-serious-confirmation-v2%20(1).html';
+            } else {
+                this.reportValidity();
+            }
+            return false;
+        });
+
+        // Also handle the submit button click directly
+        document.querySelector('.submit-btn').addEventListener('click', function(e) {
+            e.preventDefault();
+            var form = document.getElementById('contact-form');
+            if (form.checkValidity()) {
+                window.location.href = '/look/look-serious-confirmation-v2%20(1).html';
+            } else {
+                form.reportValidity();
+            }
         });
     </script>
 
