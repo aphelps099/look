@@ -399,61 +399,162 @@
             background: var(--off-white);
         }
 
-        /* Diagonal headline layout */
-        .system-headlines {
-            position: relative;
-            min-height: 400px;
-            margin-bottom: 2rem;
+        /* Premium editorial layout */
+        .system-blocks {
+            display: flex;
+            flex-direction: column;
+            gap: 5rem;
         }
 
-        .system-line {
-            font-family: var(--font-display);
-            font-size: clamp(1.75rem, 4.5vw, 3.5rem);
-            font-weight: 700;
-            line-height: 1.15;
-            letter-spacing: -0.02em;
-            position: absolute;
+        .system-block {
+            display: grid;
+            grid-template-columns: 3.5rem 1fr;
+            gap: 0;
             opacity: 0;
-            transform: translateY(40px);
-            white-space: nowrap;
+            transform: translateY(50px);
         }
 
-        .system-line.visible {
-            animation: snapUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        .system-block.visible {
+            animation: blockReveal 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
-        .system-line-1 {
-            top: 0;
+        .system-block:nth-child(2).visible {
+            animation-delay: 0.12s;
+        }
+
+        .system-block:nth-child(3).visible {
+            animation-delay: 0.24s;
+        }
+
+        /* Staggered horizontal indent - editorial feel */
+        .system-block:nth-child(1) {
+            margin-left: 0;
+        }
+
+        .system-block:nth-child(2) {
+            margin-left: 6vw;
+        }
+
+        .system-block:nth-child(3) {
+            margin-left: 12vw;
+        }
+
+        .system-index {
+            font-family: var(--font-body);
+            font-size: 0.7rem;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            padding-top: 0.5rem;
+            opacity: 0;
+        }
+
+        .system-block.visible .system-index {
+            animation: fadeIn 0.4s 0.15s forwards;
+        }
+
+        .system-block:nth-child(2).visible .system-index {
+            animation-delay: 0.27s;
+        }
+
+        .system-block:nth-child(3).visible .system-index {
+            animation-delay: 0.39s;
+        }
+
+        .system-block-content {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .system-word-row {
+            display: flex;
+            align-items: baseline;
+            gap: 1.5rem;
+        }
+
+        .system-word {
+            font-family: var(--font-display);
+            font-size: clamp(3.5rem, 10vw, 8rem);
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            line-height: 0.85;
+            color: var(--white);
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Animated underline on keyword */
+        .system-word::after {
+            content: '';
+            position: absolute;
+            bottom: 0.02em;
             left: 0;
+            width: 0;
+            height: 0.035em;
+            background: var(--accent);
         }
 
-        .system-line-1.visible {
-            animation-delay: 0s;
+        .system-block.visible .system-word::after {
+            animation: lineGrow 0.5s 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
-        .system-line-2 {
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) translateY(40px);
+        .system-block:nth-child(2).visible .system-word::after {
+            animation-delay: 0.42s;
         }
 
-        .system-line-2.visible {
-            animation: snapUpCenter 0.5s 0.15s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        .system-block:nth-child(3).visible .system-word::after {
+            animation-delay: 0.54s;
         }
 
-        .system-line-3 {
-            bottom: 0;
-            right: 0;
+        .system-line-element {
+            flex: 1;
+            height: 1px;
+            background: var(--mid-gray);
+            transform: scaleX(0);
+            transform-origin: left;
+            align-self: center;
+            max-width: 200px;
         }
 
-        .system-line-3.visible {
-            animation-delay: 0.3s;
+        .system-block.visible .system-line-element {
+            animation: lineScale 0.6s 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
-        @keyframes snapUp {
+        .system-block:nth-child(2).visible .system-line-element {
+            animation-delay: 0.37s;
+        }
+
+        .system-block:nth-child(3).visible .system-line-element {
+            animation-delay: 0.49s;
+        }
+
+        .system-desc {
+            font-family: var(--font-body);
+            font-size: clamp(0.8rem, 1.2vw, 0.95rem);
+            font-weight: 300;
+            letter-spacing: 0.03em;
+            color: var(--text-secondary);
+            opacity: 0;
+            padding-left: 0.1em;
+        }
+
+        .system-block.visible .system-desc {
+            animation: fadeIn 0.4s 0.4s forwards;
+        }
+
+        .system-block:nth-child(2).visible .system-desc {
+            animation-delay: 0.52s;
+        }
+
+        .system-block:nth-child(3).visible .system-desc {
+            animation-delay: 0.64s;
+        }
+
+        @keyframes blockReveal {
             0% {
                 opacity: 0;
-                transform: translateY(40px);
+                transform: translateY(50px);
             }
             100% {
                 opacity: 1;
@@ -461,46 +562,16 @@
             }
         }
 
-        @keyframes snapUpCenter {
+        @keyframes lineScale {
             0% {
-                opacity: 0;
-                transform: translate(-50%, -50%) translateY(40px);
+                transform: scaleX(0);
             }
             100% {
-                opacity: 1;
-                transform: translate(-50%, -50%) translateY(0);
+                transform: scaleX(1);
             }
         }
 
-        /* Animated underlines */
-        .underline-animate {
-            position: relative;
-            display: inline-block;
-        }
-
-        .underline-animate::after {
-            content: '';
-            position: absolute;
-            bottom: 0.05em;
-            left: 0;
-            width: 0;
-            height: 3px;
-            background: var(--accent);
-        }
-
-        .underline-animate.visible::after {
-            animation: underlineGrow 0.6s 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-
-        .system-line-2 .underline-animate.visible::after {
-            animation-delay: 0.55s;
-        }
-
-        .system-line-3 .underline-animate.visible::after {
-            animation-delay: 0.7s;
-        }
-
-        @keyframes underlineGrow {
+        @keyframes lineGrow {
             0% {
                 width: 0;
             }
@@ -1242,13 +1313,22 @@
                 padding: 1.5rem 2rem;
             }
 
-            /* System headlines responsive */
-            .system-headlines {
-                min-height: 320px;
+            /* System blocks responsive */
+            .system-blocks {
+                gap: 4rem;
             }
 
-            .system-line {
-                font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+            .system-block:nth-child(2),
+            .system-block:nth-child(3) {
+                margin-left: 4vw;
+            }
+
+            .system-block:nth-child(3) {
+                margin-left: 8vw;
+            }
+
+            .system-word {
+                font-size: clamp(2.5rem, 8vw, 5rem);
             }
 
             .pillars {
@@ -1329,36 +1409,36 @@
                 text-align: left;
             }
 
-            /* System headlines mobile - stack vertically */
+            /* System blocks mobile */
             .system-header {
                 flex-direction: column;
                 gap: 1rem;
             }
 
-            .system-headlines {
-                position: relative;
-                min-height: auto;
-                display: flex;
-                flex-direction: column;
-                gap: 1.5rem;
+            .system-blocks {
+                gap: 3rem;
             }
 
-            .system-line {
-                position: relative;
-                top: auto;
-                left: auto;
-                right: auto;
-                bottom: auto;
-                font-size: clamp(1.25rem, 5vw, 1.75rem);
-                white-space: normal;
+            .system-block {
+                grid-template-columns: 2.5rem 1fr;
             }
 
-            .system-line-2 {
-                transform: none;
+            .system-block:nth-child(1),
+            .system-block:nth-child(2),
+            .system-block:nth-child(3) {
+                margin-left: 0;
             }
 
-            .system-line-2.visible {
-                animation: snapUp 0.5s 0.15s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            .system-word {
+                font-size: clamp(2rem, 12vw, 3.5rem);
+            }
+
+            .system-line-element {
+                display: none;
+            }
+
+            .system-desc {
+                font-size: 0.85rem;
             }
 
             .audience-content {
@@ -1468,10 +1548,37 @@
                     <p class="system-label">What we build</p>
                     <a href="/look/services" class="system-link">How we work →</a>
                 </div>
-                <div class="system-headlines">
-                    <p class="system-line system-line-1">The <span class="underline-animate">strategy</span> that positions you.</p>
-                    <p class="system-line system-line-2">The <span class="underline-animate">technology</span> that scales you.</p>
-                    <p class="system-line system-line-3">The <span class="underline-animate">intelligence</span> that keeps you ahead.</p>
+                <div class="system-blocks">
+                    <div class="system-block">
+                        <span class="system-index">01</span>
+                        <div class="system-block-content">
+                            <div class="system-word-row">
+                                <span class="system-word">Strategy</span>
+                                <span class="system-line-element"></span>
+                            </div>
+                            <span class="system-desc">that positions you.</span>
+                        </div>
+                    </div>
+                    <div class="system-block">
+                        <span class="system-index">02</span>
+                        <div class="system-block-content">
+                            <div class="system-word-row">
+                                <span class="system-word">Technology</span>
+                                <span class="system-line-element"></span>
+                            </div>
+                            <span class="system-desc">that scales you.</span>
+                        </div>
+                    </div>
+                    <div class="system-block">
+                        <span class="system-index">03</span>
+                        <div class="system-block-content">
+                            <div class="system-word-row">
+                                <span class="system-word">Intelligence</span>
+                                <span class="system-line-element"></span>
+                            </div>
+                            <span class="system-desc">that keeps you ahead.</span>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="pillars">
@@ -1737,7 +1844,7 @@
         }, observerOptions);
 
         // Observe all animated elements
-        document.querySelectorAll('.statement-text, .statement-caption, .system-label, .system-link, .system-line, .system-line .underline-animate, .pillar, .enemy-text, .belief, .section-label, .work-headline, .case-study, .method-text, .audience-label, .audience-headline, .audience-subtext, .audience-exclusivity, .cta-only, .cta-headline, .cta-button, .cta-email, .cta-note, .cta-proof').forEach(el => {
+        document.querySelectorAll('.statement-text, .statement-caption, .system-label, .system-link, .system-block, .pillar, .enemy-text, .belief, .section-label, .work-headline, .case-study, .method-text, .audience-label, .audience-headline, .audience-subtext, .audience-exclusivity, .cta-only, .cta-headline, .cta-button, .cta-email, .cta-note, .cta-proof').forEach(el => {
             observer.observe(el);
         });
 
