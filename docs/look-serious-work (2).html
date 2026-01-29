@@ -191,17 +191,12 @@
         }
 
         .featured-number {
-            position: absolute;
-            top: 4rem;
-            right: 4rem;
             font-family: var(--display);
-            font-size: clamp(6rem, 15vw, 12rem);
-            font-weight: 800;
-            color: var(--mid);
-            line-height: 1;
-            letter-spacing: -0.05em;
-            user-select: none;
-            z-index: 1;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
         }
 
         .featured a {
@@ -343,17 +338,11 @@
 
         .project-number {
             font-family: var(--display);
-            font-size: clamp(4rem, 8vw, 6rem);
-            font-weight: 800;
-            color: var(--mid);
-            line-height: 1;
-            letter-spacing: -0.04em;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            color: var(--muted);
             margin-bottom: 1.5rem;
-            transition: color 0.4s ease;
-        }
-
-        .project:hover .project-number {
-            color: var(--border);
         }
 
         .project-image {
@@ -541,7 +530,6 @@
             header { padding: 0 3rem 5rem; }
             .header-rule { left: 3rem; right: 3rem; }
             .featured { padding: 5rem 3rem; }
-            .featured-number { right: 3rem; font-size: 8rem; }
             .projects { padding: 2rem 3rem 5rem; gap: 1.5rem; }
             .cta { padding: 8rem 3rem; }
             .cta::before { left: 3rem; right: 3rem; }
@@ -553,17 +541,15 @@
             header { padding: 0 2rem 4rem; min-height: 55vh; }
             .header-rule { left: 2rem; right: 2rem; }
             .featured { padding: 4rem 2rem; }
-            .featured-number { display: none; }
             .featured-info { grid-template-columns: 1fr; gap: 2rem; }
             .featured-meta { justify-content: flex-start; }
             .meta-item { text-align: left; }
-            .projects { 
-                padding: 2rem; 
+            .projects {
+                padding: 2rem;
                 grid-template-columns: 1fr;
                 gap: 4rem;
             }
             .project:nth-child(2) { margin-top: 0; }
-            .project-number { font-size: 4rem; }
             .cta { padding: 6rem 2rem; }
             .cta::before { left: 2rem; right: 2rem; }
             footer { padding: 2rem; flex-direction: column; gap: 0.5rem; }
@@ -603,7 +589,6 @@
     </header>
 
     <section class="featured">
-        <span class="featured-number">01</span>
         <a href="/work/tech-futures-group">
             <div class="featured-image">
                 <div class="featured-image-inner">
@@ -612,6 +597,7 @@
             </div>
             <div class="featured-info">
                 <div class="featured-main">
+                    <span class="featured-number">01</span>
                     <h2>Tech Futures Group</h2>
                     <p>Four scattered initiatives unified into one platform. The brand finally matched the ambition.</p>
                 </div>
