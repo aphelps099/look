@@ -97,14 +97,62 @@
             letter-spacing: 0.05em;
             color: var(--white);
             text-decoration: none;
-            padding: 0.75rem 1.5rem;
+            padding: 0.8rem 1.5rem;
             border: 1px solid rgba(255,255,255,0.3);
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            z-index: 2;
+            mix-blend-mode: normal;
+        }
+
+        /* Light glow effect */
+        .nav-contact::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200%;
+            height: 150px;
+            background: radial-gradient(ellipse at top, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.03) 30%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* Textured grain overlay */
+        .nav-contact::before {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 250%;
+            height: 120px;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            mask-image: radial-gradient(ellipse at top, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.2) 40%, transparent 70%);
+            -webkit-mask-image: radial-gradient(ellipse at top, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.2) 40%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .nav-contact:hover::after {
+            opacity: 1;
+        }
+
+        .nav-contact:hover::before {
+            opacity: 0.08;
         }
 
         .nav-contact:hover {
-            background: var(--white);
-            color: var(--black);
+            background: var(--accent);
+            color: var(--white);
+            border-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(224, 74, 47, 0.25);
         }
 
         .nav-links {
