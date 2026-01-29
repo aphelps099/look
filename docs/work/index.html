@@ -3,27 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Work — Look Serious</title>
-    
-    <!-- Fonts -->
+    <title>Work — Look Serious</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet">
-    
+
     <style>
         :root {
-            --black: #050505;
-            --charcoal: #0e0e0e;
-            --dark-gray: #161616;
-            --mid-gray: #252525;
-            --text-muted: #707070;
-            --text-secondary: #a0a0a0;
-            --off-white: #f0f0f0;
+            --black: #080808;
+            --dark: #0c0c0c;
+            --mid: #141414;
+            --border: #1a1a1a;
+            --muted: #404040;
+            --secondary: #707070;
+            --light: #e8e8e8;
             --white: #ffffff;
             --accent: #e04a2f;
-            
-            --font-display: 'Syne', sans-serif;
-            --font-body: 'Outfit', -apple-system, sans-serif;
+
+            --display: 'Syne', sans-serif;
+            --body: 'Outfit', sans-serif;
         }
 
         * {
@@ -32,46 +31,36 @@
             box-sizing: border-box;
         }
 
-        ::selection {
-            background: var(--accent);
-            color: var(--white);
-        }
-
         html {
-            scroll-behavior: smooth;
+            font-size: 16px;
         }
 
         body {
-            font-family: var(--font-body);
-            background-color: var(--black);
-            color: var(--off-white);
-            line-height: 1.6;
-            overflow-x: hidden;
+            font-family: var(--body);
+            background: var(--black);
+            color: var(--light);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
-        /* Subtle grain texture overlay */
-        body::after {
+        /* Grain overlay */
+        body::before {
             content: '';
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-            opacity: 0.03;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            opacity: 0.025;
             pointer-events: none;
-            z-index: 1000;
+            z-index: 9999;
         }
 
-        /* ══════════════════════════════════════════
-           NAVIGATION
-        ══════════════════════════════════════════ */
+        /* Nav */
         nav {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            padding: 2rem 4rem;
+            padding: 2.5rem 4rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -80,10 +69,10 @@
         }
 
         .logo {
-            font-family: var(--font-display);
-            font-size: 0.85rem;
+            font-family: var(--display);
+            font-size: 0.75rem;
             font-weight: 700;
-            letter-spacing: 0.08em;
+            letter-spacing: 0.12em;
             text-transform: uppercase;
             color: var(--white);
             text-decoration: none;
@@ -92,38 +81,30 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 2.5rem;
+            gap: 3rem;
         }
 
         .nav-link {
-            font-family: var(--font-body);
-            font-size: 0.8rem;
-            font-weight: 400;
-            letter-spacing: 0.03em;
-            color: var(--white);
-            text-decoration: none;
-            opacity: 0.7;
-            transition: opacity 0.3s ease;
-        }
-
-        .nav-link:hover {
-            opacity: 1;
-        }
-
-        .nav-link.active {
-            opacity: 1;
-        }
-
-        .nav-contact {
-            font-family: var(--font-body);
-            font-size: 0.8rem;
+            font-size: 0.7rem;
             font-weight: 400;
             letter-spacing: 0.05em;
             color: var(--white);
             text-decoration: none;
+            opacity: 0.5;
+            transition: opacity 0.4s ease;
+        }
+
+        .nav-link:hover, .nav-link.active { opacity: 1; }
+
+        .nav-contact {
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            color: var(--white);
+            text-decoration: none;
             padding: 0.75rem 1.5rem;
-            border: 1px solid rgba(255,255,255,0.3);
-            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.4s ease;
         }
 
         .nav-contact:hover {
@@ -131,290 +112,398 @@
             color: var(--black);
         }
 
-        /* ══════════════════════════════════════════
-           SECTIONS - GENERAL
-        ══════════════════════════════════════════ */
-        section {
-            padding: 8rem 4rem;
+        /* Header */
+        header {
+            min-height: 65vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 0 4rem 6rem;
             position: relative;
         }
 
-        .section-label {
-            font-size: 0.75rem;
+        .header-rule {
+            position: absolute;
+            bottom: 0;
+            left: 4rem;
+            right: 4rem;
+            height: 1px;
+            background: var(--border);
+        }
+
+        .header-label {
+            font-size: 0.65rem;
             font-weight: 500;
-            letter-spacing: 0.2em;
+            letter-spacing: 0.3em;
             text-transform: uppercase;
             color: var(--accent);
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
             opacity: 0;
+            animation: fadeIn 1s 0.2s forwards;
         }
 
-        .section-label.visible {
-            animation: fadeIn 0.6s forwards;
-        }
-
-        .section-divider {
-            width: 100%;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--mid-gray), transparent);
-        }
-
-        /* ══════════════════════════════════════════
-           HERO SECTION
-        ══════════════════════════════════════════ */
-        .hero {
-            min-height: 50vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding-top: 10rem;
-            padding-bottom: 4rem;
-        }
-
-        .hero-content {
-            max-width: 900px;
-            margin: 0 auto;
-            width: 100%;
-        }
-
-        .hero-headline {
-            font-family: var(--font-display);
-            font-size: clamp(3rem, 8vw, 5rem);
+        header h1 {
+            font-family: var(--display);
+            font-size: clamp(4rem, 11vw, 10rem);
             font-weight: 800;
-            line-height: 1;
-            letter-spacing: -0.03em;
-            margin-bottom: 1.5rem;
-            opacity: 0;
-            transform: translateY(40px);
-            animation: fadeUp 1s 0.2s forwards;
+            line-height: 0.85;
+            letter-spacing: -0.04em;
+            text-transform: uppercase;
         }
 
-        .hero-headline .accent {
+        header h1 span {
+            display: block;
+            opacity: 0;
+            transform: translateY(100%);
+        }
+
+        header h1 .l1 {
+            color: var(--white);
+            animation: slideUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+        }
+
+        header h1 .l2 {
             color: var(--accent);
+            animation: slideUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.45s forwards;
         }
 
-        .hero-subline {
-            font-family: var(--font-body);
-            font-size: clamp(1rem, 2vw, 1.2rem);
+        header > p {
+            font-size: 0.95rem;
             font-weight: 300;
-            color: var(--text-secondary);
-            max-width: 600px;
-            line-height: 1.7;
+            color: var(--secondary);
+            margin-top: 2.5rem;
+            letter-spacing: 0.01em;
             opacity: 0;
-            transform: translateY(30px);
-            animation: fadeUp 1s 0.5s forwards;
+            animation: fadeIn 1s 0.7s forwards;
         }
 
-        /* ══════════════════════════════════════════
-           WORK GRID
-        ══════════════════════════════════════════ */
-        .work-section {
-            padding-top: 2rem;
+        @keyframes slideUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            to { opacity: 1; }
         }
 
-        .work-grid {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
+        /* Featured */
+        .featured {
+            padding: 6rem 4rem;
+            position: relative;
         }
 
-        /* ══════════════════════════════════════════
-           CASE STUDY CARD
-        ══════════════════════════════════════════ */
-        .case-card {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            background: var(--charcoal);
-            border: 1px solid var(--mid-gray);
-            opacity: 0;
-            transform: translateY(40px);
+        .featured-number {
+            position: absolute;
+            top: 4rem;
+            right: 4rem;
+            font-family: var(--display);
+            font-size: clamp(6rem, 15vw, 12rem);
+            font-weight: 800;
+            color: var(--mid);
+            line-height: 1;
+            letter-spacing: -0.05em;
+            user-select: none;
+            z-index: 1;
         }
 
-        .case-card.visible {
-            animation: fadeUp 0.8s forwards;
+        .featured a {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            position: relative;
+            z-index: 2;
         }
 
-        .case-card:nth-child(2).visible {
-            animation-delay: 0.15s;
-        }
-
-        .case-card:nth-child(3).visible {
-            animation-delay: 0.3s;
-        }
-
-        .case-card:nth-child(even) {
-            direction: rtl;
-        }
-
-        .case-card:nth-child(even) > * {
-            direction: ltr;
-        }
-
-        .case-image {
-            aspect-ratio: 4/3;
-            background: var(--dark-gray);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .featured-image {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: var(--dark);
             overflow: hidden;
             position: relative;
         }
 
-        .case-image-placeholder {
-            font-family: var(--font-display);
-            font-size: 0.7rem;
-            font-weight: 600;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: var(--text-muted);
-        }
-
-        .case-content {
-            padding: 3rem;
+        .featured-image-inner {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(145deg, #101018 0%, #080810 100%);
             display: flex;
-            flex-direction: column;
+            align-items: center;
             justify-content: center;
+            transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .case-meta {
-            display: flex;
-            gap: 1.5rem;
-            margin-bottom: 1.5rem;
+        .featured a:hover .featured-image-inner {
+            transform: scale(1.015);
         }
 
-        .case-tag {
-            font-size: 0.7rem;
+        .featured-image::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border: 1px solid var(--border);
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .featured-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 3;
+        }
+
+        .featured a:hover .featured-image::after {
+            width: 100%;
+        }
+
+        .placeholder {
+            font-size: 0.6rem;
             font-weight: 500;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.2em;
             text-transform: uppercase;
-            color: var(--text-muted);
-            padding: 0.4rem 0.75rem;
-            border: 1px solid var(--mid-gray);
+            color: var(--muted);
         }
 
-        .case-name {
-            font-family: var(--font-display);
+        .featured-info {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 4rem;
+            padding-top: 2.5rem;
+            align-items: end;
+        }
+
+        .featured-main h2 {
+            font-family: var(--display);
             font-size: clamp(1.5rem, 3vw, 2rem);
             font-weight: 700;
             color: var(--white);
-            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.75rem;
+            transition: color 0.4s ease;
         }
 
-        .case-tagline {
-            font-size: 1rem;
-            font-weight: 300;
+        .featured a:hover h2 {
             color: var(--accent);
-            margin-bottom: 1.5rem;
         }
 
-        .case-description {
-            font-size: 0.95rem;
+        .featured-main p {
+            font-size: 0.9rem;
             font-weight: 300;
-            line-height: 1.8;
-            color: var(--off-white);
-            opacity: 0.8;
-            margin-bottom: 2rem;
+            color: var(--secondary);
+            line-height: 1.6;
+            max-width: 480px;
         }
 
-        .case-details {
+        .featured-meta {
+            display: flex;
+            gap: 3rem;
+        }
+
+        .meta-item {
+            text-align: right;
+        }
+
+        .meta-label {
+            font-size: 0.55rem;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 0.35rem;
+        }
+
+        .meta-value {
+            font-size: 0.8rem;
+            font-weight: 400;
+            color: var(--light);
+            letter-spacing: 0.02em;
+        }
+
+        /* Projects Grid */
+        .projects {
+            padding: 2rem 4rem 6rem;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid var(--mid-gray);
+            gap: 2rem;
+        }
+
+        .project {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            position: relative;
+        }
+
+        .project:nth-child(2) {
+            margin-top: 8rem;
+        }
+
+        .project-number {
+            font-family: var(--display);
+            font-size: clamp(4rem, 8vw, 6rem);
+            font-weight: 800;
+            color: var(--mid);
+            line-height: 1;
+            letter-spacing: -0.04em;
+            margin-bottom: 1.5rem;
+            transition: color 0.4s ease;
+        }
+
+        .project:hover .project-number {
+            color: var(--border);
+        }
+
+        .project-image {
+            width: 100%;
+            aspect-ratio: 4/3;
+            background: var(--dark);
+            overflow: hidden;
+            position: relative;
             margin-bottom: 2rem;
         }
 
-        .case-detail-group h4 {
-            font-size: 0.65rem;
+        .project-image-inner {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .project:nth-child(1) .project-image-inner {
+            background: linear-gradient(145deg, #0f1810 0%, #080a08 100%);
+        }
+
+        .project:nth-child(2) .project-image-inner {
+            background: linear-gradient(145deg, #18100f 0%, #0a0808 100%);
+        }
+
+        .project:hover .project-image-inner {
+            transform: scale(1.02);
+        }
+
+        .project-image::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border: 1px solid var(--border);
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .project-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 3;
+        }
+
+        .project:hover .project-image::after {
+            width: 100%;
+        }
+
+        .project-content {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        .project-type {
+            font-size: 0.55rem;
             font-weight: 500;
             letter-spacing: 0.15em;
             text-transform: uppercase;
-            color: var(--text-muted);
-            margin-bottom: 0.5rem;
+            color: var(--muted);
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+            white-space: nowrap;
         }
 
-        .case-detail-group p {
-            font-size: 0.9rem;
-            font-weight: 400;
-            color: var(--off-white);
-        }
-
-        .case-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-family: var(--font-display);
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
+        .project-text h3 {
+            font-family: var(--display);
+            font-size: clamp(1.25rem, 2vw, 1.5rem);
+            font-weight: 700;
             color: var(--white);
-            text-decoration: none;
-            transition: color 0.3s ease;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.75rem;
+            transition: color 0.4s ease;
         }
 
-        .case-link:hover {
+        .project:hover h3 {
             color: var(--accent);
         }
 
-        .case-link svg {
-            width: 14px;
-            height: 14px;
-            transition: transform 0.3s ease;
-        }
-
-        .case-link:hover svg {
-            transform: translateX(4px);
-        }
-
-        /* ══════════════════════════════════════════
-           CTA SECTION
-        ══════════════════════════════════════════ */
-        .cta-section {
-            background: var(--dark-gray);
-            text-align: center;
-            padding: 8rem 4rem;
-        }
-
-        .cta-content {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .cta-headline {
-            font-family: var(--font-display);
-            font-size: clamp(1.5rem, 3vw, 2rem);
-            font-weight: 700;
-            line-height: 1.3;
-            color: var(--white);
-            margin-bottom: 1.5rem;
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
-        .cta-headline.visible {
-            animation: fadeUp 0.8s forwards;
-        }
-
-        .cta-subtext {
-            font-size: 1rem;
+        .project-text p {
+            font-size: 0.85rem;
             font-weight: 300;
-            color: var(--text-secondary);
-            margin-bottom: 2.5rem;
+            color: var(--secondary);
+            line-height: 1.6;
+        }
+
+        /* Reveal */
+        .reveal {
             opacity: 0;
+            transform: translateY(60px);
+            transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
+                        transform 1s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .cta-subtext.visible {
-            animation: fadeIn 0.8s 0.2s forwards;
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        .cta-button {
+        .projects .project:nth-child(2).reveal { transition-delay: 0.15s; }
+
+        /* CTA */
+        .cta {
+            padding: 10rem 4rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 4rem;
+            right: 4rem;
+            height: 1px;
+            background: var(--border);
+        }
+
+        .cta p.label {
+            font-size: 0.6rem;
+            font-weight: 500;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 2rem;
+        }
+
+        .cta h2 {
+            font-family: var(--display);
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            color: var(--white);
+            letter-spacing: -0.03em;
+            margin-bottom: 3rem;
+        }
+
+        .cta-btn {
             display: inline-block;
-            font-family: var(--font-display);
-            font-size: 0.8rem;
+            font-family: var(--display);
+            font-size: 0.65rem;
             font-weight: 600;
             letter-spacing: 0.15em;
             text-transform: uppercase;
@@ -422,334 +511,181 @@
             color: var(--black);
             background: var(--white);
             padding: 1.25rem 3rem;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            opacity: 0;
+            transition: all 0.4s ease;
         }
 
-        .cta-button.visible {
-            animation: fadeIn 0.8s 0.3s forwards;
-        }
-
-        .cta-button:hover {
+        .cta-btn:hover {
             background: var(--accent);
             color: var(--white);
-            transform: translateY(-3px);
         }
 
-        /* ══════════════════════════════════════════
-           FOOTER
-        ══════════════════════════════════════════ */
+        /* Footer */
         footer {
-            padding: 3rem 4rem;
+            padding: 2.5rem 4rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-top: 1px solid var(--mid-gray);
+            border-top: 1px solid var(--border);
         }
 
-        .footer-logo {
-            font-family: var(--font-display);
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--text-muted);
+        footer span {
+            font-size: 0.65rem;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            color: var(--muted);
         }
 
-        .footer-copy {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-        }
-
-        /* ══════════════════════════════════════════
-           ANIMATIONS
-        ══════════════════════════════════════════ */
-        @keyframes fadeUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
-            }
-        }
-
-        /* ══════════════════════════════════════════
-           RESPONSIVE
-        ══════════════════════════════════════════ */
+        /* Responsive */
         @media (max-width: 1024px) {
-            section {
-                padding: 6rem 3rem;
-            }
+            nav { padding: 2rem 3rem; }
+            header { padding: 0 3rem 5rem; }
+            .header-rule { left: 3rem; right: 3rem; }
+            .featured { padding: 5rem 3rem; }
+            .featured-number { right: 3rem; font-size: 8rem; }
+            .projects { padding: 2rem 3rem 5rem; gap: 1.5rem; }
+            .cta { padding: 8rem 3rem; }
+            .cta::before { left: 3rem; right: 3rem; }
+            footer { padding: 2rem 3rem; }
+        }
 
-            nav {
-                padding: 1.5rem 2rem;
-            }
-
-            .case-card {
+        @media (max-width: 768px) {
+            nav { padding: 1.5rem 2rem; }
+            header { padding: 0 2rem 4rem; min-height: 55vh; }
+            .header-rule { left: 2rem; right: 2rem; }
+            .featured { padding: 4rem 2rem; }
+            .featured-number { display: none; }
+            .featured-info { grid-template-columns: 1fr; gap: 2rem; }
+            .featured-meta { justify-content: flex-start; }
+            .meta-item { text-align: left; }
+            .projects {
+                padding: 2rem;
                 grid-template-columns: 1fr;
+                gap: 4rem;
             }
-
-            .case-card:nth-child(even) {
-                direction: ltr;
-            }
-
-            .case-image {
-                aspect-ratio: 16/9;
-            }
-
-            .case-content {
-                padding: 2.5rem;
-            }
-
-            footer {
-                padding: 2rem 3rem;
-            }
+            .project:nth-child(2) { margin-top: 0; }
+            .project-number { font-size: 4rem; }
+            .cta { padding: 6rem 2rem; }
+            .cta::before { left: 2rem; right: 2rem; }
+            footer { padding: 2rem; flex-direction: column; gap: 0.5rem; }
         }
 
         @media (max-width: 600px) {
-            section {
-                padding: 4rem 1.5rem;
-            }
-
-            nav {
-                padding: 1.25rem 1.5rem;
-            }
-
-            .nav-links {
-                gap: 1rem;
-            }
-
-            .nav-link {
-                display: none;
-            }
-
-            .hero {
-                padding-top: 8rem;
-            }
-
-            .case-content {
-                padding: 2rem 1.5rem;
-            }
-
-            .case-details {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-
-            .cta-section {
-                padding: 5rem 1.5rem;
-            }
-
-            footer {
-                flex-direction: column;
-                gap: 1rem;
-                padding: 2rem 1.5rem;
-                text-align: center;
+            .nav-link { display: none; }
+            .project-content { grid-template-columns: 1fr; gap: 0; }
+            .project-type {
+                writing-mode: horizontal-tb;
+                transform: none;
+                margin-bottom: 1rem;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Navigation -->
     <nav>
         <a href="/look/" class="logo">Look Serious</a>
         <div class="nav-links">
-            <a href="/look/about" class="nav-link">About</a>
-            <a href="/look/bos" class="nav-link">BOS™</a>
             <a href="/look/work" class="nav-link active">Work</a>
+            <a href="/look/bos" class="nav-link">BOS</a>
+            <a href="/look/about" class="nav-link">About</a>
             <a href="/look/contact" class="nav-contact">Let's Talk</a>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <p class="section-label visible">The Work</p>
-            <h1 class="hero-headline">
-                Brands we've <span class="accent">built.</span>
-            </h1>
-            <p class="hero-subline">
-                Each project started with a gap between where they were and where they needed to be. Here's how we closed it.
-            </p>
-        </div>
+    <header>
+        <p class="header-label">Selected Work</p>
+        <h1>
+            <span class="l1">The</span>
+            <span class="l2">Work</span>
+        </h1>
+        <p>Brands transformed. Gaps closed. Systems built.</p>
+        <div class="header-rule"></div>
+    </header>
+
+    <section class="featured">
+        <span class="featured-number">01</span>
+        <a href="/look/look-serious-case-study-tfg.html">
+            <div class="featured-image">
+                <div class="featured-image-inner">
+                    <span class="placeholder">Project Image</span>
+                </div>
+            </div>
+            <div class="featured-info">
+                <div class="featured-main">
+                    <h2>Tech Futures Group</h2>
+                    <p>Four scattered initiatives unified into one platform. The brand finally matched the ambition.</p>
+                </div>
+                <div class="featured-meta">
+                    <div class="meta-item">
+                        <div class="meta-label">Sector</div>
+                        <div class="meta-value">Venture</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-label">Scope</div>
+                        <div class="meta-value">Brand System</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-label">Year</div>
+                        <div class="meta-value">2025</div>
+                    </div>
+                </div>
+            </div>
+        </a>
     </section>
 
-    <div class="section-divider"></div>
+    <section class="projects">
+        <a href="/look/work/neopave" class="project reveal">
+            <span class="project-number">02</span>
+            <div class="project-image">
+                <div class="project-image-inner">
+                    <span class="placeholder">Project Image</span>
+                </div>
+            </div>
+            <div class="project-content">
+                <span class="project-type">Climate Tech</span>
+                <div class="project-text">
+                    <h3>NeoPave</h3>
+                    <p>Climate tech that needed to look the part. Repositioned for government contracts.</p>
+                </div>
+            </div>
+        </a>
 
-    <!-- Work Grid -->
-    <section class="work-section">
-        <div class="work-grid">
-
-            <!-- Case Study 1: Tech Futures Group -->
-            <article class="case-card">
-                <div class="case-image">
-                    <span class="case-image-placeholder">Screenshot Coming</span>
+        <a href="/look/work/forever-young-fitness" class="project reveal">
+            <span class="project-number">03</span>
+            <div class="project-image">
+                <div class="project-image-inner">
+                    <span class="placeholder">Project Image</span>
                 </div>
-                <div class="case-content">
-                    <div class="case-meta">
-                        <span class="case-tag">Brand System</span>
-                        <span class="case-tag">Website</span>
-                    </div>
-                    <h2 class="case-name">Tech Futures Group</h2>
-                    <p class="case-tagline">From scattered initiatives to unified platform</p>
-                    <p class="case-description">
-                        A venture platform connecting investors with emerging technology opportunities. The brand had grown organically across multiple initiatives—but looked like three different companies. We unified everything under one system.
-                    </p>
-                    <div class="case-details">
-                        <div class="case-detail-group">
-                            <h4>The Gap</h4>
-                            <p>Inconsistent brand across 4 sub-brands</p>
-                        </div>
-                        <div class="case-detail-group">
-                            <h4>The System</h4>
-                            <p>Unified identity + scalable component library</p>
-                        </div>
-                        <div class="case-detail-group">
-                            <h4>Industry</h4>
-                            <p>Venture / Investment</p>
-                        </div>
-                        <div class="case-detail-group">
-                            <h4>Timeline</h4>
-                            <p>8 weeks</p>
-                        </div>
-                    </div>
-                    <a href="https://techfuturesgroup.org" target="_blank" class="case-link">
-                        View Live Site
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                        </svg>
-                    </a>
+            </div>
+            <div class="project-content">
+                <span class="project-type">Health & Fitness</span>
+                <div class="project-text">
+                    <h3>Forever Young Fitness</h3>
+                    <p>30 years of expertise, finally visible. From local trainer to transformation partner.</p>
                 </div>
-            </article>
-
-            <!-- Case Study 2: NeoPave -->
-            <article class="case-card">
-                <div class="case-image">
-                    <span class="case-image-placeholder">Screenshot Coming</span>
-                </div>
-                <div class="case-content">
-                    <div class="case-meta">
-                        <span class="case-tag">Brand Strategy</span>
-                        <span class="case-tag">Website</span>
-                    </div>
-                    <h2 class="case-name">NeoPave</h2>
-                    <p class="case-tagline">Climate tech that needed to look the part</p>
-                    <p class="case-description">
-                        Revolutionary polymer pavement technology that lasts longer and reduces environmental impact. The science was solid—but the brand felt like a PowerPoint presentation. We repositioned them as the infrastructure play for climate-conscious municipalities.
-                    </p>
-                    <div class="case-details">
-                        <div class="case-detail-group">
-                            <h4>The Gap</h4>
-                            <p>Technical product, forgettable presentation</p>
-                        </div>
-                        <div class="case-detail-group">
-                            <h4>The System</h4>
-                            <p>Premium positioning + investor-ready site</p>
-                        </div>
-                        <div class="case-detail-group">
-                            <h4>Industry</h4>
-                            <p>Climate Tech / Infrastructure</p>
-                        </div>
-                        <div class="case-detail-group">
-                            <h4>Timeline</h4>
-                            <p>6 weeks</p>
-                        </div>
-                    </div>
-                    <a href="https://neopave.com" target="_blank" class="case-link">
-                        View Live Site
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                        </svg>
-                    </a>
-                </div>
-            </article>
-
-            <!-- Case Study 3: Forever Young Fitness -->
-            <article class="case-card">
-                <div class="case-image">
-                    <span class="case-image-placeholder">Screenshot Coming</span>
-                </div>
-                <div class="case-content">
-                    <div class="case-meta">
-                        <span class="case-tag">Rebrand</span>
-                        <span class="case-tag">Website</span>
-                    </div>
-                    <h2 class="case-name">Forever Young Fitness</h2>
-                    <p class="case-tagline">30 years of expertise, finally visible</p>
-                    <p class="case-description">
-                        Elite personal training with three decades of results—but a brand that looked like every other gym. We repositioned from "trainer" to "transformation partner" and built a presence that matches the premium service.
-                    </p>
-                    <div class="case-details">
-                        <div class="case-detail-group">
-                            <h4>The Gap</h4>
-                            <p>Premium service, generic presentation</p>
-                        </div>
-                        <div class="case-detail-group">
-                            <h4>The System</h4>
-                            <p>Complete rebrand + client journey redesign</p>
-                        </div>
-                        <div class="case-detail-group">
-                            <h4>Industry</h4>
-                            <p>Health / Fitness</p>
-                        </div>
-                        <div class="case-detail-group">
-                            <h4>Timeline</h4>
-                            <p>10 weeks</p>
-                        </div>
-                    </div>
-                    <a href="https://workoutwithzeb.com" target="_blank" class="case-link">
-                        View Live Site
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                        </svg>
-                    </a>
-                </div>
-            </article>
-
-        </div>
+            </div>
+        </a>
     </section>
 
-    <div class="section-divider"></div>
-
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="cta-content">
-            <h2 class="cta-headline">Ready to close the gap?</h2>
-            <p class="cta-subtext">Three clients per quarter. Let's see if there's a fit.</p>
-            <a href="/contact" class="cta-button">Let's Talk</a>
-        </div>
+    <section class="cta">
+        <p class="label">Start a Project</p>
+        <h2>Your brand could be next.</h2>
+        <a href="/look/contact" class="cta-btn">Let's Talk</a>
     </section>
 
-    <!-- Footer -->
     <footer>
-        <span class="footer-logo">Look Serious</span>
-        <span class="footer-copy">© 2026 Look Serious</span>
+        <span>Look Serious</span>
+        <span>© 2026</span>
     </footer>
 
-    <!-- Scroll Animation Script -->
     <script>
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.15
-        };
-
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
+                if (entry.isIntersecting) entry.target.classList.add('visible');
             });
-        }, observerOptions);
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-        document.querySelectorAll('.case-card, .cta-headline, .cta-subtext, .cta-button').forEach(el => {
-            observer.observe(el);
-        });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     </script>
 
 </body>
