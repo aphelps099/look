@@ -110,7 +110,7 @@
             letter-spacing: 0.05em;
             color: var(--white);
             text-decoration: none;
-            padding: 0.75rem 1.5rem;
+            padding: 0.8rem 1.5rem;
             border: 1px solid rgba(255,255,255,0.3);
             transition: all 0.3s ease;
         }
@@ -199,17 +199,12 @@
         }
 
         .featured-number {
-            position: absolute;
-            top: 4rem;
-            right: 4rem;
             font-family: var(--display);
-            font-size: clamp(6rem, 15vw, 12rem);
-            font-weight: 800;
-            color: var(--mid);
-            line-height: 1;
-            letter-spacing: -0.05em;
-            user-select: none;
-            z-index: 1;
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            margin-bottom: 1rem;
         }
 
         .featured a {
@@ -346,41 +341,15 @@
 
         .project-number {
             font-family: var(--display);
-            font-size: clamp(8rem, 18vw, 14rem);
-            font-weight: 800;
-            color: var(--mid);
-            line-height: 0.8;
-            letter-spacing: -0.05em;
-            position: absolute;
-            top: 0;
-            left: -0.5rem;
-            z-index: 0;
-            opacity: 0;
-            transform: translateY(40px);
-            pointer-events: none;
-        }
-
-        .project-number.visible {
-            animation: numberSnap 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-
-        .project:nth-child(2) .project-number.visible {
-            animation-delay: 0.1s;
-        }
-
-        @keyframes numberSnap {
-            0% {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            color: var(--muted);
+            margin-bottom: 1rem;
         }
 
         .project:hover .project-number {
-            color: var(--border);
+            color: var(--accent);
         }
 
         .project-image {
@@ -389,9 +358,7 @@
             background: var(--dark);
             overflow: hidden;
             position: relative;
-            z-index: 1;
             margin-bottom: 2rem;
-            margin-top: 4rem;
         }
 
         .project-image-inner {
@@ -413,28 +380,6 @@
 
         .project:hover .project-image-inner {
             transform: scale(1.02);
-        }
-
-        /* Eye icon on hover */
-        .project-image::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 48px;
-            height: 48px;
-            transform: translate(-50%, -50%) scale(0.8);
-            opacity: 0;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23e04a2f' stroke-width='1.5'%3E%3Cpath d='M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z'/%3E%3Ccircle cx='12' cy='12' r='3'/%3E%3C/svg%3E");
-            background-size: contain;
-            background-repeat: no-repeat;
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-            z-index: 2;
-        }
-
-        .project:hover .project-image::after {
-            opacity: 1;
-            transform: translate(-50%, -50%) scale(1);
         }
 
         .project-image::before {
@@ -592,7 +537,6 @@
             header { padding: 0 3rem 5rem; }
             .header-rule { left: 3rem; right: 3rem; }
             .featured { padding: 5rem 3rem; }
-            .featured-number { right: 3rem; font-size: 8rem; }
             .projects { padding: 2rem 3rem 5rem; gap: 1.5rem; }
             .cta { padding: 8rem 3rem; }
             .cta::before { left: 3rem; right: 3rem; }
@@ -604,7 +548,6 @@
             header { padding: 0 2rem 4rem; min-height: 55vh; }
             .header-rule { left: 2rem; right: 2rem; }
             .featured { padding: 4rem 2rem; }
-            .featured-number { display: none; }
             .featured-info { grid-template-columns: 1fr; gap: 2rem; }
             .featured-meta { justify-content: flex-start; }
             .meta-item { text-align: left; }
@@ -614,7 +557,6 @@
                 gap: 4rem;
             }
             .project:nth-child(2) { margin-top: 0; }
-            .project-number { font-size: 4rem; }
             .cta { padding: 6rem 2rem; }
             .cta::before { left: 2rem; right: 2rem; }
             footer { padding: 2rem; flex-direction: column; gap: 0.5rem; }
@@ -654,7 +596,6 @@
     </header>
 
     <section class="featured">
-        <span class="featured-number">01</span>
         <a href="/look/look-serious-case-study-tfg.html">
             <div class="featured-image">
                 <div class="featured-image-inner">
@@ -663,6 +604,7 @@
             </div>
             <div class="featured-info">
                 <div class="featured-main">
+                    <span class="featured-number">01</span>
                     <h2>Tech Futures Group</h2>
                     <p>Four scattered initiatives unified into one platform. The brand finally matched the ambition.</p>
                 </div>
@@ -736,7 +678,7 @@
             });
         }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-        document.querySelectorAll('.reveal, .project-number').forEach(el => observer.observe(el));
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     </script>
 
 </body>
