@@ -198,11 +198,12 @@
             position: relative;
         }
 
-        .featured-number {
+        .featured-label {
             font-family: var(--display);
-            font-size: 0.65rem;
+            font-size: 0.6rem;
             font-weight: 600;
-            letter-spacing: 0.15em;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
             color: var(--accent);
             margin-bottom: 1rem;
         }
@@ -341,15 +342,37 @@
 
         .project-number {
             font-family: var(--display);
-            font-size: 0.65rem;
-            font-weight: 600;
-            letter-spacing: 0.15em;
-            color: var(--muted);
-            margin-bottom: 1rem;
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--mid);
+            line-height: 1;
+            letter-spacing: -0.03em;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            opacity: 0;
+            transform: translateY(20px);
+            pointer-events: none;
         }
 
-        .project:hover .project-number {
-            color: var(--accent);
+        .project-number.visible {
+            animation: numberSnap 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
+        .project:nth-child(2) .project-number.visible {
+            animation-delay: 0.1s;
+        }
+
+        @keyframes numberSnap {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .project-image {
@@ -358,6 +381,8 @@
             background: var(--dark);
             overflow: hidden;
             position: relative;
+            z-index: 1;
+            margin-top: 2rem;
             margin-bottom: 2rem;
         }
 
@@ -604,7 +629,7 @@
             </div>
             <div class="featured-info">
                 <div class="featured-main">
-                    <span class="featured-number">01</span>
+                    <span class="featured-label">Featured</span>
                     <h2>Tech Futures Group</h2>
                     <p>Four scattered initiatives unified into one platform. The brand finally matched the ambition.</p>
                 </div>
@@ -678,7 +703,7 @@
             });
         }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        document.querySelectorAll('.reveal, .project-number').forEach(el => observer.observe(el));
     </script>
 
 </body>
