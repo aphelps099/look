@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Message Received — Look Serious</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --black: #080808;
+            --dark: #0c0c0c;
+            --mid: #141414;
+            --border: #1a1a1a;
+            --muted: #404040;
+            --secondary: #707070;
+            --light: #e8e8e8;
+            --white: #ffffff;
+            --accent: #e04a2f;
+            
+            --display: 'Syne', sans-serif;
+            --body: 'Outfit', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--body);
+            background: var(--black);
+            color: var(--light);
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Grain */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            opacity: 0.025;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        /* Nav */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 2.5rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .logo {
+            font-family: var(--display);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        /* Main */
+        main {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 8rem 4rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        .header {
+            margin-bottom: 5rem;
+            max-width: 600px;
+        }
+
+        .status {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 2.5rem;
+            opacity: 0;
+            animation: fadeIn 0.8s 0.2s forwards;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+        .status-text {
+            font-size: 0.65rem;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent);
+        }
+
+        h1 {
+            font-family: var(--display);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+        }
+
+        .intro {
+            font-size: 1rem;
+            font-weight: 300;
+            color: var(--secondary);
+            line-height: 1.7;
+            opacity: 0;
+            animation: fadeIn 0.8s 0.5s forwards;
+        }
+
+        .intro strong {
+            color: var(--light);
+            font-weight: 400;
+        }
+
+        /* Resource Card */
+        .resource {
+            background: var(--dark);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 3rem;
+            align-items: start;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
+        }
+
+        .resource-content {
+            max-width: 560px;
+        }
+
+        .resource-label {
+            font-size: 0.6rem;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+        }
+
+        .resource h2 {
+            font-family: var(--display);
+            font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+            font-weight: 700;
+            color: var(--white);
+            letter-spacing: -0.02em;
+            margin-bottom: 1.25rem;
+        }
+
+        .resource-desc {
+            font-size: 0.95rem;
+            font-weight: 300;
+            color: var(--secondary);
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+
+        .resource-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin-bottom: 2.5rem;
+            padding-left: 0;
+        }
+
+        .resource-list li {
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: var(--light);
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .resource-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.55em;
+            width: 6px;
+            height: 6px;
+            background: var(--accent);
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-family: var(--display);
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: var(--black);
+            background: var(--white);
+            padding: 1rem 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .download-btn:hover {
+            background: var(--accent);
+            color: var(--white);
+        }
+
+        .download-btn svg {
+            width: 16px;
+            height: 16px;
+            stroke: currentColor;
+            stroke-width: 2;
+            fill: none;
+        }
+
+        /* Resource Visual */
+        .resource-visual {
+            width: 200px;
+            height: 260px;
+            background: var(--mid);
+            border: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .resource-visual::before {
+            content: '';
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 24px 24px 0;
+            border-color: transparent var(--dark) transparent transparent;
+        }
+
+        .pdf-icon {
+            margin-bottom: 1.5rem;
+        }
+
+        .pdf-icon svg {
+            width: 48px;
+            height: 48px;
+            stroke: var(--muted);
+            stroke-width: 1;
+            fill: none;
+        }
+
+        .resource-visual span {
+            font-size: 0.6rem;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        /* Timeline */
+        .timeline {
+            margin-top: 4rem;
+            padding-top: 3rem;
+            border-top: 1px solid var(--border);
+            display: flex;
+            gap: 4rem;
+            opacity: 0;
+            animation: fadeIn 0.8s 0.8s forwards;
+        }
+
+        .timeline-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .timeline-time {
+            font-family: var(--display);
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--accent);
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-action {
+            font-size: 0.85rem;
+            font-weight: 300;
+            color: var(--secondary);
+        }
+
+        /* Back link */
+        .back-link {
+            margin-top: 4rem;
+            opacity: 0;
+            animation: fadeIn 0.8s 1s forwards;
+        }
+
+        .back-link a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--muted);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .back-link a:hover {
+            color: var(--white);
+        }
+
+        .back-link svg {
+            width: 16px;
+            height: 16px;
+            stroke: currentColor;
+            stroke-width: 1.5;
+            fill: none;
+        }
+
+        @keyframes slideUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            nav { padding: 2rem 3rem; }
+            main { padding: 8rem 3rem; }
+        }
+
+        @media (max-width: 768px) {
+            nav { padding: 1.5rem 2rem; }
+            main { padding: 7rem 2rem 4rem; }
+            
+            .resource {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 2rem;
+            }
+
+            .resource-visual {
+                width: 100%;
+                height: 180px;
+                order: -1;
+            }
+
+            .timeline {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="/" class="logo">Look Serious</a>
+    </nav>
+
+    <main>
+        <div class="header">
+            <div class="status">
+                <span class="status-dot"></span>
+                <span class="status-text">Message Received</span>
+            </div>
+
+            <h1>Thanks for reaching out.</h1>
+
+            <p class="intro">I'll review your message and get back to you within <strong>48 hours</strong>. In the meantime, here's something useful.</p>
+        </div>
+
+        <div class="resource">
+            <div class="resource-content">
+                <p class="resource-label">Free Resource</p>
+                <h2>The Brand Gap Checklist</h2>
+                <p class="resource-desc">5 questions to figure out if your brand is helping or hurting your business. Takes 2 minutes.</p>
+                
+                <ul class="resource-list">
+                    <li>The "explain what you do" test</li>
+                    <li>The competitor comparison trap</li>
+                    <li>When "good enough" isn't</li>
+                    <li>The hidden cost of inconsistency</li>
+                    <li>Signs it's time to rebuild</li>
+                </ul>
+
+                <a href="/brand-gap-checklist.pdf" class="download-btn" download>
+                    Download PDF
+                    <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+            </div>
+
+            <div class="resource-visual">
+                <div class="pdf-icon">
+                    <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" stroke-linecap="round" stroke-linejoin="round"/><polyline points="14 2 14 8 20 8" stroke-linecap="round" stroke-linejoin="round"/><line x1="16" y1="13" x2="8" y2="13" stroke-linecap="round"/><line x1="16" y1="17" x2="8" y2="17" stroke-linecap="round"/><line x1="10" y1="9" x2="8" y2="9" stroke-linecap="round"/></svg>
+                </div>
+                <span>PDF • 1 Page</span>
+            </div>
+        </div>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <span class="timeline-time">Now</span>
+                <span class="timeline-action">Your message is in my inbox</span>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-time">Within 48hrs</span>
+                <span class="timeline-action">You'll hear back from me</span>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-time">If it's a fit</span>
+                <span class="timeline-action">We'll schedule a quick call</span>
+            </div>
+        </div>
+
+        <div class="back-link">
+            <a href="/">
+                <svg viewBox="0 0 24 24"><path d="M19 12H5M5 12L12 19M5 12L12 5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Back to home
+            </a>
+        </div>
+    </main>
+
+</body>
+</html>
