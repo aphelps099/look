@@ -460,6 +460,42 @@
             padding: 4rem 3rem;
             opacity: 0;
             transform: translateY(30px);
+            position: relative;
+        }
+
+        /* Subtle animated border glow */
+        .pillar::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border: 1px solid transparent;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .pillar.visible::before {
+            animation: borderPulse 8s ease-in-out infinite;
+        }
+
+        .pillar:nth-child(2).visible::before {
+            animation-duration: 11s;
+            animation-delay: -3s;
+        }
+
+        .pillar:nth-child(3).visible::before {
+            animation-duration: 14s;
+            animation-delay: -7s;
+        }
+
+        @keyframes borderPulse {
+            0%, 100% {
+                border-color: rgba(255, 255, 255, 0);
+                box-shadow: inset 0 0 0 0 rgba(255, 255, 255, 0);
+            }
+            50% {
+                border-color: rgba(255, 255, 255, 0.06);
+                box-shadow: inset 0 0 30px 0 rgba(255, 255, 255, 0.02);
+            }
         }
 
         .pillar.visible {
