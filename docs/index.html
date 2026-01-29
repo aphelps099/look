@@ -174,24 +174,35 @@
             color: var(--accent);
         }
 
-        /* "Not logos." strikethrough animation */
-        .hero-headline .strikethrough {
-            position: relative;
+        /* "Not logos." staggered animation */
+        .hero-headline .strike-not {
             display: inline-block;
             opacity: 0;
             animation: snapIn 0.3s 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
-        .hero-headline .strikethrough::after {
+        .hero-headline .strike-logos {
+            display: inline-block;
+            opacity: 0;
+            animation: snapIn 0.3s 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        /* Strikethrough container spans entire "Not logos." */
+        .hero-headline .strikethrough-wrap {
+            position: relative;
+            display: inline;
+        }
+
+        .hero-headline .strikethrough-wrap::after {
             content: '';
             position: absolute;
             left: 0;
             top: 50%;
             width: 0;
-            height: 4px;
+            height: 0.06em;
             background: var(--accent);
             transform: translateY(-50%);
-            animation: strikethrough 0.4s 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation: strikethrough 0.5s 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
         @keyframes snapIn {
@@ -1422,7 +1433,7 @@
             <h1 class="hero-headline">
                 <span class="line">Brands are</span>
                 <span class="line">systems.</span>
-                <span class="line"><span class="accent strikethrough">Not logos.</span></span>
+                <span class="line"><span class="accent strikethrough-wrap"><span class="strike-not">Not</span> <span class="strike-logos">logos.</span></span></span>
             </h1>
             <p class="hero-subline">
                 Be the zebra. In a world of horses, stripes get remembered.
