@@ -174,16 +174,26 @@
 
         .splash-tagline {
             font-family: var(--font-body);
-            font-size: clamp(1rem, 2vw, 1.2rem);
+            font-size: clamp(1.1rem, 2.2vw, 1.35rem);
             font-weight: 300;
-            color: rgba(255, 255, 255, 0.85);
-            max-width: 440px;
+            color: rgba(255, 255, 255, 0.75);
+            max-width: 500px;
             margin: 0 auto 3rem;
-            line-height: 1.7;
+            line-height: 1.8;
             letter-spacing: 0.01em;
             opacity: 0;
             transform: translateY(20px);
             animation: fadeUp 1s 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .splash-tagline .zebra-line {
+            display: block;
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 1.15em;
+            color: var(--white);
+            margin-top: 0.3em;
+            letter-spacing: -0.01em;
         }
 
         .splash-contact {
@@ -383,7 +393,8 @@
             </h1>
             <div class="splash-divider"></div>
             <p class="splash-tagline">
-                We build the operating system behind brands that refuse to blend in.
+                In a world where everyone wants to blend in—<br>
+                <span class="zebra-line">be the zebra.</span>
             </p>
             <div class="splash-contact">
                 <a href="mailto:aaron@look-serious.com?subject=Let's%20Talk">Let's Talk</a>
