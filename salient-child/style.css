@@ -1,0 +1,58 @@
+/*
+Theme Name: Look Serious — Salient Child
+Theme URI: https://look-serious.com
+Description: Custom Salient child theme built to match the Look Serious brand system. Dark, minimal, typographically bold — brands are systems, not logos.
+Author: Aaron Phelps / Look Serious
+Author URI: https://look-serious.com
+Template: salient
+Version: 1.0.0
+License: All Rights Reserved
+Text Domain: look-serious
+*/
+
+/* ==========================================================================
+   LOOK SERIOUS — CSS CUSTOM PROPERTIES
+   Brand Operating System (BOS) Design Tokens
+   ========================================================================== */
+
+:root {
+    /* ── Color Palette ── */
+    --ls-black: #050505;
+    --ls-charcoal: #0e0e0e;
+    --ls-dark-gray: #161616;
+    --ls-mid-gray: #252525;
+    --ls-text-muted: #707070;
+    --ls-text-secondary: #a0a0a0;
+    --ls-off-white: #f0f0f0;
+    --ls-white: #ffffff;
+    --ls-accent: #e04a2f;
+
+    /* ── About Page / Light Theme ── */
+    --ls-cream-bg: #f5f1eb;
+    --ls-cream-card: #faf8f5;
+    --ls-warm-black: #1a1712;
+    --ls-warm-charcoal: #2a2520;
+    --ls-warm-dark: #3a352f;
+    --ls-warm-mid: #d5cfc5;
+    --ls-warm-muted: #8a8279;
+    --ls-warm-secondary: #5a554d;
+    --ls-warm-accent: #c7402d;
+
+    /* ── Typography ── */
+    --ls-font-display: 'Syne', sans-serif;
+    --ls-font-body: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+    /* ── Spacing ── */
+    --ls-section-padding: 8rem 4rem;
+    --ls-section-padding-tablet: 6rem 3rem;
+    --ls-section-padding-mobile: 4rem 1.5rem;
+    --ls-nav-padding: 2rem 4rem;
+    --ls-content-max-width: 1400px;
+    --ls-text-max-width: 700px;
+
+    /* ── Transitions ── */
+    --ls-ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+    --ls-ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --ls-transition-fast: 0.3s ease;
+    --ls-transition-medium: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
