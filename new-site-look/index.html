@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Look Serious — Brand Systems, Web, Strategy & AI</title>
+  <meta name="description" content="Look Serious is a creative studio building brand systems, websites, social strategy, and AI solutions for businesses that refuse to blend in.">
+  <meta property="og:title" content="Look Serious — Brand Systems, Web, Strategy & AI">
+  <meta property="og:description" content="Brand-led creative studio. Branding. Tech. Strategy. For brands that refuse to blend in.">
+  <meta property="og:type" content="website">
+  <link href="https://api.fontshare.com/v2/css?f[]=clash-display@300,400,500,600,700&f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./base.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="page-wrapper">
+
+    <nav class="nav" role="navigation" aria-label="Main navigation">
+      <a href="./index.html" class="nav-logo">Look<span>Serious</span></a>
+      <ul class="nav-links" role="list">
+        <li><a href="./work.html">Work</a></li>
+        <li><a href="./bos.html">BOS&#8482;</a></li>
+        <li><a href="./about.html">About</a></li>
+        <li><a href="./hire.html">Hire</a></li>
+      </ul>
+      <button class="nav-toggle" aria-label="Open menu" onclick="document.querySelector('.nav-links').classList.toggle('active'); this.textContent = this.textContent === 'Menu' ? 'Close' : 'Menu';">Menu</button>
+    </nav>
+
+    <!-- ========== HERO ========== -->
+    <section class="hero" id="hero">
+      <h1 class="hero-headline">
+        <span class="word">In</span>
+        <span class="word">a</span>
+        <span class="word">world</span>
+        <span class="word">of</span>
+        <span class="word">horses,</span>
+        <span class="word accent">Be the</span>
+        <span class="word accent">zebra.</span>
+      </h1>
+      <p class="hero-sub">Brand systems, web experiences, social strategy, and AI — engineered to make you impossible to ignore.</p>
+      <div class="hero-bottom">
+        <div class="hero-scroll">
+          Scroll
+          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M7 1v12M1 7l6 6 6-6"/>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== MARQUEE (hidden for now) ==========
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>Brand Systems<span class="sep">&#9670;</span></span>
+        <span>Web Design<span class="sep">&#9670;</span></span>
+        <span>Social Strategy<span class="sep">&#9670;</span></span>
+        <span>AI Consulting<span class="sep">&#9670;</span></span>
+        <span>Brand Systems<span class="sep">&#9670;</span></span>
+        <span>Web Design<span class="sep">&#9670;</span></span>
+        <span>Social Strategy<span class="sep">&#9670;</span></span>
+        <span>AI Consulting<span class="sep">&#9670;</span></span>
+        <span>Brand Systems<span class="sep">&#9670;</span></span>
+        <span>Web Design<span class="sep">&#9670;</span></span>
+        <span>Social Strategy<span class="sep">&#9670;</span></span>
+        <span>AI Consulting<span class="sep">&#9670;</span></span>
+      </div>
+    </div>
+    ========== END MARQUEE ==========-->
+
+    <!-- ========== SERVICES ========== -->
+    <section class="section section--alt" id="services">
+      <div class="container">
+        <p class="section-label reveal">What We Do</p>
+        <h2 class="section-heading reveal">Branding. Tech. Strategy.</h2>
+        <p class="section-subtext reveal">For brands that <span class="underline-reveal">refuse to blend in.</span></p>
+
+        <div class="services-grid reveal-stagger">
+          <div class="service-card">
+            <h3>Brand System<br>Automation</h3>
+            <p>Identity systems that scale. Logos, type, color, guidelines — built as a living system, not a static PDF.</p>
+            <div class="service-number-badge">01</div>
+          </div>
+          <div class="service-card">
+            <h3>Web Design<br>& Development</h3>
+            <p>Sites that convert and communicate. WordPress, custom builds, landing pages — designed with intention.</p>
+            <div class="service-number-badge">02</div>
+          </div>
+          <div class="service-card">
+            <h3>Social Strategy<br>& Management</h3>
+            <p>Content that earns attention. Strategy, execution, and management across platforms — not just posting.</p>
+            <div class="service-number-badge">03</div>
+          </div>
+          <div class="service-card">
+            <h3>AI Projects<br>& Consulting</h3>
+            <p>Practical AI integration for real business. Custom GPTs, automation, video, and masterclass training.</p>
+            <div class="service-number-badge">04</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== FEATURED WORK ========== -->
+    <section class="section section--alt" id="work-preview">
+      <div class="container">
+        <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:var(--space-10);">
+          <div>
+            <p class="section-label reveal">Selected Projects</p>
+          </div>
+          <a href="./work.html" class="link-arrow reveal">
+            View All
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 8h14M9 2l6 6-6 6"/></svg>
+          </a>
+        </div>
+        <div class="work-grid reveal-stagger">
+          <a class="work-card featured" href="./work.html#sbdc-ai">
+            <div class="work-color-overlay" style="background:linear-gradient(135deg, #1a2742 0%, #0f172a 40%, #1e3a5f 100%);">
+              <span class="work-logo-text" style="font-size:var(--text-2xl); color:#4f9cf7;">SBDC.AI&#8482;</span>
+            </div>
+            <div class="work-thumb">
+              <img src="./work/sbdcai-homescreen-v2.png" alt="SBDC.AI homepage" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="work-card-info">
+              <h3>SBDC.AI&#8482;</h3>
+              <span class="work-tags">Brand Identity · Web Platform · AI Integration</span>
+            </div>
+          </a>
+          <a class="work-card" href="./work.html#shasta-angels">
+            <div class="work-color-overlay" style="background:linear-gradient(135deg, #0d2a3a 0%, #0d1520 40%, #1a4055 100%);">
+              <span class="work-logo-text" style="font-size:var(--text-xl); color:#38bdf8;">Shasta Angels</span>
+            </div>
+            <div class="work-thumb" style="background:#6a9fc7; display:flex; align-items:center; justify-content:center; overflow:hidden;">
+              <img src="./work/angels-logo.png" alt="Shasta Angels" style="width:160%;max-width:none;height:auto;opacity:0.85;">
+            </div>
+            <div class="work-card-info">
+              <h3>Shasta Angels</h3>
+              <span class="work-tags">Brand Identity · Website</span>
+            </div>
+          </a>
+          <a class="work-card" href="./work.html#technisoil">
+            <div class="work-color-overlay" style="background:linear-gradient(135deg, #3a2a0d 0%, #1f150d 40%, #5e3f0d 100%);">
+              <span class="work-logo-text" style="font-size:var(--text-xl); color:#fbbf24;">TechniSoil&reg;</span>
+            </div>
+            <div class="work-thumb" style="background:linear-gradient(135deg, #1f150d 0%, #5e3f0d 100%);">
+              <span style="font-family:var(--font-display); font-size:var(--text-base); font-weight:500; color:#fbbf24; opacity:0.3;">technisoil.com</span>
+            </div>
+            <div class="work-card-info">
+              <h3>TechniSoil&reg;</h3>
+              <span class="work-tags">Web Development · Brand</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== CTA ========== -->
+    <section class="cta-section section" id="cta">
+      <div class="container reveal">
+        <h2>Ready to<br>look serious?</h2>
+        <p>Start a project, ask a question, or just say hello.</p>
+        <a href="./hire.html" class="btn-primary">
+          Start a Project
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 8h14M9 2l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+      <div class="footer-inner">
+        <div>
+          <div class="footer-brand">Look<span>Serious</span></div>
+          <p style="font-size:var(--text-xs); color:var(--color-text-faint); margin-top:var(--space-2); max-width:28ch;">Brand-led creative studio.<br>Redding, California.</p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-col">
+            <h4>Studio</h4>
+            <a href="./work.html">Work</a>
+            <a href="./about.html">About</a>
+            <a href="./hire.html">Hire</a>
+          </div>
+          <div class="footer-col">
+            <h4>Connect</h4>
+            <a href="mailto:aaron@look-serious.com">Email</a>
+            <a href="https://linkedin.com/in/aaroncphelps" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="#" target="_blank" rel="noopener noreferrer">Book a Call</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Look Serious. All rights reserved.</span>
+        <span>Designed with intention.</span>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    (function() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+      document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => observer.observe(el));
+    })();
+  </script>
+</body>
+</html>

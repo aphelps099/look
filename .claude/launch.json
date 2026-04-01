@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "look-serious",
+      "runtimeExecutable": "/usr/bin/python3",
+      "runtimeArgs": ["/Users/aaron/Desktop/look/new-site-look/serve.py"],
+      "port": 8090
+    }
+  ]
+}
